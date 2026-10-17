@@ -36,6 +36,12 @@ $H_0$ 锚定版（16:9）：
 | `plot_tcw_H0_reference.py` | 主图：$H_0$ 锚定的解析演化 |
 | `plot_tcw_H0_reference_pure_driven.py` | 纯驱动版（$H_0=0$） |
 | `diagnose_highk_dt_residual.py` | 诊断：$k>8$ 数值高于理论的有限 $dt$ 效应 |
+| `solvers/sle_L31_C035.c` | L31 C=0.35 的 Basilisk SLE 求解器（修正 y 邻点索引） |
+| `solvers/sle_L31_C070.c` | L31 C=0.70 的 Basilisk SLE 求解器（同一索引修复） |
+
+## Basilisk SLE 求解器
+
+两个求解器均将二维标量场的 y 向邻点改为显式 `[i,j]` 偏移，避免 Basilisk 把单下标误解为 x 向偏移。C035 使用参考滑移长度 $b=3.34\,\mathrm{nm}$，C070 使用 $b=0.48\,\mathrm{nm}$；其余求解器代码相同。两版均通过对应输入的实际短测数值审核，短测通过不代表完整生产运行或物理验收通过。
 
 ```
 python plot_tcw_H0_reference.py
