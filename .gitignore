@@ -1,2 +1,14 @@
 __pycache__/
 *.pyc
+film_rupture/bin/
+film_rupture/audits/
+film_rupture/deployment.json
+film_rupture/dashboard_snapshot.json
+film_rupture/dashboard/src/data.json
+film_rupture/yfix/
+film_rupture/old/
+film_rupture/slurm-*.out
+film_rupture/slurm-*.err
+film_rupture/BUILD_OK
+film_rupture/SUBMITTED_JOB_ID
+film_rupture/binaries.sha256

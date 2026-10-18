@@ -1,0 +1,2 @@
+# Keep scientific source and checksum inputs byte-identical across clones.
+film_rupture/** -text

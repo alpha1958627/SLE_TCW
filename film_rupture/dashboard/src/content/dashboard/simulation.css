@@ -1,0 +1,5 @@
+.simulation-dashboard .sim-summary {display:flex;flex-wrap:wrap;gap:12px 28px;padding:4px 0 12px;font-variant-numeric:tabular-nums;}
+.simulation-dashboard .sim-summary strong {font-size:20px;font-weight:650;}
+.simulation-dashboard .sim-note {font-size:13px;line-height:1.65;color:var(--secondary);margin:8px 0 0;}
+.simulation-dashboard .sim-cadence {font-size:13px;color:var(--secondary);white-space:nowrap;}
+.simulation-dashboard .sim-alert {font-size:13px;line-height:1.65;color:#9a3b22;margin:8px 0 0;}
