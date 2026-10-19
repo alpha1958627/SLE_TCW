@@ -1,0 +1,53 @@
+diff --git a/contact_angle_before.c b/contact_angle.c
+index da7d2b0..6d9e5fe 100644
+--- a/contact_angle_before.c
++++ b/contact_angle.c
+@@ -67,6 +67,9 @@
+ #ifndef HP001_TEST_AMPLITUDE
+ #define HP001_TEST_AMPLITUDE (HP_VALUE*1e-3)
+ #endif
++#ifndef HP001_TEST_TRANSPOSE
++#define HP001_TEST_TRANSPOSE 0
++#endif
+ #ifndef HP001_FORCE_COUPLED_SOLVER
+ #define HP001_FORCE_COUPLED_SOLVER (HP001_TEST_KIND > 0)
+ #endif
+@@ -555,14 +558,14 @@ static void relax_hp001_coupled (scalar *al, scalar *bl, int lev,
+     (const) scalar Pi1 = cp->pi_prime;
+     foreach_level_or_leaf(lev) {
+         double invdx2 = 1./sq(Delta);
+-        double sumM = M.x[] + M.x[1] + M.y[] + M.y[1];
++        double sumM = M.x[] + M.x[1] + M.y[] + M.y[0,1];
+         double b = sumM*invdx2;
+         double a = 1./cp->dt;
+         double c = Pi1[] - 4.*invdx2;
+         double d = 1.;
+         double rhs1 = rh[] +
+           (M.x[1]*dp[1] + M.x[]*dp[-1] +
+-           M.y[1]*dp[0,1] + M.y[]*dp[0,-1])*invdx2;
++           M.y[0,1]*dp[0,1] + M.y[]*dp[0,-1])*invdx2;
+         double rhs2 = rp[] -
+           (dh[1] + dh[-1] + dh[0,1] + dh[0,-1])*invdx2;
+         double det = a*d - b*c;
+@@ -881,6 +884,12 @@ static double restored_global_time(void) { return t; }
+             h[] = HP_VALUE;
+ #elif HP001_TEST_KIND == 2
+             h[] = HP_VALUE + HP001_TEST_AMPLITUDE*cos(16.*pi*(x - L0/2.)/L0);
++#elif HP001_TEST_KIND == 3
++            /* Unequal wavelengths expose x/y mistakes with variable mobility. */
++            double u = HP001_TEST_TRANSPOSE ? y : x;
++            double v = HP001_TEST_TRANSPOSE ? x : y;
++            h[] = HP_VALUE + HP001_TEST_AMPLITUDE*
++              cos(16.*pi*(u - L0/2.)/L0)*cos(8.*pi*(v - L0/2.)/L0);
+ #else
+             h[] = HP + (r < R0 ? H0*pow(cos(pi*r/(2.*R0)), 4.) : 0.);
+ #endif
+@@ -1058,7 +1067,7 @@ void apply_split_stochastic_flux (scalar f, scalar f_old, double dt_step,
+           tcw_correlated_face_gaussian(x, y, 0, timestep)/(tcw_noise_corr_delta()*sqrt(dt_step));
+     }
+     foreach_face(y) {
+-        double ff = max((f_old[] + f_old[-1])/2., HP);
++        double ff = max((f_old[] + f_old[0,-1])/2., HP);
+         flux.y[] = sqrt(2.*coeff_varphi)*pow(ff, 1.5)*tcw_noise_weight(ff)*
+           tcw_correlated_face_gaussian(x, y, 1, timestep)/(tcw_noise_corr_delta()*sqrt(dt_step));
+     }

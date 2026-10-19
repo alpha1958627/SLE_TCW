@@ -1,0 +1,11 @@
+runs/
+preflight-*.out
+preflight-*.err
+six-*.out
+six-*.err
+restart-*.out
+restart-*.err
+long-*.out
+long-*.err
+__pycache__/
+*.pyc

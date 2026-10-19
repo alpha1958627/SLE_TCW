@@ -1,0 +1,70 @@
+{
+  "date": "2026-10-19",
+  "upstream_reviewed_commit": "4c2e6be",
+  "upstream_y_index_fix": "b5898c3a3a4eb8a350264c21dd004dd67a6d346e",
+  "upstream_mpi_volume_fix": "ee3646d",
+  "original_campaign_source_sha256": "f6a19ab23e54c839969216b04f065c2f772b96fbf87d9fcf2149bf848977492c",
+  "production_resume_source_sha256": "d80bf828a51dd44870d867d45f617d8f50092cc37ba2dae435c718159d53afde",
+  "old_t400_job": "26709",
+  "old_t400_executable_sha256": "bb49fc4c9de6748ee2f0b66b5d4fd3d22f72a44f738c50e0a60c5788cb7ca171",
+  "repaired_source_sha256": "7ebff6509708e96af9afd0d9bf4eb9cfe636db827b7fc64cc9b2ff25fb8982e3",
+  "compiler_flags": [
+    "-disable-dimensions",
+    "-fopenmp",
+    "-D_GNU_SOURCE",
+    "-Wall",
+    "-O2",
+    "-fno-tree-vectorize"
+  ],
+  "integration": "backward Euler, coupled h/p Picard+multigrid",
+  "validated_execution": "single process OpenMP",
+  "tests": [
+    {
+      "job": "29276",
+      "purpose": "preflight",
+      "status": "PASS"
+    },
+    {
+      "job": "29277",
+      "purpose": "first restart attempt",
+      "status": "FAILED_VALIDATOR_HEADERLESS_CSV",
+      "solver_completed_real_steps": 10,
+      "evidence_retained": true
+    },
+    {
+      "job": "29285",
+      "purpose": "restart paired control",
+      "status": "PASS",
+      "real_steps_per_variant": 10
+    },
+    {
+      "job": "29286",
+      "purpose": "L14 first attempt",
+      "status": "FAILED_BEFORE_SOLVER_DIRECTORY_PERMISSION",
+      "evidence_retained": true
+    },
+    {
+      "job": "29287",
+      "purpose": "native finest L14 paired control",
+      "status": "PASS",
+      "real_steps_per_variant": 10
+    },
+    {
+      "job": "29288_0-5",
+      "purpose": "six-case fresh conservative AMR smoke",
+      "status": "PASS",
+      "real_steps_per_case": 10
+    },
+    {
+      "job": "29295_0-5",
+      "purpose": "six-case repaired fresh long rerun",
+      "status": "RUNNING",
+      "target_time": 400,
+      "cpu_per_case": 8,
+      "observed_total_cpu": 48,
+      "observed_at": "2026-10-19T16:18:34+08:00",
+      "walltime_limit_end": "2026-10-21T16:17:23+08:00"
+    }
+  ],
+  "final_six_case_physical_acceptance": false
+}

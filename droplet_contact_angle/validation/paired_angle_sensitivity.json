@@ -1,0 +1,23 @@
+{
+  "stable_angle": false,
+  "purpose": "paired estimator sensitivity, one equal-time frame",
+  "body_window": [
+    0.4,
+    0.8
+  ],
+  "fixed_four_directions_deg": [
+    23.238843757095736,
+    23.23884376236589,
+    23.23884376236912,
+    23.238843755295072
+  ],
+  "control_four_directions_deg": [
+    23.238843757098692,
+    23.238843762363363,
+    23.238843762377318,
+    23.23884375539482
+  ],
+  "fixed_mean_deg": 23.238843759281455,
+  "control_mean_deg": 23.238843759308548,
+  "max_paired_angle_difference_deg": 9.974954195968166e-11
+}

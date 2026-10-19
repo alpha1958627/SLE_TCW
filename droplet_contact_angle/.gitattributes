@@ -1,0 +1,6 @@
+# Keep the exact tested solver bytes (legacy CRLF plus dated LF patch).
+contact_angle.c -text
+*.py text eol=lf
+*.slurm text eol=lf
+*.md text eol=lf
+*.json text eol=lf
