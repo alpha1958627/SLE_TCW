@@ -37,6 +37,10 @@ def plot(source,output):
         fig.legend(handles=[Line2D([],[],color=colors[m],ls=styles[m],label=m.upper()) for m in modes],
                    loc='upper center',bbox_to_anchor=(.55,.93),ncol=2,frameon=False)
     def export(fig,name):
+        for panel in fig.axes:
+            xmin,xmax=panel.get_xlim();ymin,ymax=panel.get_ylim()
+            panel.set_xticks([v for v in panel.get_xticks() if xmin<=v<=xmax])
+            panel.set_yticks([v for v in panel.get_yticks() if ymin<=v<=ymax])
         fig.canvas.draw();renderer=fig.canvas.get_renderer()
         for t in fig.findobj(matplotlib.text.Text):
             if t.get_visible() and t.get_text():
