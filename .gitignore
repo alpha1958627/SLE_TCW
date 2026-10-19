@@ -12,3 +12,8 @@ film_rupture/slurm-*.err
 film_rupture/BUILD_OK
 film_rupture/SUBMITTED_JOB_ID
 film_rupture/binaries.sha256
+film_rupture/yold/
+film_rupture/smoke*/
+film_rupture/SMOKE_OK
+film_rupture/smoke-*.out
+film_rupture/smoke-*.err

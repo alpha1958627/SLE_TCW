@@ -1,0 +1,198 @@
+{
+  "status": "SMOKE_PASS_21",
+  "steps_requested": 1024,
+  "mpi_ranks": 8,
+  "maximum_log_drift": 5.788702850395566e-13,
+  "maximum_abs_final_field_drift": 6.006306563222097e-13,
+  "results": [
+    {
+      "task": "0",
+      "version": "yfix",
+      "seed": "2026101801",
+      "log_rows": 2,
+      "raw_V0_over_L0_squared": 1.0,
+      "log_max_drift": 3.6415315207705135e-14,
+      "final_field_drift": 3.708144902248023e-14
+    },
+    {
+      "task": "1",
+      "version": "yfix",
+      "seed": "2026101802",
+      "log_rows": 2,
+      "raw_V0_over_L0_squared": 1.0,
+      "log_max_drift": 3.6415315207705135e-14,
+      "final_field_drift": 3.708144902248023e-14
+    },
+    {
+      "task": "2",
+      "version": "yfix",
+      "seed": "2026101803",
+      "log_rows": 2,
+      "raw_V0_over_L0_squared": 1.0,
+      "log_max_drift": 3.530509218307998e-14,
+      "final_field_drift": 3.68594044175552e-14
+    },
+    {
+      "task": "3",
+      "version": "yfix",
+      "seed": "2026101804",
+      "log_rows": 2,
+      "raw_V0_over_L0_squared": 1.0,
+      "log_max_drift": 3.6415315207705135e-14,
+      "final_field_drift": 3.708144902248023e-14
+    },
+    {
+      "task": "4",
+      "version": "yfix",
+      "seed": "2026101805",
+      "log_rows": 2,
+      "raw_V0_over_L0_squared": 1.0,
+      "log_max_drift": 3.530509218307998e-14,
+      "final_field_drift": 3.68594044175552e-14
+    },
+    {
+      "task": "5",
+      "version": "yfix",
+      "seed": "2026101801",
+      "log_rows": 2,
+      "raw_V0_over_L0_squared": 1.0000000000000007,
+      "log_max_drift": 3.5083047578154947e-14,
+      "final_field_drift": 3.68594044175552e-14
+    },
+    {
+      "task": "6",
+      "version": "yfix",
+      "seed": "2026101802",
+      "log_rows": 2,
+      "raw_V0_over_L0_squared": 1.0000000000000007,
+      "log_max_drift": 3.5083047578154947e-14,
+      "final_field_drift": 3.68594044175552e-14
+    },
+    {
+      "task": "7",
+      "version": "yfix",
+      "seed": "2026101803",
+      "log_rows": 2,
+      "raw_V0_over_L0_squared": 1.0000000000000007,
+      "log_max_drift": 3.5083047578154947e-14,
+      "final_field_drift": 3.708144902248023e-14
+    },
+    {
+      "task": "8",
+      "version": "yfix",
+      "seed": "2026101804",
+      "log_rows": 2,
+      "raw_V0_over_L0_squared": 0.9999999999999993,
+      "log_max_drift": 3.774758283725532e-14,
+      "final_field_drift": 3.68594044175552e-14
+    },
+    {
+      "task": "9",
+      "version": "yfix",
+      "seed": "2026101805",
+      "log_rows": 2,
+      "raw_V0_over_L0_squared": 1.0000000000000007,
+      "log_max_drift": 3.5083047578154947e-14,
+      "final_field_drift": 3.68594044175552e-14
+    },
+    {
+      "task": "10",
+      "version": "yfix",
+      "seed": "2026101801",
+      "log_rows": 2,
+      "raw_V0_over_L0_squared": 0.9999999999999996,
+      "log_max_drift": 3.68594044175552e-14,
+      "final_field_drift": 3.68594044175552e-14
+    },
+    {
+      "task": "11",
+      "version": "yfix",
+      "seed": "2026101802",
+      "log_rows": 2,
+      "raw_V0_over_L0_squared": 0.9999999999999996,
+      "log_max_drift": 3.68594044175552e-14,
+      "final_field_drift": 3.68594044175552e-14
+    },
+    {
+      "task": "12",
+      "version": "yfix",
+      "seed": "2026101803",
+      "log_rows": 2,
+      "raw_V0_over_L0_squared": 0.9999999999999996,
+      "log_max_drift": 3.68594044175552e-14,
+      "final_field_drift": 3.68594044175552e-14
+    },
+    {
+      "task": "13",
+      "version": "yfix",
+      "seed": "2026101804",
+      "log_rows": 2,
+      "raw_V0_over_L0_squared": 0.9999999999999996,
+      "log_max_drift": 3.68594044175552e-14,
+      "final_field_drift": 3.708144902248023e-14
+    },
+    {
+      "task": "14",
+      "version": "yfix",
+      "seed": "2026101805",
+      "log_rows": 2,
+      "raw_V0_over_L0_squared": 0.9999999999999996,
+      "log_max_drift": 3.68594044175552e-14,
+      "final_field_drift": 3.708144902248023e-14
+    },
+    {
+      "task": "15",
+      "version": "yfix",
+      "seed": "2026101801",
+      "log_rows": 2,
+      "raw_V0_over_L0_squared": 1.0000000000000009,
+      "log_max_drift": 3.4638958368304884e-14,
+      "final_field_drift": 3.68594044175552e-14
+    },
+    {
+      "task": "16",
+      "version": "yfix",
+      "seed": "2026101802",
+      "log_rows": 2,
+      "raw_V0_over_L0_squared": 0.9999999999999994,
+      "log_max_drift": 3.597122599785507e-14,
+      "final_field_drift": 3.68594044175552e-14
+    },
+    {
+      "task": "17",
+      "version": "yfix",
+      "seed": "2026101803",
+      "log_rows": 2,
+      "raw_V0_over_L0_squared": 0.9999999999999994,
+      "log_max_drift": 3.597122599785507e-14,
+      "final_field_drift": 3.708144902248023e-14
+    },
+    {
+      "task": "18",
+      "version": "yfix",
+      "seed": "2026101804",
+      "log_rows": 2,
+      "raw_V0_over_L0_squared": 0.9999999999999994,
+      "log_max_drift": 3.597122599785507e-14,
+      "final_field_drift": 3.68594044175552e-14
+    },
+    {
+      "task": "19",
+      "version": "yfix",
+      "seed": "2026101805",
+      "log_rows": 2,
+      "raw_V0_over_L0_squared": 0.9999999999999994,
+      "log_max_drift": 3.597122599785507e-14,
+      "final_field_drift": 3.708144902248023e-14
+    },
+    {
+      "task": "20",
+      "version": "yold",
+      "seed": "2026101801",
+      "log_rows": 2,
+      "raw_V0_over_L0_squared": 1.0,
+      "log_max_drift": 5.788702850395566e-13,
+      "final_field_drift": 6.006306563222097e-13
+    }
+  ]
+}

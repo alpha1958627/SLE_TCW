@@ -17,18 +17,19 @@ ledger=json.loads((root/'deployment.json').read_text())
 remote=ledger['base']
 (root/'audits').mkdir(exist_ok=True)
 errors=[]
-for site, settings in ledger['sites'].items():
-    host, python = settings['host'], settings.get('python', 'python3')
+for site,settings in ledger['sites'].items():
+    host,python=settings['host'],settings.get('python','python3')
+    prefix=settings.get('shell_prefix','')
+    jobs=','.join(settings['jobs'])
+    assert all(j.isdigit() for j in settings['jobs'])
     ssh=['ssh','-o','BatchMode=yes','-o','ConnectTimeout=15',host]
-    result=subprocess.run(ssh+[shlex.quote(python)+' '+shlex.quote(remote+'/monitor_volume.py')],capture_output=True,text=True,timeout=120)
+    result=subprocess.run(ssh+[prefix+shlex.quote(python)+' '+shlex.quote(remote+'/monitor_volume.py')],capture_output=True,text=True,timeout=120)
     if result.returncode:
         errors.append(dict(site=site,error=result.stderr[-2500:]))
         continue
     data=json.loads(result.stdout)
     specs=[r for r in ledger['tasks'] if r['server']==site]
-    jobs=','.join(settings['jobs'])
-    assert all(job.isdigit() for job in settings['jobs']), 'Set numeric Slurm job IDs in deployment.json'
-    state_result=subprocess.run(ssh+['squeue -r -j '+jobs+" -h -o '%i|%T|%M|%S|%e|%R'; sacct -X -j "+jobs+' -P -n --format=JobID,State,ExitCode,Elapsed,Start,End,NodeList,AllocCPUS'],capture_output=True,text=True,timeout=60)
+    state_result=subprocess.run(ssh+[prefix+'squeue -r -j '+jobs+" -h -o '%i|%T|%M|%S|%e|%R'; sacct -X -j "+jobs+' -P -n --format=JobID,State,ExitCode,Elapsed,Start,End,NodeList,AllocCPUS'],capture_output=True,text=True,timeout=60)
     if state_result.returncode:
         errors.append(dict(site=site,error=state_result.stderr[-2500:]))
         continue
@@ -38,10 +39,18 @@ for site, settings in ledger['sites'].items():
         if len(p)>=2:
             states[p[0]]=p[1].strip()
     names=[r['version']+'/h0_'+r['h0_ratio']+'/run_0'+r['run']+'/log_restart' for r in specs]
-    archive=subprocess.run(ssh+['tar -czf - -C '+shlex.quote(remote)+' '+' '.join(shlex.quote(name) for name in names)],capture_output=True,timeout=120)
-    if archive.returncode:
-        errors.append(dict(site=site,error=archive.stderr.decode(errors='replace')[-2500:]))
+    archive=subprocess.run(ssh+['tar -czf - -C '+shlex.quote(remote)+' '+' '.join(shlex.quote(x) for x in names)],capture_output=True,timeout=120)
+    capture_warnings=archive.stderr.decode(errors='replace').splitlines()
+    # A growing log can yield a complete, size-bounded tar member with status 1.
+    # Accept only this exact warning; the archive/member checks below still apply.
+    growing_log_only=(archive.returncode==1 and bool(capture_warnings) and
+        all(line in {'tar: '+name+': file changed as we read it' for name in names}
+            for line in capture_warnings))
+    if archive.returncode and not growing_log_only:
+        errors.append(dict(site=site,error='\n'.join(capture_warnings)[-2500:]))
         continue
+    if growing_log_only:
+        data['raw_log_capture_notes']=capture_warnings
     local_dir=root/'audits'/'raw_logs'/site
     local_dir.mkdir(parents=True,exist_ok=True)
     with tarfile.open(fileobj=io.BytesIO(archive.stdout),mode='r:gz') as tf:
@@ -88,7 +97,6 @@ if (app/'src/data.json').exists():
     snapshot=json.loads(p.read_text(encoding='utf-8'))
     snapshot['buildStatus']='complete'
     p.write_text(json.dumps(snapshot,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
-    build=os.environ.get('DATA_APP_SCRIPT')
-    if build:
-        subprocess.run([os.environ.get('NODE', 'node'),build,'build','--project-dir',str(app),'--separate-data'],check=True)
-print('Dashboard snapshot refreshed once. No uploads or job mutations. Set DATA_APP_SCRIPT to build the Data app.')
+    if os.environ.get('DATA_APP_SCRIPT'):
+        subprocess.run([os.environ.get('NODE','node'),os.environ['DATA_APP_SCRIPT'],'build','--project-dir',str(app),'--separate-data'],check=True)
+print('Snapshot refreshed from existing files. No uploads or job mutations.')

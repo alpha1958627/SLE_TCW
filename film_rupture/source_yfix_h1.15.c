@@ -488,7 +488,11 @@ void create_directory(const char *path) {
 
 static double tcw_u01 (uint64_t key) { return ((double)(tcw_mix64(key) >> 11)+.5)*(1./9007199254740992.); }
 static double tcw_face_gaussian_noise (double xx,double yy,double delta,unsigned component,int timestep) {
- int64_t ix=llround(xx/delta),iy=llround(yy/delta); uint64_t key=tcw_noise_seed^((uint64_t)ix*0x9e3779b97f4a7c15ULL)^((uint64_t)iy*0xbf58476d1ce4e5b9ULL)^((uint64_t)component*0x94d049bb133111ebULL)^((uint64_t)timestep*0xd6e8feb86659fd93ULL); double u1=tcw_u01(key),u2=tcw_u01(key^0xa0761d6478bd642fULL); return sqrt(-2.*log(u1))*cos(2.*pi*u2);
+ int64_t ix=llround(xx/delta),iy=llround(yy/delta);
+ int64_t n = 1 << LEVEL_MIN;
+ ix = (ix % n + n) % n;
+ iy = (iy % n + n) % n;
+ uint64_t key=tcw_noise_seed^((uint64_t)ix*0x9e3779b97f4a7c15ULL)^((uint64_t)iy*0xbf58476d1ce4e5b9ULL)^((uint64_t)component*0x94d049bb133111ebULL)^((uint64_t)timestep*0xd6e8feb86659fd93ULL); double u1=tcw_u01(key),u2=tcw_u01(key^0xa0761d6478bd642fULL); return sqrt(-2.*log(u1))*cos(2.*pi*u2);
 }
 
 void apply_split_stochastic_flux (scalar f, scalar f_old, double dt_step,
@@ -668,10 +672,7 @@ event integration(i++) {
       if (ex > 0.) vex += ex * dA;
     }
   
-  #if _MPI
-    MPI_Allreduce(MPI_IN_PLACE, &vtot, 1, MPI_DOUBLE, MPI_SUM, MPI_COMM_WORLD);
-    MPI_Allreduce(MPI_IN_PLACE, &vex,  1, MPI_DOUBLE, MPI_SUM, MPI_COMM_WORLD);
-  #endif
+  /* foreach(reduction) already returns the global integrals. */
   
     V_total  = vtot;
     V_excess = vex;
@@ -872,5 +873,6 @@ event rupture_stop(i++) { if (hmin <= 0.01) {
 }
 
 event tcw_stop(i = tcw_test_steps) {
+    write_hfield_binary("stop.hfield");
     return 1;
 }

@@ -1,5 +1,6 @@
 {
-  "batch": "ls02_h105_h120_yfix21",
+  "batch": "ls02_conservative_v2_21",
+  "approved_on": "2026-10-19",
   "base": "/path/to/film_rupture",
   "sites": {
     "cluster": {
@@ -7,7 +8,8 @@
       "python": "python3",
       "jobs": [
         "YOUR_ARRAY_JOB_ID"
-      ]
+      ],
+      "shell_prefix": ""
     }
   },
   "tasks": [
@@ -453,7 +455,7 @@
     },
     {
       "task": "20",
-      "version": "old",
+      "version": "yold",
       "h0_ratio": "1.05",
       "run": "1",
       "seed": "2026101801",
@@ -469,7 +471,7 @@
       "mpi_ranks": "8",
       "memory_GB": "8",
       "wall_limit_days": "14",
-      "source": "reference/sipf_old_h105.c",
+      "source": "source_yold_h1.05.c",
       "server": "cluster",
       "job_id": "YOUR_ARRAY_JOB_ID_20"
     }

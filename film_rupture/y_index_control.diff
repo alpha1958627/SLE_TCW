@@ -1,13 +1,13 @@
---- sipf_old_h105.c
-+++ source_yfix_h1.05.c
+--- source_yfix_h1.05.c
++++ source_yold_h1.05.c
 @@ -269,8 +269,8 @@
           double num = sq(sq(Delta)) * b_rhs[];
           double den = lambda[] * sq(sq(Delta));
   
--         den -= 5 * (alpha.x[] + alpha.x[1] + alpha.y[] + alpha.y[1]);
--         den += 0.5 * Delta * sq(Delta) * (gamma.x[1] - gamma.x[] + gamma.y[1] - gamma.y[]);
-+         den -= 5 * (alpha.x[] + alpha.x[1] + alpha.y[] + alpha.y[0,1]);
-+         den += 0.5 * Delta * sq(Delta) * (gamma.x[1] - gamma.x[] + gamma.y[0,1] - gamma.y[]);
+-         den -= 5 * (alpha.x[] + alpha.x[1] + alpha.y[] + alpha.y[0,1]);
+-         den += 0.5 * Delta * sq(Delta) * (gamma.x[1] - gamma.x[] + gamma.y[0,1] - gamma.y[]);
++         den -= 5 * (alpha.x[] + alpha.x[1] + alpha.y[] + alpha.y[1]);
++         den += 0.5 * Delta * sq(Delta) * (gamma.x[1] - gamma.x[] + gamma.y[1] - gamma.y[]);
   
           foreach_dimension() {
               num -= (beta.x[1] * h_sol[1] + beta.x[] * h_sol[-1]) * sq(Delta);
@@ -15,21 +15,21 @@
           num -= alpha.x[] * (-h_sol[-2] - h_sol[-1,-1] + 5*h_sol[-1] - h_sol[-1,1] + h_sol[0,-1] + h_sol[0,1] + h_sol[1]) +
                  alpha.x[1] * (h_sol[-1] + h_sol[0,-1] + h_sol[0,1] - h_sol[1,-1] + 5*h_sol[1] - h_sol[1,1] - h_sol[2]) +
                  alpha.y[] * (-h_sol[-1,-1] + h_sol[-1] - h_sol[0,-2] + 5*h_sol[0,-1] + h_sol[0,1] - h_sol[1,-1] + h_sol[1]) +
--                alpha.y[1] * (h_sol[-1] - h_sol[-1,1] + h_sol[0,-1] + 5*h_sol[0,1] - h_sol[0,2] + h_sol[1] - h_sol[1,1]);
-+                alpha.y[0,1] * (h_sol[-1] - h_sol[-1,1] + h_sol[0,-1] + 5*h_sol[0,1] - h_sol[0,2] + h_sol[1] - h_sol[1,1]);
+-                alpha.y[0,1] * (h_sol[-1] - h_sol[-1,1] + h_sol[0,-1] + 5*h_sol[0,1] - h_sol[0,2] + h_sol[1] - h_sol[1,1]);
++                alpha.y[1] * (h_sol[-1] - h_sol[-1,1] + h_sol[0,-1] + 5*h_sol[0,1] - h_sol[0,2] + h_sol[1] - h_sol[1,1]);
   
           num -= 0.5 * Delta * sq(Delta) * (h_sol[1]*gamma.x[1] - h_sol[-1]*gamma.x[] +
--                                           h_sol[0,1]*gamma.y[1] - h_sol[0,-1]*gamma.y[]);
-+                                           h_sol[0,1]*gamma.y[0,1] - h_sol[0,-1]*gamma.y[]);
+-                                           h_sol[0,1]*gamma.y[0,1] - h_sol[0,-1]*gamma.y[]);
++                                           h_sol[0,1]*gamma.y[1] - h_sol[0,-1]*gamma.y[]);
           c[] = num / den;
       }
   
-@@ -502,7 +502,7 @@
+@@ -506,7 +506,7 @@
                     (Delta*sqrt(dt_step));
      }
      foreach_face(y) {
--        double ff = (f_old[] + f_old[-1])/2.;
-+        double ff = (f_old[] + f_old[0,-1])/2.;
+-        double ff = (f_old[] + f_old[0,-1])/2.;
++        double ff = (f_old[] + f_old[-1])/2.;
          if (ff <= 0.) ff = 1e-9;
          flux.y[] = sqrt(2.*COEFF_VARPHI)*pow(ff, 1.5)*sqrt(1.0 + tcw_slip/ff)*
                     tcw_face_gaussian_noise(x, y, Delta, 1, timestep)/
