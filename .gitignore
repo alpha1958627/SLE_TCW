@@ -17,3 +17,10 @@ film_rupture/smoke*/
 film_rupture/SMOKE_OK
 film_rupture/smoke-*.out
 film_rupture/smoke-*.err
+rare_events/build/
+validation/gate_*/
+runs/
+gate-*.out
+gate-*.err
+pilot-*.out
+pilot-*.err

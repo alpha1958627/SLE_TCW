@@ -1,2 +1,6 @@
 # Keep scientific source and checksum inputs byte-identical across clones.
 film_rupture/** -text
+AMS/** text eol=lf
+DMC/** text eol=lf
+rare_events/** text eol=lf
+tools/** text eol=lf

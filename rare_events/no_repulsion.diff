@@ -1,0 +1,26 @@
+--- film_rupture/reference
++++ no_repulsion/reference
+@@ -345,7 +345,7 @@
+          face vector g[];
+  
+          foreach_face() {
+-             double hstar = 0.0; /* h^-5 repulsion disabled; h^-3 attraction retained. */
++             /* User model: no h^-5 repulsive contribution. */
+              double ff = (f[] + f[-1]) / 2.;
+  
+             if (ff <= 0) ff = 1e-9;
+@@ -354,12 +354,10 @@
+ 
+             D.x[] = pow(ff, p.n) * mob;
+ 
+-            beta.x[] = (-p.n * COEFF_A * pow(ff, p.n - p.m - 1.) +
+-                        p.dd * COEFF_A * hstar * pow(ff, p.n - p.dd - 1.)) * mob;
++            beta.x[] = -p.n * COEFF_A * pow(ff, p.n - p.m - 1.) * mob;
+ 
+             gamma.x[] = (p.n * pow(ff, p.n - 1.) * (pres[] - pres[-1]) / Delta -
+-                         p.n * COEFF_A * (p.n - p.m - 1.) * pow(ff, p.n - p.m - 2.) * (f[] - f[-1]) / Delta +
+-                         p.dd * COEFF_A * hstar * (p.n - p.dd - 1.) * pow(ff, p.n - p.dd - 2.) * (f[] - f[-1]) / Delta) * mob;
++                         p.n * COEFF_A * (p.n - p.m - 1.) * pow(ff, p.n - p.m - 2.) * (f[] - f[-1]) / Delta) * mob;
+              
+              g.x[] = gamma.x[] * ff;
+          }

@@ -1,0 +1,9 @@
+{
+  "completed_fields": 41,
+  "max_abs_raw_mass_relative_drift": 2.1700150449760256e-10,
+  "max_q3_error": 3.3306690738754696e-16,
+  "max_raw_mass_drift_recheck_error": 2.2266613086698578e-15,
+  "saved_record_fields": 562,
+  "scope": "independent saved-field/score/volume audit only, no MPI or lifetime claim",
+  "status": "PASS"
+}

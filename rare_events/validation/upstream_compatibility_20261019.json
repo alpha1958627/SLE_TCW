@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "upstream_commit": "77ce5cb96ddd0b7c89c4d2178d9561c8fa3dd920",
+  "upstream_reference_sha256": "dfadb17518a1aecba82efee97d5baaa9a11840c6c327e58afa50416b5c3ddb3d",
+  "unchanged_execution_sources": {
+    "engine.c": "11653f58f068f265e3f927a2b509cfd168cf56dc65a1750026d2b909973d529d",
+    "physics.h": "1f108bce15a106991904c0d4744ef142b4fd6fc6bbf50e01796635aaa1d46290",
+    "build/reference.c": "ebce2b7360623864e66beab424929c784b57cf2493fdefea43f9cc79a650c7a2"
+  },
+  "engine_signature": "6a9444a04426c7bde87fd65a4249a7f34afee4221392610e472871cabe40e807",
+  "scope": "upstream hstar zero update generates byte-identical physical and full native reference sources; preparation metadata changed, running kernel not changed"
+}

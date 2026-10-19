@@ -1,0 +1,49 @@
+{
+  "build": {
+    "engine_signature": "6a9444a04426c7bde87fd65a4249a7f34afee4221392610e472871cabe40e807",
+    "files": {
+      "build/mpi": "c8f93945de9dc5e67c6791f80bb62ee110c3b5c8da339c712857d3e1cbef1a33",
+      "build/reference.c": "ebce2b7360623864e66beab424929c784b57cf2493fdefea43f9cc79a650c7a2",
+      "build/reference_serial": "1db04b485e81aed002db8f43aceed8730d31df348b908a6d777366a6cf220638",
+      "build/serial": "4a8f78adaa394b86242b1bbef810986e44a8126a15316b3ef9d5f9450ee041f2",
+      "build/signature.h": "8f7367c13b19a4f25afab70ab2eced3f19229184234cb4a74d9fc46eb0b63d26",
+      "engine.c": "11653f58f068f265e3f927a2b509cfd168cf56dc65a1750026d2b909973d529d",
+      "physics.h": "1f108bce15a106991904c0d4744ef142b4fd6fc6bbf50e01796635aaa1d46290"
+    },
+    "reference": {
+      "kernel_sha256": "1f108bce15a106991904c0d4744ef142b4fd6fc6bbf50e01796635aaa1d46290",
+      "model": "mu=-lap(h)+A/h^3; M=h^3+ell*h^2; no h^-5",
+      "numerical_changes": [
+        "fixed multigrid backend",
+        "Jacobi relaxation",
+        "explicit completed-step clock",
+        "fixed requested dt"
+      ],
+      "physical_delta": "remove both repulsive beta/gamma terms as explicitly requested",
+      "reference_commit": "fed7bb3bf963afe44466017e61199c61613b417d",
+      "reference_file": "film_rupture/source_yfix_h1.05.c",
+      "reference_sha256": "e0f7f8103687df7459040b32564bc3f5c74bfed9a95fa0021b992963a8cd0c59"
+    }
+  },
+  "errors": {
+    "seed2026101901_native_full_program": 0.0,
+    "seed2026101901_observer_noninterference": 0.0,
+    "seed2026101901_repeat4": 0.0,
+    "seed2026101901_restart": 0.0,
+    "seed2026101901_serial_mpi1": 0.0,
+    "seed2026101901_serial_mpi16": 7.105427357601002e-15,
+    "seed2026101901_serial_mpi4": 7.549516567451064e-15,
+    "seed2026101902_native_full_program": 0.0,
+    "seed2026101902_observer_noninterference": 0.0,
+    "seed2026101902_repeat4": 0.0,
+    "seed2026101902_restart": 0.0,
+    "seed2026101902_serial_mpi1": 0.0,
+    "seed2026101902_serial_mpi16": 7.549516567451064e-15,
+    "seed2026101902_serial_mpi4": 8.659739592076221e-15
+  },
+  "foreign_checkpoint_rejected": true,
+  "half_dt_executed": true,
+  "reference": "full film_rupture program, no repulsion, fixed dt, multigrid and Jacobi; 2000 updates",
+  "scope": "two seeds 2000 steps, true serial/MPI1/4/16, observer/repeat/restart, real controller smoke; not rupture/MFPT/near-event/grid/noise acceptance",
+  "status": "PASS"
+}

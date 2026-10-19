@@ -1,0 +1,17 @@
+{
+  "kernel_byte_identity": "unchanged from the originally gated kernel; newer upstream only sets hstar=0",
+  "kernel_sha256": "1f108bce15a106991904c0d4744ef142b4fd6fc6bbf50e01796635aaa1d46290",
+  "model": "mu=-lap(h)+A/h^3; M=h^3+ell*h^2; no h^-5",
+  "numerical_changes": [
+    "fixed multigrid backend",
+    "Jacobi relaxation",
+    "explicit completed-step clock",
+    "fixed requested dt"
+  ],
+  "originally_gated_reference_commit": "fed7bb3bf963afe44466017e61199c61613b417d",
+  "originally_gated_reference_sha256": "e0f7f8103687df7459040b32564bc3f5c74bfed9a95fa0021b992963a8cd0c59",
+  "physical_delta": "remove both repulsive beta/gamma terms as explicitly requested",
+  "reference_commit": "77ce5cb",
+  "reference_file": "film_rupture/source_yfix_h1.05.c",
+  "reference_sha256": "dfadb17518a1aecba82efee97d5baaa9a11840c6c327e58afa50416b5c3ddb3d"
+}
