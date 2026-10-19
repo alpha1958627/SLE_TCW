@@ -5,8 +5,11 @@ from monitor_volume import read_log,field_volume
 root=Path(__file__).resolve().parent
 rows=list(csv.DictReader((root/'runs.csv').open(encoding='utf-8-sig')))
 results=[]
+for p in root.glob('source_*.c'):
+    s=p.read_text()
+    assert 'double hstar = 0.0;' in s and 'pow(0.1, p.dd - 3.)' not in s, p.name
 for spec in rows:
-    case=root/'smoke_v2'/('task_'+spec['task'])
+    case=root/'smoke_v3'/('task_'+spec['task'])
     log,_=read_log(case/'log_restart')
     assert len(log)>=2, spec['task']
     length=float(spec['L0']); expected=length*length

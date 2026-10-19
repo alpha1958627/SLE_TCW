@@ -46,7 +46,7 @@ export function DashboardContent() {
         <span><strong>{alerts}</strong> 条 V 偏差超过 0.1%</span>
         <span>最大日志相对偏差 <strong>{small(maxDrift)}%</strong></span>
       </div>
-      <p className="sim-note">守恒修复版 v2 · 从初态重跑 · 数据快照：{new Date(snapshot.generatedAt).toLocaleString("zh-CN",{timeZone:"Asia/Shanghai",hour12:false})}（北京时间）；每 12 小时更新。</p><p className="sim-note">t 为各工况的原始数值时间；h 已按初始膜厚归一化。停止曲线包含精确阈值事件终点，该终点不补填 V。长期、dt 和网格验收尚未完成，阈值事件不自动等同物理寿命。</p>
+      <p className="sim-note">无排斥版 v3 · h⁻⁵ 系数为 0，保留 h⁻³ 吸引 · 从初态重跑 · 数据快照：{new Date(snapshot.generatedAt).toLocaleString("zh-CN",{timeZone:"Asia/Shanghai",hour12:false})}（北京时间）；每 12 小时更新。</p><p className="sim-note">t 为各工况的原始数值时间；h 已按初始膜厚归一化。停止曲线包含精确阈值事件终点，该终点不补填 V。长期、dt 和网格验收尚未完成，阈值事件不自动等同物理寿命。</p>
     </DataComponent>
     <SectionHeader id="hmin-curves-heading" title="hmin vs t" />
     <SortableRegion id="simulation:canvas" label="液膜曲线和体积监测" variant="canvas" spacing="standard" columns={12} authoredRevision={1} rows={rows}>
@@ -66,7 +66,7 @@ export function DashboardContent() {
         <EvidenceChart id="volume-check" queryId="field_volume" title="独立全场积分：V 相对初始体积的偏差" variant="card"
           spec={{type:"line",x:"t",y:"driftPct",series:"identity",stackable:false,xLabel:"已保存全场的 t",yLabel:"偏差（%）",valueDecimals:3,startAtZero:false}}
           rows={volumes.map(r=>({...r,identity:`${r.ratio} · ${r.curve}`}))} sourceRows={volumes} height={280}>
-          <p className="sim-alert" role="status">本批已修复 MPI 周期噪声索引及重复体积归约，21条组合均通过1024步短测。此图对保存的64×64原始场直接积分，没有质量归一化；全场时刻可能落后于日志。长期、dt和网格收敛仍需验证。</p>
+          <p className="sim-alert" role="status">本批关闭 h⁻⁵ 排斥项，保留 h⁻³ 吸引及守恒修复；21条组合均通过1024步短测。此图对保存的64×64原始场直接积分，没有质量归一化；全场时刻可能落后于日志。长期、dt和网格收敛仍需验证。</p>
         </EvidenceChart>
       </SortableItem>
       <SortableItem id="simulation-records" label="逐 run 状态" kind="table" span={12}>

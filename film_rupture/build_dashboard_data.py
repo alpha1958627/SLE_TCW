@@ -45,11 +45,11 @@ for task in range(21):
 def source(files, definitions, caveats):
     return dict(provider='SSH / Slurm / Basilisk raw outputs', files=files,
         evidenceFlow=[dict(title='Retained trajectories', detail='deployment.json selects exactly 21 winning task handles; canceled cross-site duplicates are excluded.'),
-                      dict(title='Source read', detail='Conservative-v2 cohort; SSH reads existing monitor/logs. Root: ' + ledger['base']),
+                      dict(title='Source read', detail='No-repulsion-v3 cohort; SSH reads existing monitor/logs. Root: ' + ledger['base']),
                       dict(title='Current scope', detail='Fixed simulation cohort, Asia/Shanghai. Latest successful site snapshots are stored as audits/<site>_final.json for the sites in deployment.json.')],
         metricDefinitions=definitions, caveats=caveats)
 
-snapshot = dict(surface='dashboard', title='ls = 0.2 | hmin - t', buildStatus='creating', status='observed', solverVersion='conservative-v2',
+snapshot = dict(surface='dashboard', title='ls = 0.2 | hmin - t', buildStatus='creating', status='observed', solverVersion='no-repulsion-v3', repulsionCoefficient=0,
     generatedAt=min(x['time_Asia_Shanghai'] for x in inputs.values()), filters=[], queries={
     'film_history': dict(rows=history, source=source(['audits/'+s+'_final.json' for s in ledger['sites']]+['deployment.json'],
         [dict(label='hmin', definition='Global minimum of normalized h, logged every 1000 steps; exact RUPTURE hmin/t/step adds an event endpoint. No volume is imputed at that endpoint.'),
@@ -64,7 +64,7 @@ snapshot = dict(surface='dashboard', title='ls = 0.2 | hmin - t', buildStatus='c
     'field_volume': dict(rows=fields, source=source(['audits/'+s+'_final.json' for s in ledger['sites']],
         [dict(label='Volume', definition='Independent sum of all 64*64 saved cell heights multiplied by (L0/64)^2.'),
          dict(label='Field drift (%)', definition='100*(field volume/L0^2-1), using the specified initial flat film as reference.')],
-        ['Conservative-v2: log V uses a single global reduction. Both yfix and yold controls have periodic-wrapped face-noise indices. Short tests passed; long-time/dt/grid convergence is not established.', 'Saved-field times can lag the latest log. No field normalization or pressure/time shifts are applied.']))})
+        ['No-repulsion-v3: log V uses a single global reduction. Both yfix and yold controls have periodic-wrapped face-noise indices. Short tests passed; long-time/dt/grid convergence is not established.', 'Saved-field times can lag the latest log. No field normalization or pressure/time shifts are applied.']))})
 (root / 'dashboard_snapshot.json').write_text(json.dumps(snapshot, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
 app = Path(os.environ.get('DASHBOARD_APP', str(root/'dashboard')))
 if (app / 'src/data.json').exists():

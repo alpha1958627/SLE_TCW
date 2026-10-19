@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH -J ls02C21
+#SBATCH -J ls02NR21
 #SBATCH -p C64
 #SBATCH -N 1
 #SBATCH -n 8
@@ -31,7 +31,7 @@ cp "$BASE/$SOURCE" source.c
 printf '%s  source.c\n' "$SOURCE_SHA" | sha256sum -c -
 sha256sum source.c "$BASE/bin/$NAME" > source_binary.sha256
 cp "$BASE/tasks.tsv" input_tasks.tsv
-printf 'task=%s\nversion=%s\nh0_ratio=%s\nrun=%s\nseed=%s\nslip_code=%s\ninitial_h=1\nlevel=6\ndt=0.003\nstep_limit=200000000\nstop_hmin=0.01\nh_floor=0.005\nhstar=0.01\nmpi_ranks=8\nvolume_reference=L0_squared\njob_id=%s\narray_id=%s\nnode=%s\nstarted=%s\n' \
+printf 'task=%s\nversion=%s\nh0_ratio=%s\nrun=%s\nseed=%s\nslip_code=%s\nrepulsion_coefficient=0\nattraction_enabled=1\ninitial_h=1\nlevel=6\ndt=0.003\nstep_limit=200000000\nstop_hmin=0.01\nh_floor=0.005\nhstar=0\nmpi_ranks=8\nvolume_reference=L0_squared\njob_id=%s\narray_id=%s\nnode=%s\nstarted=%s\n' \
  "$TASK" "$VERSION" "$H0" "$RUN" "$SEED" "$SLIP" "$SLURM_JOB_ID" "$SLURM_ARRAY_JOB_ID" "$SLURMD_NODENAME" "$(date -Is)" > meta.txt
 set +e
 /usr/bin/time -p -o walltime.txt srun --input=none --mpi=pmix_v3 --cpu-bind=cores -n 8 "$BASE/bin/$NAME" \

@@ -345,7 +345,7 @@ void create_directory(const char *path) {
          face vector g[];
  
          foreach_face() {
-             double hstar = pow(0.1, p.dd - 3.);
+             double hstar = 0.0; /* h^-5 repulsion disabled; h^-3 attraction retained. */
              double ff = (f[] + f[-1]) / 2.;
  
             if (ff <= 0) ff = 1e-9;

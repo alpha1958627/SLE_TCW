@@ -10,6 +10,7 @@ root=Path(__file__).resolve().parent
 base=(root/'source_yfix_h1.05.c').read_bytes().decode('utf-8')
 assert 'ix = (ix % n + n) % n;' in base and 'iy = (iy % n + n) % n;' in base
 assert 'MPI_Allreduce(MPI_IN_PLACE, &vtot' not in base and 'MPI_Allreduce(MPI_IN_PLACE, &vex' not in base
+assert 'double hstar = 0.0;' in base
 assert 'write_hfield_binary("stop.hfield");' in base
 rows=[]
 for height in ['1.05','1.10','1.15','1.20']:
@@ -24,7 +25,7 @@ for height in ['1.05','1.10','1.15','1.20']:
     name='source_yfix_h'+height+'.c'
     (root/name).write_bytes(source.encode())
     for run in range(1,6):
-        rows.append(dict(task=len(rows),version='yfix',h0_ratio=height,run=run,seed=2026101800+run,A=a,varphi=phi,L0=length,slip_code=slip,initial_h=1,hstar='0.01',level=6,dt='0.003',step_limit=200000000,mpi_ranks=8,memory_GB=8,wall_limit_days=14,source=name))
+        rows.append(dict(task=len(rows),version='yfix',h0_ratio=height,run=run,seed=2026101800+run,A=a,varphi=phi,L0=length,slip_code=slip,initial_h=1,hstar='0',level=6,dt='0.003',step_limit=200000000,mpi_ranks=8,memory_GB=8,wall_limit_days=14,source=name))
 control=base
 for before,after,count in [('alpha.y[0,1]','alpha.y[1]',2),('gamma.y[0,1]','gamma.y[1]',2),
     ('foreach_face(y) {\n        double ff = (f_old[] + f_old[0,-1])/2.;','foreach_face(y) {\n        double ff = (f_old[] + f_old[-1])/2.;',1)]:
@@ -44,5 +45,5 @@ with (root/'tasks.tsv').open('w',encoding='utf-8',newline='') as f:
     for r in rows:w.writerow([r[k] for k in keys]+[hashes[r['source']]])
 (root/'sources.sha256').write_bytes(''.join(v+'  '+k+'\n' for k,v in hashes.items()).encode())
 (root/'y_index_control.diff').write_text(''.join(difflib.unified_diff(base.splitlines(True),control.splitlines(True),fromfile='source_yfix_h1.05.c',tofile='source_yold_h1.05.c')),encoding='utf-8')
-(root/'verification.json').write_text(json.dumps(dict(status='STATIC_PASS',total_runs=21,distinct_seeds=5,periodic_noise=True,single_volume_reduction=True,sha256=hashes),indent=2)+'\n',encoding='utf-8')
+(root/'verification.json').write_text(json.dumps(dict(status='STATIC_PASS',total_runs=21,distinct_seeds=5,periodic_noise=True,single_volume_reduction=True,repulsion_coefficient=0,attraction_retained=True,sha256=hashes),indent=2)+'\n',encoding='utf-8')
 print('STATIC_PASS: 21 runs, five seeds, every source has conservative noise and a single volume reduction.')
