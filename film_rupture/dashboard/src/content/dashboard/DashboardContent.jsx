@@ -5,7 +5,8 @@ import "./simulation.css";
 
 const palette = {"run 1":"#202020","run 2":"#be3434","run 3":"#2a62b3","run 4":"#26816f","run 5":"#ad750a","旧索引 r1":"#7b3fa2"};
 const f = (value, digits=3) => Number.isFinite(value) ? value.toFixed(digits) : "—";
-const percent = value => Number.isFinite(value) ? `${value > 0 ? "+" : ""}${value.toFixed(3)}%` : "—";
+const small = value => Number.isFinite(value) ? (value !== 0 && Math.abs(value) < 0.001 ? value.toExponential(2) : value.toFixed(3)) : "—";
+const percent = value => Number.isFinite(value) ? `${value > 0 ? "+" : ""}${small(value)}%` : "—";
 const columns = [
   {field:"ratio",label:"厚度倍率"}, {field:"curve",label:"run / 对照"},
   {field:"server",label:"服务器"}, {field:"state",label:"状态"},
@@ -43,7 +44,7 @@ export function DashboardContent() {
         <span><strong>{active}</strong> 运行中</span>
         <span><strong>{events}</strong> 条阈值事件</span>
         <span><strong>{alerts}</strong> 条 V 偏差超过 0.1%</span>
-        <span>最大日志相对偏差 <strong>{f(maxDrift,3)}%</strong></span>
+        <span>最大日志相对偏差 <strong>{small(maxDrift)}%</strong></span>
       </div>
       <p className="sim-note">守恒修复版 v2 · 从初态重跑 · 数据快照：{new Date(snapshot.generatedAt).toLocaleString("zh-CN",{timeZone:"Asia/Shanghai",hour12:false})}（北京时间）；每 12 小时更新。</p><p className="sim-note">t 为各工况的原始数值时间；h 已按初始膜厚归一化。停止曲线包含精确阈值事件终点，该终点不补填 V。长期、dt 和网格验收尚未完成，阈值事件不自动等同物理寿命。</p>
     </DataComponent>
