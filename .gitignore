@@ -24,3 +24,4 @@ gate-*.out
 gate-*.err
 pilot-*.out
 pilot-*.err
+/experiments/

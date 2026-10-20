@@ -1,0 +1,83 @@
+{
+  "experiment": "window_q3_T12000_20261020",
+  "purpose": "independent longer-window exploration, not a probability bracket or established sufficient horizon",
+  "prior_job": 29264,
+  "prior_gate": "validation/gate_29241",
+  "expected_engine_signature": "6a9444a04426c7bde87fd65a4249a7f34afee4221392610e472871cabe40e807",
+  "configs": {
+    "ams": {
+      "D": 1,
+      "N": 12,
+      "dt": 0.003,
+      "horizon": 12000.0,
+      "max_rounds": 16,
+      "mode": "ams",
+      "namespace": "rupture-q3-T12000-20261020-v1:ams:R0",
+      "ranks": 4,
+      "ratio": 1.01,
+      "repulsion": false,
+      "score": "q3",
+      "slip_ref": 0.2,
+      "workers": 3
+    },
+    "dmc": {
+      "N": 12,
+      "block": 150.0,
+      "dt": 0.003,
+      "horizon": 12000.0,
+      "mode": "dmc",
+      "namespace": "rupture-q3-T12000-20261020-v1:dmc:R0",
+      "ranks": 4,
+      "ratio": 1.01,
+      "repulsion": false,
+      "score": "q3",
+      "slip_ref": 0.2,
+      "strength": 4.0,
+      "workers": 3
+    },
+    "qdmc": {
+      "N": 12,
+      "block": 150.0,
+      "dt": 0.003,
+      "horizon": 12000.0,
+      "mode": "qdmc",
+      "namespace": "rupture-q3-T12000-20261020-v1:qdmc:R0",
+      "ranks": 4,
+      "ratio": 1.01,
+      "repulsion": false,
+      "score": "q3",
+      "slip_ref": 0.2,
+      "strength": 0.5,
+      "workers": 3
+    },
+    "direct": {
+      "N": 12,
+      "dt": 0.003,
+      "horizon": 12000.0,
+      "mode": "direct",
+      "namespace": "rupture-q3-T12000-20261020-v1:direct:R0",
+      "ranks": 4,
+      "ratio": 1.01,
+      "repulsion": false,
+      "score": "q3",
+      "slip_ref": 0.2,
+      "workers": 3
+    }
+  },
+  "independent_whole_runs_per_mode": 1,
+  "resources_per_mode": {
+    "ranks_per_path": 4,
+    "workers": 3,
+    "cores": 12,
+    "memory_GB": 6,
+    "wall_limit_hours": 96
+  },
+  "physics_changed": false,
+  "score_changed": false,
+  "notes": [
+    "fresh flat initial conditions; no old paths, weights or seeds inherited",
+    "same final strengths4/.5 and linear t/T ramp; horizon changes the early tilt schedule, so no isolated horizon-effect claim",
+    "separate jobs release completed method resources; AMS D1 still has up to8 allocated idle cores during a single branch",
+    "T3000 budget AMS is unresolved, W is not P; all complete prior methods had no events"
+  ]
+}
