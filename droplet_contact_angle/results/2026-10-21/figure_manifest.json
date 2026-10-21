@@ -1,0 +1,25 @@
+{
+  "figures": [
+    "k_theta",
+    "sections_L13",
+    "sections_L14",
+    "angle_foot_k15_L13",
+    "angle_foot_k15_L14",
+    "angle_foot_k25_L13",
+    "angle_foot_k25_L14",
+    "angle_foot_k35_L13",
+    "angle_foot_k35_L14"
+  ],
+  "real_latex": true,
+  "font_pt": 20,
+  "figure_inches": [
+    8,
+    6
+  ],
+  "png_pixels": [
+    4800,
+    3600
+  ],
+  "foot_axes_equal_aspect": true,
+  "full_profile_independent_axis_scales": true
+}

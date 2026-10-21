@@ -1,0 +1,146 @@
+{
+  "date": "2026-10-21",
+  "status": "PASS",
+  "unit_tests": 5,
+  "solver_source_guard": "PASS",
+  "input_asset_hash_count": 38,
+  "raw_profiles_recomputed": 6,
+  "angle_tolerance_degrees": 1e-08,
+  "actual_portable_render_count": 9,
+  "figure_checks": [
+    {
+      "figure": "k_theta",
+      "png_pixels": [
+        4800,
+        3600
+      ],
+      "pdf_points": [
+        576,
+        432
+      ],
+      "pixel_identical": true,
+      "changed_pixel_fraction": 0.0,
+      "mean_absolute_pixel_difference": 0.0
+    },
+    {
+      "figure": "sections_L13",
+      "png_pixels": [
+        4800,
+        3600
+      ],
+      "pdf_points": [
+        576,
+        432
+      ],
+      "pixel_identical": true,
+      "changed_pixel_fraction": 0.0,
+      "mean_absolute_pixel_difference": 0.0
+    },
+    {
+      "figure": "sections_L14",
+      "png_pixels": [
+        4800,
+        3600
+      ],
+      "pdf_points": [
+        576,
+        432
+      ],
+      "pixel_identical": true,
+      "changed_pixel_fraction": 0.0,
+      "mean_absolute_pixel_difference": 0.0
+    },
+    {
+      "figure": "angle_foot_k15_L13",
+      "png_pixels": [
+        4800,
+        3600
+      ],
+      "pdf_points": [
+        576,
+        432
+      ],
+      "pixel_identical": true,
+      "changed_pixel_fraction": 0.0,
+      "mean_absolute_pixel_difference": 0.0
+    },
+    {
+      "figure": "angle_foot_k15_L14",
+      "png_pixels": [
+        4800,
+        3600
+      ],
+      "pdf_points": [
+        576,
+        432
+      ],
+      "pixel_identical": true,
+      "changed_pixel_fraction": 0.0,
+      "mean_absolute_pixel_difference": 0.0
+    },
+    {
+      "figure": "angle_foot_k25_L13",
+      "png_pixels": [
+        4800,
+        3600
+      ],
+      "pdf_points": [
+        576,
+        432
+      ],
+      "pixel_identical": true,
+      "changed_pixel_fraction": 0.0,
+      "mean_absolute_pixel_difference": 0.0
+    },
+    {
+      "figure": "angle_foot_k25_L14",
+      "png_pixels": [
+        4800,
+        3600
+      ],
+      "pdf_points": [
+        576,
+        432
+      ],
+      "pixel_identical": true,
+      "changed_pixel_fraction": 0.0,
+      "mean_absolute_pixel_difference": 0.0
+    },
+    {
+      "figure": "angle_foot_k35_L13",
+      "png_pixels": [
+        4800,
+        3600
+      ],
+      "pdf_points": [
+        576,
+        432
+      ],
+      "pixel_identical": true,
+      "changed_pixel_fraction": 0.0,
+      "mean_absolute_pixel_difference": 0.0
+    },
+    {
+      "figure": "angle_foot_k35_L14",
+      "png_pixels": [
+        4800,
+        3600
+      ],
+      "pdf_points": [
+        576,
+        432
+      ],
+      "pixel_identical": true,
+      "changed_pixel_fraction": 0.0,
+      "mean_absolute_pixel_difference": 0.0
+    }
+  ],
+  "python": "3.11.14",
+  "numpy": "1.26.4",
+  "matplotlib": "3.8.1",
+  "latex_required": true,
+  "solver_recompiled_for_this_publication": false,
+  "solver_scope": "exact previously HPC-tested source; no new jobs submitted",
+  "numerical_evidence": "diagnostics.json and existing ../../validation/README.md",
+  "physical_grid_acceptance": false
+}

@@ -1,0 +1,27 @@
+{
+  "captured_at": "2026-10-21T12:02:40.262351",
+  "origin_solver_commit": "8d615dd89ee008169b40859f9dc35f41766b9671",
+  "solver_source_sha256": "7ebff6509708e96af9afd0d9bf4eb9cfe636db827b7fc64cc9b2ff25fb8982e3",
+  "array_job": 29295,
+  "server": "SIPF",
+  "max_allocated_project_cpu": 48,
+  "parameters": {
+    "hstar": 0.01,
+    "gamma": 1,
+    "noise": 0,
+    "n_repulsive": 5,
+    "m_attractive": 3,
+    "dt": 0.01,
+    "adapt_every": 2,
+    "L0": 32,
+    "H0": 1,
+    "R0": 5
+  },
+  "max_relative_native_volume_drift": 8.83163009e-10,
+  "max_single_amr_transfer": 1.9871163209756597e-12,
+  "source_and_native_fields_independently_audited": true,
+  "field_native_export_relative_error_max": 0.0,
+  "published_raw_scope": "six unchanged x/y profiles and their closed snapshot metadata; native trees and full 2D fields retained outside Git",
+  "current_snapshot_angles_requested_on": "2026-10-21",
+  "final_physical_grid_acceptance": false
+}
