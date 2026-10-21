@@ -1,0 +1,77 @@
+{
+  "captured_at": "2026-10-21T12:02:40.262351",
+  "cases": [
+    {
+      "case": "k15_L13",
+      "k": 13.629669479999997,
+      "level": 13,
+      "time": 179.99999999995424,
+      "step": 18000.0,
+      "nominal_angle_deg": 15,
+      "profile": "profiles/k15_L13.dat",
+      "profile_sha256": "73463f975cfa969fb5df99106927f018c7d68f225d498e399823c0d60906369d",
+      "metadata": "snapshots/k15_L13.meta",
+      "radius_shape_gate_passed": false
+    },
+    {
+      "case": "k15_L14",
+      "k": 13.629669479999997,
+      "level": 14,
+      "time": 120.0,
+      "step": 12000.0,
+      "nominal_angle_deg": 15,
+      "profile": "profiles/k15_L14.dat",
+      "profile_sha256": "dc71f8df85a427143966e30edc467f03adb4c738993457645a788d8e3b880366",
+      "metadata": "snapshots/k15_L14.meta",
+      "radius_shape_gate_passed": false
+    },
+    {
+      "case": "k25_L13",
+      "k": 37.47688518999999,
+      "level": 13,
+      "time": 309.999999999836,
+      "step": 31000.0,
+      "nominal_angle_deg": 25,
+      "profile": "profiles/k25_L13.dat",
+      "profile_sha256": "5201113429f51b68f0b52aa7b596727a660fb495b0afe8cc565516b35905ae70",
+      "metadata": "snapshots/k25_L13.meta",
+      "radius_shape_gate_passed": false
+    },
+    {
+      "case": "k25_L14",
+      "k": 37.47688518999999,
+      "level": 14,
+      "time": 100.0,
+      "step": 10000.0,
+      "nominal_angle_deg": 25,
+      "profile": "profiles/k25_L14.dat",
+      "profile_sha256": "985b31ab79722f224b462c715962238bf700bdd242989ae8f5b399257681f286",
+      "metadata": "snapshots/k25_L14.meta",
+      "radius_shape_gate_passed": false
+    },
+    {
+      "case": "k35_L13",
+      "k": 72.33918227999999,
+      "level": 13,
+      "time": 400.0,
+      "step": 40000.0,
+      "nominal_angle_deg": 35,
+      "profile": "profiles/k35_L13.dat",
+      "profile_sha256": "ba0a5176540492a6d544b96b1b49dac1b5bb1d770c648c8167db8454b6b039cd",
+      "metadata": "snapshots/k35_L13.meta",
+      "radius_shape_gate_passed": true
+    },
+    {
+      "case": "k35_L14",
+      "k": 72.33918227999999,
+      "level": 14,
+      "time": 64.99999999999446,
+      "step": 6500.0,
+      "nominal_angle_deg": 35,
+      "profile": "profiles/k35_L14.dat",
+      "profile_sha256": "1fe391752a92f9e9c589fe1f0cbf6629787a9824793a00b7a860c38e5da3f60e",
+      "metadata": "snapshots/k35_L14.meta",
+      "radius_shape_gate_passed": false
+    }
+  ]
+}

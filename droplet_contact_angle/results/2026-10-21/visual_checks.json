@@ -1,0 +1,117 @@
+{
+  "render_checks": [
+    {
+      "name": "k_theta",
+      "pdf_points": [
+        576,
+        432
+      ],
+      "png_pixels": [
+        4800,
+        3600
+      ],
+      "status": "PASS"
+    },
+    {
+      "name": "sections_L13",
+      "pdf_points": [
+        576,
+        432
+      ],
+      "png_pixels": [
+        4800,
+        3600
+      ],
+      "status": "PASS"
+    },
+    {
+      "name": "sections_L14",
+      "pdf_points": [
+        576,
+        432
+      ],
+      "png_pixels": [
+        4800,
+        3600
+      ],
+      "status": "PASS"
+    },
+    {
+      "name": "angle_foot_k15_L13",
+      "pdf_points": [
+        576,
+        432
+      ],
+      "png_pixels": [
+        4800,
+        3600
+      ],
+      "status": "PASS"
+    },
+    {
+      "name": "angle_foot_k15_L14",
+      "pdf_points": [
+        576,
+        432
+      ],
+      "png_pixels": [
+        4800,
+        3600
+      ],
+      "status": "PASS"
+    },
+    {
+      "name": "angle_foot_k25_L13",
+      "pdf_points": [
+        576,
+        432
+      ],
+      "png_pixels": [
+        4800,
+        3600
+      ],
+      "status": "PASS"
+    },
+    {
+      "name": "angle_foot_k25_L14",
+      "pdf_points": [
+        576,
+        432
+      ],
+      "png_pixels": [
+        4800,
+        3600
+      ],
+      "status": "PASS"
+    },
+    {
+      "name": "angle_foot_k35_L13",
+      "pdf_points": [
+        576,
+        432
+      ],
+      "png_pixels": [
+        4800,
+        3600
+      ],
+      "status": "PASS"
+    },
+    {
+      "name": "angle_foot_k35_L14",
+      "pdf_points": [
+        576,
+        432
+      ],
+      "png_pixels": [
+        4800,
+        3600
+      ],
+      "status": "PASS"
+    }
+  ],
+  "manual_review": {
+    "status": "PASS",
+    "reviewed": "all nine PDF renders via contact sheet; full-size k-theta, L13 section and equal-aspect foot checked",
+    "notes": "legends and angle labels visible; no clipping; failed first foot legend attempt retained"
+  }
+}

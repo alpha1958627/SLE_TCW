@@ -1,0 +1,5 @@
+profiles/*.dat -text
+snapshots/*.meta -text
+figures/* -text
+k_theta_data.csv text eol=lf
+.gitattributes text eol=lf

@@ -1,0 +1,2353 @@
+{
+  "capture_at": "2026-10-21T12:02:40.262351",
+  "definition": "latest complete snapshot, four directions, 40-80% bulk parabola; atan(abs(slope)); directional min/max is not a confidence interval",
+  "current_measurement_explicitly_requested": true,
+  "rows": [
+    {
+      "case": "k15_L13",
+      "k": 13.629669479999997,
+      "level": 13,
+      "time": 179.99999999995424,
+      "theta_deg": 15.109132715894372,
+      "directional_min": 15.10913271569103,
+      "directional_max": 15.109132716098348,
+      "theta_model_deg": 14.63068089928946,
+      "theta_nominal_deg": 15,
+      "delta_model_deg": 0.47845181660491143,
+      "delta_model_percent": 3.2701951460656042,
+      "radius_shape_gate_passed": false,
+      "physical_grid_acceptance": false,
+      "status": "current snapshot measurement; earlier strict time gate not passed",
+      "source_sha256": "7ebff6509708e96af9afd0d9bf4eb9cfe636db827b7fc64cc9b2ff25fb8982e3",
+      "fits": [
+        {
+          "axis": "x",
+          "sign": -1,
+          "window": [
+            0.2,
+            0.6
+          ],
+          "parabola": {
+            "status": "ok",
+            "points": 270,
+            "intercept": 0.5468768577817161,
+            "quadratic_coefficient": -0.0336078649169764,
+            "contact_radius": 3.9968410807366475,
+            "slope": 0.2686505902720384,
+            "geometric_angle_deg": 15.037488529437747,
+            "small_slope_parameter_deg": 15.392544986286131,
+            "rms_height_residual": 0.00014867298085900643
+          },
+          "circle": {
+            "status": "ok",
+            "points": 270,
+            "circle_center_height": -14.649156577549077,
+            "circle_radius": 15.192822549869815,
+            "contact_radius": 3.9913638604783195,
+            "slope": 0.27227786533034304,
+            "geometric_angle_deg": 15.23114945617263,
+            "small_slope_parameter_deg": 15.600372538260057,
+            "rms_height_residual": 0.00026493123214194894,
+            "base_cosine": 0.9648738099474932
+          }
+        },
+        {
+          "axis": "x",
+          "sign": -1,
+          "window": [
+            0.4,
+            0.8
+          ],
+          "parabola": {
+            "status": "ok",
+            "points": 335,
+            "intercept": 0.5486516730230957,
+            "quadratic_coefficient": -0.03383240514306953,
+            "contact_radius": 3.990134820876946,
+            "slope": 0.269991715670756,
+            "geometric_angle_deg": 15.109132715693686,
+            "small_slope_parameter_deg": 15.46938581143045,
+            "rms_height_residual": 7.694637877848119e-05
+          },
+          "circle": {
+            "status": "ok",
+            "points": 335,
+            "circle_center_height": -14.441244139737814,
+            "circle_radius": 14.988539351746384,
+            "contact_radius": 3.9771666689420306,
+            "slope": 0.27521275195992834,
+            "geometric_angle_deg": 15.387583382442765,
+            "small_slope_parameter_deg": 15.76852915548467,
+            "rms_height_residual": 0.0001942011053525529,
+            "base_cosine": 0.9641529304891228
+          }
+        },
+        {
+          "axis": "x",
+          "sign": -1,
+          "window": [
+            0.6,
+            0.9
+          ],
+          "parabola": {
+            "status": "ok",
+            "points": 323,
+            "intercept": 0.5491505305640451,
+            "quadratic_coefficient": -0.033937697185556594,
+            "contact_radius": 3.985784677887441,
+            "slope": 0.2705367068899504,
+            "geometric_angle_deg": 15.138232857682361,
+            "small_slope_parameter_deg": 15.500611508161978,
+            "rms_height_residual": 3.1264315758723114e-05
+          },
+          "circle": {
+            "status": "ok",
+            "points": 323,
+            "circle_center_height": -14.314613566378979,
+            "circle_radius": 14.863262663152957,
+            "contact_radius": 3.9651006503981754,
+            "slope": 0.27680332401458885,
+            "geometric_angle_deg": 15.472265327783319,
+            "small_slope_parameter_deg": 15.859662221228168,
+            "rms_height_residual": 9.746094621987316e-05,
+            "base_cosine": 0.9637597000751843
+          }
+        },
+        {
+          "axis": "x",
+          "sign": 1,
+          "window": [
+            0.2,
+            0.6
+          ],
+          "parabola": {
+            "status": "ok",
+            "points": 270,
+            "intercept": 0.5468768577623072,
+            "quadratic_coefficient": -0.033607864919225044,
+            "contact_radius": 3.9968410805306904,
+            "slope": 0.26865059027616983,
+            "geometric_angle_deg": 15.037488529658525,
+            "small_slope_parameter_deg": 15.392544986522845,
+            "rms_height_residual": 0.00014867298112415558
+          },
+          "circle": {
+            "status": "ok",
+            "points": 270,
+            "circle_center_height": -14.649156576593748,
+            "circle_radius": 15.192822548894457,
+            "contact_radius": 3.9913638602743458,
+            "slope": 0.27227786533417275,
+            "geometric_angle_deg": 15.231149456376915,
+            "small_slope_parameter_deg": 15.600372538479483,
+            "rms_height_residual": 0.00026493123243372617,
+            "base_cosine": 0.9648738099465565
+          }
+        },
+        {
+          "axis": "x",
+          "sign": 1,
+          "window": [
+            0.4,
+            0.8
+          ],
+          "parabola": {
+            "status": "ok",
+            "points": 335,
+            "intercept": 0.5486516730081548,
+            "quadratic_coefficient": -0.03383240514588861,
+            "contact_radius": 3.990134820655369,
+            "slope": 0.26999171567826,
+            "geometric_angle_deg": 15.10913271609442,
+            "small_slope_parameter_deg": 15.469385811860398,
+            "rms_height_residual": 7.694637905620544e-05
+          },
+          "circle": {
+            "status": "ok",
+            "points": 335,
+            "circle_center_height": -14.4412441385384,
+            "circle_radius": 14.988539350531703,
+            "contact_radius": 3.977166668722454,
+            "slope": 0.27521275196757594,
+            "geometric_angle_deg": 15.387583382850089,
+            "small_slope_parameter_deg": 15.768529155922844,
+            "rms_height_residual": 0.0001942011056601228,
+            "base_cosine": 0.9641529304872364
+          }
+        },
+        {
+          "axis": "x",
+          "sign": 1,
+          "window": [
+            0.6,
+            0.9
+          ],
+          "parabola": {
+            "status": "ok",
+            "points": 323,
+            "intercept": 0.5491505305524258,
+            "quadratic_coefficient": -0.03393769718907035,
+            "contact_radius": 3.985784677638157,
+            "slope": 0.2705367069010403,
+            "geometric_angle_deg": 15.13823285827443,
+            "small_slope_parameter_deg": 15.500611508797382,
+            "rms_height_residual": 3.126431613421562e-05
+          },
+          "circle": {
+            "status": "ok",
+            "points": 323,
+            "circle_center_height": -14.31461356487811,
+            "circle_radius": 14.86326266164032,
+            "contact_radius": 3.965100650150175,
+            "slope": 0.27680332402627816,
+            "geometric_angle_deg": 15.472265328405408,
+            "small_slope_parameter_deg": 15.859662221897917,
+            "rms_height_residual": 9.746094661981302e-05,
+            "base_cosine": 0.9637597000722878
+          }
+        },
+        {
+          "axis": "y",
+          "sign": -1,
+          "window": [
+            0.2,
+            0.6
+          ],
+          "parabola": {
+            "status": "ok",
+            "points": 270,
+            "intercept": 0.5468768577808553,
+            "quadratic_coefficient": -0.03360786491697228,
+            "contact_radius": 3.996841080733688,
+            "slope": 0.26865059027180654,
+            "geometric_angle_deg": 15.037488529425355,
+            "small_slope_parameter_deg": 15.392544986272847,
+            "rms_height_residual": 0.00014867298089806538
+          },
+          "circle": {
+            "status": "ok",
+            "points": 270,
+            "circle_center_height": -14.64915657755163,
+            "circle_radius": 15.192822549871511,
+            "contact_radius": 3.991363860475401,
+            "slope": 0.2722778653300965,
+            "geometric_angle_deg": 15.231149456159484,
+            "small_slope_parameter_deg": 15.600372538245932,
+            "rms_height_residual": 0.00026493123218136787,
+            "base_cosine": 0.9648738099475535
+          }
+        },
+        {
+          "axis": "y",
+          "sign": -1,
+          "window": [
+            0.4,
+            0.8
+          ],
+          "parabola": {
+            "status": "ok",
+            "points": 335,
+            "intercept": 0.5486516730224683,
+            "quadratic_coefficient": -0.033832405143096475,
+            "contact_radius": 3.9901348208730334,
+            "slope": 0.2699917156707063,
+            "geometric_angle_deg": 15.10913271569103,
+            "small_slope_parameter_deg": 15.469385811427601,
+            "rms_height_residual": 7.694637878014805e-05
+          },
+          "circle": {
+            "status": "ok",
+            "points": 335,
+            "circle_center_height": -14.441244139726837,
+            "circle_radius": 14.988539351734778,
+            "contact_radius": 3.97716666893817,
+            "slope": 0.2752127519598702,
+            "geometric_angle_deg": 15.387583382439672,
+            "small_slope_parameter_deg": 15.768529155481339,
+            "rms_height_residual": 0.0001942011053545321,
+            "base_cosine": 0.9641529304891371
+          }
+        },
+        {
+          "axis": "y",
+          "sign": -1,
+          "window": [
+            0.6,
+            0.9
+          ],
+          "parabola": {
+            "status": "ok",
+            "points": 323,
+            "intercept": 0.5491505305636578,
+            "quadratic_coefficient": -0.033937697185635184,
+            "contact_radius": 3.985784677881395,
+            "slope": 0.2705367068901665,
+            "geometric_angle_deg": 15.138232857693897,
+            "small_slope_parameter_deg": 15.50061150817436,
+            "rms_height_residual": 3.1264315774897005e-05
+          },
+          "circle": {
+            "status": "ok",
+            "points": 323,
+            "circle_center_height": -14.314613566345525,
+            "circle_radius": 14.863262663119112,
+            "contact_radius": 3.9651006503921713,
+            "slope": 0.27680332401481617,
+            "geometric_angle_deg": 15.472265327795409,
+            "small_slope_parameter_deg": 15.859662221241193,
+            "rms_height_residual": 9.746094623631572e-05,
+            "base_cosine": 0.963759700075128
+          }
+        },
+        {
+          "axis": "y",
+          "sign": 1,
+          "window": [
+            0.2,
+            0.6
+          ],
+          "parabola": {
+            "status": "ok",
+            "points": 270,
+            "intercept": 0.5468768577631374,
+            "quadratic_coefficient": -0.03360786491923934,
+            "contact_radius": 3.996841080532931,
+            "slope": 0.2686505902764347,
+            "geometric_angle_deg": 15.037488529672679,
+            "small_slope_parameter_deg": 15.392544986538018,
+            "rms_height_residual": 0.00014867298112999192
+          },
+          "circle": {
+            "status": "ok",
+            "points": 270,
+            "circle_center_height": -14.649156576586709,
+            "circle_radius": 15.192822548888243,
+            "contact_radius": 3.991363860276549,
+            "slope": 0.2722778653344538,
+            "geometric_angle_deg": 15.231149456391902,
+            "small_slope_parameter_deg": 15.600372538495586,
+            "rms_height_residual": 0.00026493123244072605,
+            "base_cosine": 0.9648738099464877
+          }
+        },
+        {
+          "axis": "y",
+          "sign": 1,
+          "window": [
+            0.4,
+            0.8
+          ],
+          "parabola": {
+            "status": "ok",
+            "points": 335,
+            "intercept": 0.5486516730087371,
+            "quadratic_coefficient": -0.033832405145870464,
+            "contact_radius": 3.9901348206585956,
+            "slope": 0.2699917156783336,
+            "geometric_angle_deg": 15.109132716098348,
+            "small_slope_parameter_deg": 15.469385811864612,
+            "rms_height_residual": 7.694637903923583e-05
+          },
+          "circle": {
+            "status": "ok",
+            "points": 335,
+            "circle_center_height": -14.441244138545661,
+            "circle_radius": 14.988539350539547,
+            "contact_radius": 3.9771666687256295,
+            "slope": 0.2752127519676574,
+            "geometric_angle_deg": 15.387583382854427,
+            "small_slope_parameter_deg": 15.76852915592751,
+            "rms_height_residual": 0.00019420110564339333,
+            "base_cosine": 0.9641529304872163
+          }
+        },
+        {
+          "axis": "y",
+          "sign": 1,
+          "window": [
+            0.6,
+            0.9
+          ],
+          "parabola": {
+            "status": "ok",
+            "points": 323,
+            "intercept": 0.5491505305527178,
+            "quadratic_coefficient": -0.03393769718899277,
+            "contact_radius": 3.985784677643792,
+            "slope": 0.27053670690080434,
+            "geometric_angle_deg": 15.138232858261832,
+            "small_slope_parameter_deg": 15.500611508783862,
+            "rms_height_residual": 3.126431611395784e-05
+          },
+          "circle": {
+            "status": "ok",
+            "points": 323,
+            "circle_center_height": -14.314613564911241,
+            "circle_radius": 14.863262661673746,
+            "contact_radius": 3.9651006501557795,
+            "slope": 0.2768033240260292,
+            "geometric_angle_deg": 15.472265328392147,
+            "small_slope_parameter_deg": 15.859662221883651,
+            "rms_height_residual": 9.74609465984676e-05,
+            "base_cosine": 0.9637597000723496
+          }
+        }
+      ]
+    },
+    {
+      "case": "k15_L14",
+      "k": 13.629669479999997,
+      "level": 14,
+      "time": 120.0,
+      "theta_deg": 15.497803275358152,
+      "directional_min": 15.497803275257153,
+      "directional_max": 15.497803275463246,
+      "theta_model_deg": 14.63068089928946,
+      "theta_nominal_deg": 15,
+      "delta_model_deg": 0.867122376068691,
+      "delta_model_percent": 5.926739719344183,
+      "radius_shape_gate_passed": false,
+      "physical_grid_acceptance": false,
+      "status": "current snapshot measurement; earlier strict time gate not passed",
+      "source_sha256": "7ebff6509708e96af9afd0d9bf4eb9cfe636db827b7fc64cc9b2ff25fb8982e3",
+      "fits": [
+        {
+          "axis": "x",
+          "sign": -1,
+          "window": [
+            0.2,
+            0.6
+          ],
+          "parabola": {
+            "status": "ok",
+            "points": 536,
+            "intercept": 0.5554239639579039,
+            "quadratic_coefficient": -0.034737566762327504,
+            "contact_radius": 3.9624829858142423,
+            "slope": 0.2752940345286181,
+            "geometric_angle_deg": 15.391912534811249,
+            "small_slope_parameter_deg": 15.773186303618575,
+            "rms_height_residual": 0.00021195346486292506
+          },
+          "circle": {
+            "status": "ok",
+            "points": 536,
+            "circle_center_height": -14.161469352847027,
+            "circle_radius": 14.713480018508703,
+            "contact_radius": 3.9567601186289174,
+            "slope": 0.2792060597325436,
+            "geometric_angle_deg": 15.600055435796587,
+            "small_slope_parameter_deg": 15.99732883715231,
+            "rms_height_residual": 0.00033628477954672064,
+            "base_cosine": 0.9631623066072841
+          }
+        },
+        {
+          "axis": "x",
+          "sign": -1,
+          "window": [
+            0.4,
+            0.8
+          ],
+          "parabola": {
+            "status": "ok",
+            "points": 665,
+            "intercept": 0.5580304458821882,
+            "quadratic_coefficient": -0.03507378307341735,
+            "contact_radius": 3.9528563991167607,
+            "slope": 0.27728325572598184,
+            "geometric_angle_deg": 15.49780327526402,
+            "small_slope_parameter_deg": 15.887160282745477,
+            "rms_height_residual": 0.0001157263133535033
+          },
+          "circle": {
+            "status": "ok",
+            "points": 665,
+            "circle_center_height": -13.91215957699856,
+            "circle_radius": 14.468740458423655,
+            "contact_radius": 3.9392795236962885,
+            "slope": 0.28295032117032715,
+            "geometric_angle_deg": 15.798877705978741,
+            "small_slope_parameter_deg": 16.211859214930893,
+            "rms_height_residual": 0.00024187144544837158,
+            "base_cosine": 0.962223326695526
+          }
+        },
+        {
+          "axis": "x",
+          "sign": -1,
+          "window": [
+            0.6,
+            0.9
+          ],
+          "parabola": {
+            "status": "ok",
+            "points": 640,
+            "intercept": 0.5587823255661049,
+            "quadratic_coefficient": -0.03523572231648921,
+            "contact_radius": 3.9464669352153035,
+            "slope": 0.2781132261209053,
+            "geometric_angle_deg": 15.541952452439123,
+            "small_slope_parameter_deg": 15.934714083495397,
+            "rms_height_residual": 4.774080515405327e-05
+          },
+          "circle": {
+            "status": "ok",
+            "points": 640,
+            "circle_center_height": -13.764707258422192,
+            "circle_radius": 14.322949517291255,
+            "contact_radius": 3.9248341136466878,
+            "slope": 0.2849304918075082,
+            "geometric_angle_deg": 15.903868516774128,
+            "small_slope_parameter_deg": 16.3253146351571,
+            "rms_height_residual": 0.00011913594203733955,
+            "base_cosine": 0.9617228100813172
+          }
+        },
+        {
+          "axis": "x",
+          "sign": 1,
+          "window": [
+            0.2,
+            0.6
+          ],
+          "parabola": {
+            "status": "ok",
+            "points": 536,
+            "intercept": 0.555423963948058,
+            "quadratic_coefficient": -0.03473756676342953,
+            "contact_radius": 3.9624829857156234,
+            "slope": 0.2752940345305001,
+            "geometric_angle_deg": 15.391912534911482,
+            "small_slope_parameter_deg": 15.773186303726405,
+            "rms_height_residual": 0.0002119534649803515
+          },
+          "circle": {
+            "status": "ok",
+            "points": 536,
+            "circle_center_height": -14.161469352410199,
+            "circle_radius": 14.713480018061714,
+            "contact_radius": 3.9567601185312973,
+            "slope": 0.27920605973426144,
+            "geometric_angle_deg": 15.600055435887896,
+            "small_slope_parameter_deg": 15.997328837250736,
+            "rms_height_residual": 0.00033628477967493676,
+            "base_cosine": 0.9631623066068555
+          }
+        },
+        {
+          "axis": "x",
+          "sign": 1,
+          "window": [
+            0.4,
+            0.8
+          ],
+          "parabola": {
+            "status": "ok",
+            "points": 665,
+            "intercept": 0.5580304458744239,
+            "quadratic_coefficient": -0.03507378307478993,
+            "contact_radius": 3.952856399011414,
+            "slope": 0.2772832557294432,
+            "geometric_angle_deg": 15.497803275448184,
+            "small_slope_parameter_deg": 15.887160282943798,
+            "rms_height_residual": 0.00011572631350886451
+          },
+          "circle": {
+            "status": "ok",
+            "points": 665,
+            "circle_center_height": -13.912159576456515,
+            "circle_radius": 14.46874045787368,
+            "contact_radius": 3.9392795235919498,
+            "slope": 0.2829503211738491,
+            "geometric_angle_deg": 15.798877706165582,
+            "small_slope_parameter_deg": 16.211859215132687,
+            "rms_height_residual": 0.00024187144561984208,
+            "base_cosine": 0.9622233266946382
+          }
+        },
+        {
+          "axis": "x",
+          "sign": 1,
+          "window": [
+            0.6,
+            0.9
+          ],
+          "parabola": {
+            "status": "ok",
+            "points": 640,
+            "intercept": 0.5587823255599806,
+            "quadratic_coefficient": -0.03523572231821236,
+            "contact_radius": 3.9464669350967845,
+            "slope": 0.2781132261261538,
+            "geometric_angle_deg": 15.54195245271825,
+            "small_slope_parameter_deg": 15.934714083796115,
+            "rms_height_residual": 4.7740805313518385e-05
+          },
+          "circle": {
+            "status": "ok",
+            "points": 640,
+            "circle_center_height": -13.764707257740586,
+            "circle_radius": 14.32294951660345,
+            "contact_radius": 3.924834113528856,
+            "slope": 0.284930491813053,
+            "geometric_angle_deg": 15.903868517067968,
+            "small_slope_parameter_deg": 16.325314635474793,
+            "rms_height_residual": 0.00011913594220793754,
+            "base_cosine": 0.9617228100799119
+          }
+        },
+        {
+          "axis": "y",
+          "sign": -1,
+          "window": [
+            0.2,
+            0.6
+          ],
+          "parabola": {
+            "status": "ok",
+            "points": 536,
+            "intercept": 0.5554239639570933,
+            "quadratic_coefficient": -0.034737566762297806,
+            "contact_radius": 3.9624829858129913,
+            "slope": 0.2752940345282959,
+            "geometric_angle_deg": 15.391912534794088,
+            "small_slope_parameter_deg": 15.773186303600113,
+            "rms_height_residual": 0.00021195346486508417
+          },
+          "circle": {
+            "status": "ok",
+            "points": 536,
+            "circle_center_height": -14.16146935285986,
+            "circle_radius": 14.713480018520736,
+            "contact_radius": 3.9567601186277,
+            "slope": 0.2792060597322048,
+            "geometric_angle_deg": 15.60005543577859,
+            "small_slope_parameter_deg": 15.9973288371329,
+            "rms_height_residual": 0.0003362847795485775,
+            "base_cosine": 0.9631623066073686
+          }
+        },
+        {
+          "axis": "y",
+          "sign": -1,
+          "window": [
+            0.4,
+            0.8
+          ],
+          "parabola": {
+            "status": "ok",
+            "points": 665,
+            "intercept": 0.5580304458816184,
+            "quadratic_coefficient": -0.03507378307342117,
+            "contact_radius": 3.952856399114491,
+            "slope": 0.2772832557258528,
+            "geometric_angle_deg": 15.497803275257153,
+            "small_slope_parameter_deg": 15.887160282738082,
+            "rms_height_residual": 0.00011572631336195304
+          },
+          "circle": {
+            "status": "ok",
+            "points": 665,
+            "circle_center_height": -13.912159576997581,
+            "circle_radius": 14.468740458422106,
+            "contact_radius": 3.9392795236940557,
+            "slope": 0.28295032117018665,
+            "geometric_angle_deg": 15.798877705971286,
+            "small_slope_parameter_deg": 16.211859214922843,
+            "rms_height_residual": 0.0002418714454585919,
+            "base_cosine": 0.9622233266955614
+          }
+        },
+        {
+          "axis": "y",
+          "sign": -1,
+          "window": [
+            0.6,
+            0.9
+          ],
+          "parabola": {
+            "status": "ok",
+            "points": 640,
+            "intercept": 0.558782325565656,
+            "quadratic_coefficient": -0.03523572231651878,
+            "contact_radius": 3.946466935212033,
+            "slope": 0.2781132261209082,
+            "geometric_angle_deg": 15.541952452439281,
+            "small_slope_parameter_deg": 15.934714083495564,
+            "rms_height_residual": 4.7740805143612406e-05
+          },
+          "circle": {
+            "status": "ok",
+            "points": 640,
+            "circle_center_height": -13.764707258410867,
+            "circle_radius": 14.32294951727948,
+            "contact_radius": 3.924834113643461,
+            "slope": 0.2849304918075082,
+            "geometric_angle_deg": 15.903868516774128,
+            "small_slope_parameter_deg": 16.3253146351571,
+            "rms_height_residual": 0.00011913594202639429,
+            "base_cosine": 0.9617228100813172
+          }
+        },
+        {
+          "axis": "y",
+          "sign": 1,
+          "window": [
+            0.2,
+            0.6
+          ],
+          "parabola": {
+            "status": "ok",
+            "points": 536,
+            "intercept": 0.5554239639486465,
+            "quadratic_coefficient": -0.034737566763453714,
+            "contact_radius": 3.9624829857163815,
+            "slope": 0.2752940345307444,
+            "geometric_angle_deg": 15.391912534924494,
+            "small_slope_parameter_deg": 15.773186303740403,
+            "rms_height_residual": 0.0002119534650162868
+          },
+          "circle": {
+            "status": "ok",
+            "points": 536,
+            "circle_center_height": -14.161469352399708,
+            "circle_radius": 14.713480018051808,
+            "contact_radius": 3.9567601185320314,
+            "slope": 0.27920605973451995,
+            "geometric_angle_deg": 15.60005543590164,
+            "small_slope_parameter_deg": 15.997328837265547,
+            "rms_height_residual": 0.00033628477971292927,
+            "base_cosine": 0.963162306606791
+          }
+        },
+        {
+          "axis": "y",
+          "sign": 1,
+          "window": [
+            0.4,
+            0.8
+          ],
+          "parabola": {
+            "status": "ok",
+            "points": 665,
+            "intercept": 0.5580304458750451,
+            "quadratic_coefficient": -0.0350737830748218,
+            "contact_radius": 3.9528563990118584,
+            "slope": 0.27728325572972634,
+            "geometric_angle_deg": 15.497803275463246,
+            "small_slope_parameter_deg": 15.887160282960021,
+            "rms_height_residual": 0.000115726313475076
+          },
+          "circle": {
+            "status": "ok",
+            "points": 665,
+            "circle_center_height": -13.912159576443207,
+            "circle_radius": 14.468740457860989,
+            "contact_radius": 3.939279523592368,
+            "slope": 0.2829503211741496,
+            "geometric_angle_deg": 15.798877706181516,
+            "small_slope_parameter_deg": 16.211859215149904,
+            "rms_height_residual": 0.0002418714455875748,
+            "base_cosine": 0.9622233266945625
+          }
+        },
+        {
+          "axis": "y",
+          "sign": 1,
+          "window": [
+            0.6,
+            0.9
+          ],
+          "parabola": {
+            "status": "ok",
+            "points": 640,
+            "intercept": 0.558782325560382,
+            "quadratic_coefficient": -0.03523572231820154,
+            "contact_radius": 3.946466935098834,
+            "slope": 0.2781132261262128,
+            "geometric_angle_deg": 15.54195245272139,
+            "small_slope_parameter_deg": 15.934714083799495,
+            "rms_height_residual": 4.7740805302847315e-05
+          },
+          "circle": {
+            "status": "ok",
+            "points": 640,
+            "circle_center_height": -13.76470725774452,
+            "circle_radius": 14.322949516607785,
+            "contact_radius": 3.9248341135308706,
+            "slope": 0.2849304918131179,
+            "geometric_angle_deg": 15.903868517071405,
+            "small_slope_parameter_deg": 16.325314635478513,
+            "rms_height_residual": 0.0001191359421976793,
+            "base_cosine": 0.9617228100798955
+          }
+        }
+      ]
+    },
+    {
+      "case": "k25_L13",
+      "k": 37.47688518999999,
+      "level": 13,
+      "time": 309.999999999836,
+      "theta_deg": 23.232045032082446,
+      "directional_min": 23.232045030840354,
+      "directional_max": 23.23204503340764,
+      "theta_model_deg": 23.406784136103774,
+      "theta_nominal_deg": 25,
+      "delta_model_deg": -0.1747391040213273,
+      "delta_model_percent": -0.7465318730042934,
+      "radius_shape_gate_passed": false,
+      "physical_grid_acceptance": false,
+      "status": "current snapshot measurement; earlier strict time gate not passed",
+      "source_sha256": "7ebff6509708e96af9afd0d9bf4eb9cfe636db827b7fc64cc9b2ff25fb8982e3",
+      "fits": [
+        {
+          "axis": "x",
+          "sign": -1,
+          "window": [
+            0.2,
+            0.6
+          ],
+          "parabola": {
+            "status": "ok",
+            "points": 230,
+            "intercept": 0.7441116057648129,
+            "quadratic_coefficient": -0.06267053833660755,
+            "contact_radius": 3.422546303187503,
+            "slope": 0.4289856386054537,
+            "geometric_angle_deg": 23.218637365873903,
+            "small_slope_parameter_deg": 24.57906656381689,
+            "rms_height_residual": 3.390144824194306e-05
+          },
+          "circle": {
+            "status": "ok",
+            "points": 230,
+            "circle_center_height": -7.671332032496411,
+            "circle_radius": 8.404510240331154,
+            "contact_radius": 3.4107082235770014,
+            "slope": 0.44402562070585705,
+            "geometric_angle_deg": 23.942447267962617,
+            "small_slope_parameter_deg": 25.440794062122308,
+            "rms_height_residual": 0.00043789849616475223,
+            "base_cosine": 0.9139535574167795
+          }
+        },
+        {
+          "axis": "x",
+          "sign": -1,
+          "window": [
+            0.4,
+            0.8
+          ],
+          "parabola": {
+            "status": "ok",
+            "points": 287,
+            "intercept": 0.7444274941088211,
+            "quadratic_coefficient": -0.06272453718565003,
+            "contact_radius": 3.4218087350839093,
+            "slope": 0.42926273849190555,
+            "geometric_angle_deg": 23.232045030913135,
+            "small_slope_parameter_deg": 24.594943217814137,
+            "rms_height_residual": 9.581694342346245e-06
+          },
+          "circle": {
+            "status": "ok",
+            "points": 287,
+            "circle_center_height": -7.51580441269723,
+            "circle_radius": 8.255621944013296,
+            "contact_radius": 3.3937533240205844,
+            "slope": 0.45094891361975636,
+            "geometric_angle_deg": 24.272942352981474,
+            "small_slope_parameter_deg": 25.837469526421568,
+            "rms_height_residual": 0.0004147550169747777,
+            "base_cosine": 0.9115975106096876
+          }
+        },
+        {
+          "axis": "x",
+          "sign": -1,
+          "window": [
+            0.6,
+            0.9
+          ],
+          "parabola": {
+            "status": "ok",
+            "points": 277,
+            "intercept": 0.74448126303194,
+            "quadratic_coefficient": -0.06273989897657482,
+            "contact_radius": 3.4215150376469676,
+            "slope": 0.4293310156176047,
+            "geometric_angle_deg": 23.235348252212066,
+            "small_slope_parameter_deg": 24.598855208953985,
+            "rms_height_residual": 2.869632592804994e-06
+          },
+          "circle": {
+            "status": "ok",
+            "points": 277,
+            "circle_center_height": -7.4036252104514855,
+            "circle_radius": 8.146400234487233,
+            "contact_radius": 3.376684471402653,
+            "slope": 0.4554700805002004,
+            "geometric_angle_deg": 24.48784521650012,
+            "small_slope_parameter_deg": 26.096513307145337,
+            "rms_height_residual": 0.00023024643361784237,
+            "base_cosine": 0.9100492238358736
+          }
+        },
+        {
+          "axis": "x",
+          "sign": 1,
+          "window": [
+            0.2,
+            0.6
+          ],
+          "parabola": {
+            "status": "ok",
+            "points": 230,
+            "intercept": 0.7441116056280541,
+            "quadratic_coefficient": -0.0626705383552884,
+            "contact_radius": 3.4225463023586107,
+            "slope": 0.42898563862943156,
+            "geometric_angle_deg": 23.21863736703421,
+            "small_slope_parameter_deg": 24.579066565190722,
+            "rms_height_residual": 3.390144964187172e-05
+          },
+          "circle": {
+            "status": "ok",
+            "points": 230,
+            "circle_center_height": -7.671332030383303,
+            "circle_radius": 8.404510238071941,
+            "contact_radius": 3.4107082227689327,
+            "slope": 0.444025620722808,
+            "geometric_angle_deg": 23.94244726877388,
+            "small_slope_parameter_deg": 25.440794063093524,
+            "rms_height_residual": 0.0004378984979813107,
+            "base_cosine": 0.9139535574110335
+          }
+        },
+        {
+          "axis": "x",
+          "sign": 1,
+          "window": [
+            0.4,
+            0.8
+          ],
+          "parabola": {
+            "status": "ok",
+            "points": 287,
+            "intercept": 0.7444274940032602,
+            "quadratic_coefficient": -0.06272453720973355,
+            "contact_radius": 3.421808734181084,
+            "slope": 0.4292627385434653,
+            "geometric_angle_deg": 23.23204503340764,
+            "small_slope_parameter_deg": 24.594943220768293,
+            "rms_height_residual": 9.581696621922753e-06
+          },
+          "circle": {
+            "status": "ok",
+            "points": 287,
+            "circle_center_height": -7.515804409849863,
+            "circle_radius": 8.255621941055285,
+            "contact_radius": 3.3937533231391157,
+            "slope": 0.45094891367324547,
+            "geometric_angle_deg": 24.272942355528276,
+            "small_slope_parameter_deg": 25.837469529486267,
+            "rms_height_residual": 0.00041475501979168066,
+            "base_cosine": 0.9115975105914149
+          }
+        },
+        {
+          "axis": "x",
+          "sign": 1,
+          "window": [
+            0.6,
+            0.9
+          ],
+          "parabola": {
+            "status": "ok",
+            "points": 277,
+            "intercept": 0.744481262950169,
+            "quadratic_coefficient": -0.06273989900744277,
+            "contact_radius": 3.4215150366148164,
+            "slope": 0.42933101569932086,
+            "geometric_angle_deg": 23.235348256165363,
+            "small_slope_parameter_deg": 24.598855213635975,
+            "rms_height_residual": 2.8696349528115556e-06
+          },
+          "circle": {
+            "status": "ok",
+            "points": 277,
+            "circle_center_height": -7.4036252066967885,
+            "circle_radius": 8.146400230648355,
+            "contact_radius": 3.3766844703847565,
+            "slope": 0.4554700805935765,
+            "geometric_angle_deg": 24.48784522093098,
+            "small_slope_parameter_deg": 26.096513312495397,
+            "rms_height_residual": 0.00023024643651528814,
+            "base_cosine": 0.910049223803819
+          }
+        },
+        {
+          "axis": "y",
+          "sign": -1,
+          "window": [
+            0.2,
+            0.6
+          ],
+          "parabola": {
+            "status": "ok",
+            "points": 230,
+            "intercept": 0.7441116057608609,
+            "quadratic_coefficient": -0.06267053833632513,
+            "contact_radius": 3.422546303186002,
+            "slope": 0.42898563860333244,
+            "geometric_angle_deg": 23.218637365771258,
+            "small_slope_parameter_deg": 24.579066563695353,
+            "rms_height_residual": 3.390144827640823e-05
+          },
+          "circle": {
+            "status": "ok",
+            "points": 230,
+            "circle_center_height": -7.671332032534283,
+            "circle_radius": 8.40451024036522,
+            "contact_radius": 3.410708223575652,
+            "slope": 0.4440256207034921,
+            "geometric_angle_deg": 23.942447267849428,
+            "small_slope_parameter_deg": 25.440794061986804,
+            "rms_height_residual": 0.0004378984962036159,
+            "base_cosine": 0.9139535574175812
+          }
+        },
+        {
+          "axis": "y",
+          "sign": -1,
+          "window": [
+            0.4,
+            0.8
+          ],
+          "parabola": {
+            "status": "ok",
+            "points": 287,
+            "intercept": 0.7444274941055544,
+            "quadratic_coefficient": -0.0627245371854894,
+            "contact_radius": 3.4218087350806807,
+            "slope": 0.4292627384904012,
+            "geometric_angle_deg": 23.232045030840354,
+            "small_slope_parameter_deg": 24.594943217727945,
+            "rms_height_residual": 9.581694372851302e-06
+          },
+          "circle": {
+            "status": "ok",
+            "points": 287,
+            "circle_center_height": -7.515804412720135,
+            "circle_radius": 8.255621944032969,
+            "contact_radius": 3.3937533240176494,
+            "slope": 0.45094891361799394,
+            "geometric_angle_deg": 24.272942352897555,
+            "small_slope_parameter_deg": 25.837469526320586,
+            "rms_height_residual": 0.00041475501699902274,
+            "base_cosine": 0.9115975106102897
+          }
+        },
+        {
+          "axis": "y",
+          "sign": -1,
+          "window": [
+            0.6,
+            0.9
+          ],
+          "parabola": {
+            "status": "ok",
+            "points": 277,
+            "intercept": 0.744481263029316,
+            "quadratic_coefficient": -0.06273989897659753,
+            "contact_radius": 3.4215150376402375,
+            "slope": 0.42933101561691556,
+            "geometric_angle_deg": 23.235348252178728,
+            "small_slope_parameter_deg": 24.598855208914497,
+            "rms_height_residual": 2.8696326398921823e-06
+          },
+          "circle": {
+            "status": "ok",
+            "points": 277,
+            "circle_center_height": -7.403625210451217,
+            "circle_radius": 8.146400234484341,
+            "contact_radius": 3.3766844713962665,
+            "slope": 0.4554700804993554,
+            "geometric_angle_deg": 24.48784521646002,
+            "small_slope_parameter_deg": 26.096513307096924,
+            "rms_height_residual": 0.00023024643367056043,
+            "base_cosine": 0.9100492238361637
+          }
+        },
+        {
+          "axis": "y",
+          "sign": 1,
+          "window": [
+            0.2,
+            0.6
+          ],
+          "parabola": {
+            "status": "ok",
+            "points": 230,
+            "intercept": 0.7441116056334893,
+            "quadratic_coefficient": -0.06267053835384917,
+            "contact_radius": 3.4225463024105798,
+            "slope": 0.4289856386260938,
+            "geometric_angle_deg": 23.21863736687269,
+            "small_slope_parameter_deg": 24.579066564999483,
+            "rms_height_residual": 3.390144950325294e-05
+          },
+          "circle": {
+            "status": "ok",
+            "points": 230,
+            "circle_center_height": -7.671332030551214,
+            "circle_radius": 8.404510238246008,
+            "contact_radius": 3.410708222819703,
+            "slope": 0.44402562071971136,
+            "geometric_angle_deg": 23.942447268625674,
+            "small_slope_parameter_deg": 25.4407940629161,
+            "rms_height_residual": 0.0004378984978333065,
+            "base_cosine": 0.9139535574120832
+          }
+        },
+        {
+          "axis": "y",
+          "sign": 1,
+          "window": [
+            0.4,
+            0.8
+          ],
+          "parabola": {
+            "status": "ok",
+            "points": 287,
+            "intercept": 0.744427494006866,
+            "quadratic_coefficient": -0.0627245372079821,
+            "contact_radius": 3.421808734237257,
+            "slope": 0.4292627385385259,
+            "geometric_angle_deg": 23.232045033168667,
+            "small_slope_parameter_deg": 24.594943220485288,
+            "rms_height_residual": 9.581696478563902e-06
+          },
+          "circle": {
+            "status": "ok",
+            "points": 287,
+            "circle_center_height": -7.515804410060975,
+            "circle_radius": 8.255621941270373,
+            "contact_radius": 3.393753323194188,
+            "slope": 0.4509489136679134,
+            "geometric_angle_deg": 24.27294235527439,
+            "small_slope_parameter_deg": 25.837469529180762,
+            "rms_height_residual": 0.0004147550196088566,
+            "base_cosine": 0.9115975105932365
+          }
+        },
+        {
+          "axis": "y",
+          "sign": 1,
+          "window": [
+            0.6,
+            0.9
+          ],
+          "parabola": {
+            "status": "ok",
+            "points": 277,
+            "intercept": 0.7444812629529435,
+            "quadratic_coefficient": -0.06273989900544538,
+            "contact_radius": 3.4215150366757423,
+            "slope": 0.4293310156932976,
+            "geometric_angle_deg": 23.23534825587397,
+            "small_slope_parameter_deg": 24.598855213290868,
+            "rms_height_residual": 2.8696349263147806e-06
+          },
+          "circle": {
+            "status": "ok",
+            "points": 277,
+            "circle_center_height": -7.403625206942074,
+            "circle_radius": 8.146400230896576,
+            "contact_radius": 3.3766844704450683,
+            "slope": 0.4554700805866422,
+            "geometric_angle_deg": 24.487845220601937,
+            "small_slope_parameter_deg": 26.096513312098086,
+            "rms_height_residual": 0.00023024643646730891,
+            "base_cosine": 0.9100492238061995
+          }
+        }
+      ]
+    },
+    {
+      "case": "k25_L14",
+      "k": 37.47688518999999,
+      "level": 14,
+      "time": 100.0,
+      "theta_deg": 22.43514174891034,
+      "directional_min": 22.435141748732544,
+      "directional_max": 22.435141749068134,
+      "theta_model_deg": 23.406784136103774,
+      "theta_nominal_deg": 25,
+      "delta_model_deg": -0.9716423871934339,
+      "delta_model_percent": -4.151114401464167,
+      "radius_shape_gate_passed": false,
+      "physical_grid_acceptance": false,
+      "status": "current snapshot measurement; earlier strict time gate not passed",
+      "source_sha256": "7ebff6509708e96af9afd0d9bf4eb9cfe636db827b7fc64cc9b2ff25fb8982e3",
+      "fits": [
+        {
+          "axis": "x",
+          "sign": -1,
+          "window": [
+            0.2,
+            0.6
+          ],
+          "parabola": {
+            "status": "ok",
+            "points": 463,
+            "intercept": 0.7270485381536872,
+            "quadratic_coefficient": -0.05971629506918171,
+            "contact_radius": 3.465196361582007,
+            "slope": 0.41385737680177204,
+            "geometric_angle_deg": 22.482578548830165,
+            "small_slope_parameter_deg": 23.712281011096962,
+            "rms_height_residual": 7.421730621543948e-05
+          },
+          "circle": {
+            "status": "ok",
+            "points": 463,
+            "circle_center_height": -8.073467950091628,
+            "circle_radius": 8.790512279944368,
+            "contact_radius": 3.4540775966521355,
+            "slope": 0.42730145254215834,
+            "geometric_angle_deg": 23.13708899801826,
+            "small_slope_parameter_deg": 24.482569810475315,
+            "rms_height_residual": 0.00029003917426970535,
+            "base_cosine": 0.9195673349474901
+          }
+        },
+        {
+          "axis": "x",
+          "sign": -1,
+          "window": [
+            0.4,
+            0.8
+          ],
+          "parabola": {
+            "status": "ok",
+            "points": 580,
+            "intercept": 0.7259346637679847,
+            "quadratic_coefficient": -0.05952934260366317,
+            "contact_radius": 3.467936621570525,
+            "slope": 0.41288797454652393,
+            "geometric_angle_deg": 22.43514174906322,
+            "small_slope_parameter_deg": 23.65673835322078,
+            "rms_height_residual": 5.7406338940457236e-05
+          },
+          "circle": {
+            "status": "ok",
+            "points": 580,
+            "circle_center_height": -7.9546664343847,
+            "circle_radius": 8.676436967535647,
+            "contact_radius": 3.4416052999443267,
+            "slope": 0.4321091571501831,
+            "geometric_angle_deg": 23.369614886451316,
+            "small_slope_parameter_deg": 24.758030993660732,
+            "rms_height_residual": 0.0003057002871070201,
+            "base_cosine": 0.9179651121982265
+          }
+        },
+        {
+          "axis": "x",
+          "sign": -1,
+          "window": [
+            0.6,
+            0.9
+          ],
+          "parabola": {
+            "status": "ok",
+            "points": 562,
+            "intercept": 0.7255428626291375,
+            "quadratic_coefficient": -0.05942033798448495,
+            "contact_radius": 3.470166142455476,
+            "slope": 0.41239689009404146,
+            "geometric_angle_deg": 22.411098600473608,
+            "small_slope_parameter_deg": 23.628601286709042,
+            "rms_height_residual": 2.6151850700045164e-05
+          },
+          "circle": {
+            "status": "ok",
+            "points": 562,
+            "circle_center_height": -7.8632861261581475,
+            "circle_radius": 8.587290662400253,
+            "contact_radius": 3.428254146966385,
+            "slope": 0.4354286243423034,
+            "geometric_angle_deg": 23.529687717298955,
+            "small_slope_parameter_deg": 24.948222454001364,
+            "rms_height_residual": 0.00017858776786171504,
+            "base_cosine": 0.9168533400914913
+          }
+        },
+        {
+          "axis": "x",
+          "sign": 1,
+          "window": [
+            0.2,
+            0.6
+          ],
+          "parabola": {
+            "status": "ok",
+            "points": 463,
+            "intercept": 0.7270485381656864,
+            "quadratic_coefficient": -0.05971629506665286,
+            "contact_radius": 3.4651963616843724,
+            "slope": 0.41385737679647183,
+            "geometric_angle_deg": 22.482578548570892,
+            "small_slope_parameter_deg": 23.712281010793284,
+            "rms_height_residual": 7.421730627845733e-05
+          },
+          "circle": {
+            "status": "ok",
+            "points": 463,
+            "circle_center_height": -8.07346795041617,
+            "circle_radius": 8.790512280282137,
+            "contact_radius": 3.4540775967522293,
+            "slope": 0.4273014525373852,
+            "geometric_angle_deg": 23.137088997787004,
+            "small_slope_parameter_deg": 24.482569810201834,
+            "rms_height_residual": 0.0002900391741603497,
+            "base_cosine": 0.919567334949076
+          }
+        },
+        {
+          "axis": "x",
+          "sign": 1,
+          "window": [
+            0.4,
+            0.8
+          ],
+          "parabola": {
+            "status": "ok",
+            "points": 580,
+            "intercept": 0.7259346637783355,
+            "quadratic_coefficient": -0.05952934260085458,
+            "contact_radius": 3.467936621677403,
+            "slope": 0.41288797453976867,
+            "geometric_angle_deg": 22.435141748732544,
+            "small_slope_parameter_deg": 23.656738352833734,
+            "rms_height_residual": 5.740633911665575e-05
+          },
+          "circle": {
+            "status": "ok",
+            "points": 580,
+            "circle_center_height": -7.954666434757565,
+            "circle_radius": 8.676436967919432,
+            "contact_radius": 3.4416053000489737,
+            "slope": 0.4321091571430929,
+            "geometric_angle_deg": 23.369614886109,
+            "small_slope_parameter_deg": 24.758030993254494,
+            "rms_height_residual": 0.00030570028687583033,
+            "base_cosine": 0.9179651122005964
+          }
+        },
+        {
+          "axis": "x",
+          "sign": 1,
+          "window": [
+            0.6,
+            0.9
+          ],
+          "parabola": {
+            "status": "ok",
+            "points": 562,
+            "intercept": 0.7255428626372942,
+            "quadratic_coefficient": -0.0594203379810665,
+            "contact_radius": 3.4701661425750743,
+            "slope": 0.41239689008452945,
+            "geometric_angle_deg": 22.41109860000783,
+            "small_slope_parameter_deg": 23.628601286164045,
+            "rms_height_residual": 2.615185095961242e-05
+          },
+          "circle": {
+            "status": "ok",
+            "points": 562,
+            "circle_center_height": -7.8632861266243825,
+            "circle_radius": 8.5872906628749,
+            "contact_radius": 3.428254147084556,
+            "slope": 0.43542862433152757,
+            "geometric_angle_deg": 23.529687716779947,
+            "small_slope_parameter_deg": 24.948222453383956,
+            "rms_height_residual": 0.0001785877675653695,
+            "base_cosine": 0.9168533400951077
+          }
+        },
+        {
+          "axis": "y",
+          "sign": -1,
+          "window": [
+            0.2,
+            0.6
+          ],
+          "parabola": {
+            "status": "ok",
+            "points": 463,
+            "intercept": 0.7270485381537499,
+            "quadratic_coefficient": -0.05971629506914418,
+            "contact_radius": 3.465196361583248,
+            "slope": 0.4138573768016601,
+            "geometric_angle_deg": 22.48257854882469,
+            "small_slope_parameter_deg": 23.71228101109055,
+            "rms_height_residual": 7.421730621445907e-05
+          },
+          "circle": {
+            "status": "ok",
+            "points": 463,
+            "circle_center_height": -8.073467950096555,
+            "circle_radius": 8.790512279949377,
+            "contact_radius": 3.454077596653353,
+            "slope": 0.42730145254204843,
+            "geometric_angle_deg": 23.137088998012935,
+            "small_slope_parameter_deg": 24.482569810469016,
+            "rms_height_residual": 0.00029003917427075946,
+            "base_cosine": 0.9195673349475266
+          }
+        },
+        {
+          "axis": "y",
+          "sign": -1,
+          "window": [
+            0.4,
+            0.8
+          ],
+          "parabola": {
+            "status": "ok",
+            "points": 580,
+            "intercept": 0.7259346637682942,
+            "quadratic_coefficient": -0.05952934260366637,
+            "contact_radius": 3.4679366215711815,
+            "slope": 0.41288797454662435,
+            "geometric_angle_deg": 22.435141749068134,
+            "small_slope_parameter_deg": 23.656738353226533,
+            "rms_height_residual": 5.740633893286638e-05
+          },
+          "circle": {
+            "status": "ok",
+            "points": 580,
+            "circle_center_height": -7.954666434383946,
+            "circle_radius": 8.676436967535201,
+            "contact_radius": 3.4416052999449476,
+            "slope": 0.43210915715030196,
+            "geometric_angle_deg": 23.36961488645706,
+            "small_slope_parameter_deg": 24.758030993667543,
+            "rms_height_residual": 0.00030570028711227173,
+            "base_cosine": 0.9179651121981868
+          }
+        },
+        {
+          "axis": "y",
+          "sign": -1,
+          "window": [
+            0.6,
+            0.9
+          ],
+          "parabola": {
+            "status": "ok",
+            "points": 562,
+            "intercept": 0.7255428626293892,
+            "quadratic_coefficient": -0.05942033798447061,
+            "contact_radius": 3.470166142456505,
+            "slope": 0.4123968900940643,
+            "geometric_angle_deg": 22.41109860047473,
+            "small_slope_parameter_deg": 23.62860128671035,
+            "rms_height_residual": 2.6151850721947827e-05
+          },
+          "circle": {
+            "status": "ok",
+            "points": 562,
+            "circle_center_height": -7.863286126159911,
+            "circle_radius": 8.58729066240227,
+            "contact_radius": 3.4282541469673844,
+            "slope": 0.43542862434233276,
+            "geometric_angle_deg": 23.529687717300373,
+            "small_slope_parameter_deg": 24.948222454003048,
+            "rms_height_residual": 0.00017858776783966548,
+            "base_cosine": 0.9168533400914815
+          }
+        },
+        {
+          "axis": "y",
+          "sign": 1,
+          "window": [
+            0.2,
+            0.6
+          ],
+          "parabola": {
+            "status": "ok",
+            "points": 463,
+            "intercept": 0.72704853816506,
+            "quadratic_coefficient": -0.059716295066913797,
+            "contact_radius": 3.465196361675288,
+            "slope": 0.4138573767971953,
+            "geometric_angle_deg": 22.482578548606288,
+            "small_slope_parameter_deg": 23.712281010834733,
+            "rms_height_residual": 7.421730627624223e-05
+          },
+          "circle": {
+            "status": "ok",
+            "points": 463,
+            "circle_center_height": -8.073467950382076,
+            "circle_radius": 8.79051228024729,
+            "contact_radius": 3.4540775967433355,
+            "slope": 0.42730145253808716,
+            "geometric_angle_deg": 23.137088997821017,
+            "small_slope_parameter_deg": 24.48256981024205,
+            "rms_height_residual": 0.0002900391741675072,
+            "base_cosine": 0.9195673349488428
+          }
+        },
+        {
+          "axis": "y",
+          "sign": 1,
+          "window": [
+            0.4,
+            0.8
+          ],
+          "parabola": {
+            "status": "ok",
+            "points": 580,
+            "intercept": 0.7259346637779344,
+            "quadratic_coefficient": -0.059529342601152495,
+            "contact_radius": 3.467936621667754,
+            "slope": 0.4128879745406862,
+            "geometric_angle_deg": 22.43514174877746,
+            "small_slope_parameter_deg": 23.656738352886304,
+            "rms_height_residual": 5.7406339100116035e-05
+          },
+          "circle": {
+            "status": "ok",
+            "points": 580,
+            "circle_center_height": -7.9546664347173195,
+            "circle_radius": 8.676436967878725,
+            "contact_radius": 3.4416053000394853,
+            "slope": 0.432109157144085,
+            "geometric_angle_deg": 23.369614886156903,
+            "small_slope_parameter_deg": 24.758030993311333,
+            "rms_height_residual": 0.00030570028689796947,
+            "base_cosine": 0.9179651122002648
+          }
+        },
+        {
+          "axis": "y",
+          "sign": 1,
+          "window": [
+            0.6,
+            0.9
+          ],
+          "parabola": {
+            "status": "ok",
+            "points": 562,
+            "intercept": 0.725542862637061,
+            "quadratic_coefficient": -0.05942033798140892,
+            "contact_radius": 3.4701661425645103,
+            "slope": 0.4123968900856505,
+            "geometric_angle_deg": 22.411098600062722,
+            "small_slope_parameter_deg": 23.628601286228278,
+            "rms_height_residual": 2.6151850948506105e-05
+          },
+          "circle": {
+            "status": "ok",
+            "points": 562,
+            "circle_center_height": -7.863286126577116,
+            "circle_radius": 8.587290662827375,
+            "contact_radius": 3.4282541470740644,
+            "slope": 0.43542862433280904,
+            "geometric_angle_deg": 23.52968771684167,
+            "small_slope_parameter_deg": 24.94822245345738,
+            "rms_height_residual": 0.00017858776757931921,
+            "base_cosine": 0.9168533400946776
+          }
+        }
+      ]
+    },
+    {
+      "case": "k35_L13",
+      "k": 72.33918227999999,
+      "level": 13,
+      "time": 400.0,
+      "theta_deg": 30.867170755093007,
+      "directional_min": 30.86717075056974,
+      "directional_max": 30.86717075891142,
+      "theta_model_deg": 31.023189104516423,
+      "theta_nominal_deg": 35,
+      "delta_model_deg": -0.15601834942341597,
+      "delta_model_percent": -0.502908804435913,
+      "radius_shape_gate_passed": true,
+      "physical_grid_acceptance": false,
+      "status": "local quasi-steady candidate",
+      "source_sha256": "7ebff6509708e96af9afd0d9bf4eb9cfe636db827b7fc64cc9b2ff25fb8982e3",
+      "fits": [
+        {
+          "axis": "x",
+          "sign": -1,
+          "window": [
+            0.2,
+            0.6
+          ],
+          "parabola": {
+            "status": "ok",
+            "points": 206,
+            "intercept": 0.9255865652353006,
+            "quadratic_coefficient": -0.09746531683899984,
+            "contact_radius": 3.0649589078552077,
+            "slope": 0.5974543821052455,
+            "geometric_angle_deg": 30.856391107284722,
+            "small_slope_parameter_deg": 34.23161454622698,
+            "rms_height_residual": 2.746402977023117e-05
+          },
+          "circle": {
+            "status": "ok",
+            "points": 206,
+            "circle_center_height": -4.749577375972601,
+            "circle_radius": 5.649920477550416,
+            "contact_radius": 3.044343049784845,
+            "slope": 0.6396246576751462,
+            "geometric_angle_deg": 32.603983993369276,
+            "small_slope_parameter_deg": 36.647793357285934,
+            "rms_height_residual": 0.0010075539447101268,
+            "base_cosine": 0.8424149321896592
+          }
+        },
+        {
+          "axis": "x",
+          "sign": -1,
+          "window": [
+            0.4,
+            0.8
+          ],
+          "parabola": {
+            "status": "ok",
+            "points": 257,
+            "intercept": 0.9258470841807664,
+            "quadratic_coefficient": -0.09752089118636285,
+            "contact_radius": 3.0645213604884436,
+            "slope": 0.5977097082689563,
+            "geometric_angle_deg": 30.86717075891142,
+            "small_slope_parameter_deg": 34.24624365780688,
+            "rms_height_residual": 8.099505749992536e-06
+          },
+          "circle": {
+            "status": "ok",
+            "points": 257,
+            "circle_center_height": -4.5613643103712915,
+            "circle_radius": 5.476419571619108,
+            "contact_radius": 3.015592755376035,
+            "slope": 0.6596701882924543,
+            "geometric_angle_deg": 33.411646175466494,
+            "small_slope_parameter_deg": 37.79631765975796,
+            "rms_height_residual": 0.0009886815926289675,
+            "base_cosine": 0.8347359530416263
+          }
+        },
+        {
+          "axis": "x",
+          "sign": -1,
+          "window": [
+            0.6,
+            0.9
+          ],
+          "parabola": {
+            "status": "ok",
+            "points": 248,
+            "intercept": 0.9258922397674691,
+            "quadratic_coefficient": -0.09753697932267716,
+            "contact_radius": 3.0643441534367017,
+            "slope": 0.5977737446626444,
+            "geometric_angle_deg": 30.86987394033467,
+            "small_slope_parameter_deg": 34.24991267290044,
+            "rms_height_residual": 2.7191075114669762e-06
+          },
+          "circle": {
+            "status": "ok",
+            "points": 248,
+            "circle_center_height": -4.4230516126728885,
+            "circle_radius": 5.344906547954113,
+            "contact_radius": 2.9859804764500826,
+            "slope": 0.6735722336085547,
+            "geometric_angle_deg": 33.96311355563334,
+            "small_slope_parameter_deg": 38.59284618297013,
+            "rms_height_residual": 0.0005521897411627124,
+            "base_cosine": 0.8293974034718608
+          }
+        },
+        {
+          "axis": "x",
+          "sign": 1,
+          "window": [
+            0.2,
+            0.6
+          ],
+          "parabola": {
+            "status": "ok",
+            "points": 206,
+            "intercept": 0.9255865652390245,
+            "quadratic_coefficient": -0.09746531677234402,
+            "contact_radius": 3.0649589089094924,
+            "slope": 0.5974543819021632,
+            "geometric_angle_deg": 30.856391098709793,
+            "small_slope_parameter_deg": 34.23161453459122,
+            "rms_height_residual": 2.7464026930864507e-05
+          },
+          "circle": {
+            "status": "ok",
+            "points": 206,
+            "circle_center_height": -4.7495773791079445,
+            "circle_radius": 5.649920480737781,
+            "contact_radius": 3.0443430507983473,
+            "slope": 0.6396246574667367,
+            "geometric_angle_deg": 32.60398398489521,
+            "small_slope_parameter_deg": 36.64779334534495,
+            "rms_height_residual": 0.0010075539400830284,
+            "base_cosine": 0.8424149322693524
+          }
+        },
+        {
+          "axis": "x",
+          "sign": 1,
+          "window": [
+            0.4,
+            0.8
+          ],
+          "parabola": {
+            "status": "ok",
+            "points": 257,
+            "intercept": 0.9258470841896184,
+            "quadratic_coefficient": -0.09752089112093949,
+            "contact_radius": 3.0645213615311935,
+            "slope": 0.5977097080713536,
+            "geometric_angle_deg": 30.86717075056974,
+            "small_slope_parameter_deg": 34.24624364648508,
+            "rms_height_residual": 8.099508138728335e-06
+          },
+          "circle": {
+            "status": "ok",
+            "points": 257,
+            "circle_center_height": -4.561364313557051,
+            "circle_radius": 5.476419574834726,
+            "contact_radius": 3.015592756386386,
+            "slope": 0.659670188053751,
+            "geometric_angle_deg": 33.4116461659368,
+            "small_slope_parameter_deg": 37.79631764608127,
+            "rms_height_residual": 0.0009886815931732654,
+            "base_cosine": 0.834735953133213
+          }
+        },
+        {
+          "axis": "x",
+          "sign": 1,
+          "window": [
+            0.6,
+            0.9
+          ],
+          "parabola": {
+            "status": "ok",
+            "points": 248,
+            "intercept": 0.9258922397970558,
+            "quadratic_coefficient": -0.0975369792646684,
+            "contact_radius": 3.0643441543974346,
+            "slope": 0.5977737444945408,
+            "geometric_angle_deg": 30.869873933238672,
+            "small_slope_parameter_deg": 34.249912663268816,
+            "rms_height_residual": 2.7191087654233706e-06
+          },
+          "circle": {
+            "status": "ok",
+            "points": 248,
+            "circle_center_height": -4.423051615557705,
+            "circle_radius": 5.344906550875599,
+            "contact_radius": 2.985980477396682,
+            "slope": 0.6735722333837584,
+            "geometric_angle_deg": 33.96311354677328,
+            "small_slope_parameter_deg": 38.59284617009025,
+            "rms_height_residual": 0.0005521897416287513,
+            "base_cosine": 0.8293974035582503
+          }
+        },
+        {
+          "axis": "y",
+          "sign": -1,
+          "window": [
+            0.2,
+            0.6
+          ],
+          "parabola": {
+            "status": "ok",
+            "points": 206,
+            "intercept": 0.9255865653159318,
+            "quadratic_coefficient": -0.09746531682908535,
+            "contact_radius": 3.064958908146054,
+            "slope": 0.5974543821011654,
+            "geometric_angle_deg": 30.856391107112444,
+            "small_slope_parameter_deg": 34.23161454599321,
+            "rms_height_residual": 2.746402924319428e-05
+          },
+          "circle": {
+            "status": "ok",
+            "points": 206,
+            "circle_center_height": -4.749577376359137,
+            "circle_radius": 5.649920478024744,
+            "contact_radius": 3.044343050060822,
+            "slope": 0.6396246576811843,
+            "geometric_angle_deg": 32.6039839936148,
+            "small_slope_parameter_deg": 36.64779335763189,
+            "rms_height_residual": 0.001007553943839563,
+            "base_cosine": 0.8424149321873503
+          }
+        },
+        {
+          "axis": "y",
+          "sign": -1,
+          "window": [
+            0.4,
+            0.8
+          ],
+          "parabola": {
+            "status": "ok",
+            "points": 257,
+            "intercept": 0.9258470842434371,
+            "quadratic_coefficient": -0.09752089117254853,
+            "contact_radius": 3.0645213608103474,
+            "slope": 0.5977097082470725,
+            "geometric_angle_deg": 30.86717075798761,
+            "small_slope_parameter_deg": 34.24624365655303,
+            "rms_height_residual": 8.099504228733663e-06
+          },
+          "circle": {
+            "status": "ok",
+            "points": 257,
+            "circle_center_height": -4.561364310986045,
+            "circle_radius": 5.47641957230079,
+            "contact_radius": 3.0155927556820807,
+            "slope": 0.6596701882706908,
+            "geometric_angle_deg": 33.411646174597635,
+            "small_slope_parameter_deg": 37.79631765851101,
+            "rms_height_residual": 0.0009886815906090033,
+            "base_cosine": 0.8347359530499766
+          }
+        },
+        {
+          "axis": "y",
+          "sign": -1,
+          "window": [
+            0.6,
+            0.9
+          ],
+          "parabola": {
+            "status": "ok",
+            "points": 248,
+            "intercept": 0.9258922398144945,
+            "quadratic_coefficient": -0.09753697930328037,
+            "contact_radius": 3.064344153820066,
+            "slope": 0.597773744618552,
+            "geometric_angle_deg": 30.86987393847344,
+            "small_slope_parameter_deg": 34.24991267037414,
+            "rms_height_residual": 2.7191062238324523e-06
+          },
+          "circle": {
+            "status": "ok",
+            "points": 248,
+            "circle_center_height": -4.423051613603111,
+            "circle_radius": 5.344906548933622,
+            "contact_radius": 2.9859804768223754,
+            "slope": 0.6735722335511949,
+            "geometric_angle_deg": 33.96311355337257,
+            "small_slope_parameter_deg": 38.592846179683654,
+            "rms_height_residual": 0.0005521897392711193,
+            "base_cosine": 0.8293974034939042
+          }
+        },
+        {
+          "axis": "y",
+          "sign": 1,
+          "window": [
+            0.2,
+            0.6
+          ],
+          "parabola": {
+            "status": "ok",
+            "points": 206,
+            "intercept": 0.9255865651555591,
+            "quadratic_coefficient": -0.09746531679308713,
+            "contact_radius": 3.0649589084436397,
+            "slope": 0.5974543819385078,
+            "geometric_angle_deg": 30.856391100244405,
+            "small_slope_parameter_deg": 34.23161453667361,
+            "rms_height_residual": 2.7464027584528523e-05
+          },
+          "circle": {
+            "status": "ok",
+            "points": 206,
+            "circle_center_height": -4.749577378214664,
+            "circle_radius": 5.649920479745994,
+            "contact_radius": 3.044343050354283,
+            "slope": 0.6396246574934827,
+            "geometric_angle_deg": 32.60398398598272,
+            "small_slope_parameter_deg": 36.647793346877386,
+            "rms_height_residual": 0.0010075539414193676,
+            "base_cosine": 0.842414932259125
+          }
+        },
+        {
+          "axis": "y",
+          "sign": 1,
+          "window": [
+            0.4,
+            0.8
+          ],
+          "parabola": {
+            "status": "ok",
+            "points": 257,
+            "intercept": 0.9258470841252486,
+            "quadratic_coefficient": -0.09752089114583172,
+            "contact_radius": 3.06452136103239,
+            "slope": 0.5977097081266315,
+            "geometric_angle_deg": 30.86717075290327,
+            "small_slope_parameter_deg": 34.246243649652264,
+            "rms_height_residual": 8.09950969488664e-06
+          },
+          "circle": {
+            "status": "ok",
+            "points": 257,
+            "circle_center_height": -4.5613643124024135,
+            "circle_radius": 5.476419573607945,
+            "contact_radius": 3.015592755908834,
+            "slope": 0.6596701881159048,
+            "geometric_angle_deg": 33.41164616841815,
+            "small_slope_parameter_deg": 37.796317649642425,
+            "rms_height_residual": 0.0009886815955836422,
+            "base_cosine": 0.8347359531093655
+          }
+        },
+        {
+          "axis": "y",
+          "sign": 1,
+          "window": [
+            0.6,
+            0.9
+          ],
+          "parabola": {
+            "status": "ok",
+            "points": 248,
+            "intercept": 0.9258922397501804,
+            "quadratic_coefficient": -0.09753697929578979,
+            "contact_radius": 3.0643441538301435,
+            "slope": 0.5977737445746104,
+            "geometric_angle_deg": 30.869873936618575,
+            "small_slope_parameter_deg": 34.24991266785647,
+            "rms_height_residual": 2.7191102848470545e-06
+          },
+          "circle": {
+            "status": "ok",
+            "points": 248,
+            "circle_center_height": -4.423051614037493,
+            "circle_radius": 5.34490654930485,
+            "contact_radius": 2.9859804768419806,
+            "slope": 0.6735722334896159,
+            "geometric_angle_deg": 33.96311355094552,
+            "small_slope_parameter_deg": 38.59284617615544,
+            "rms_height_residual": 0.0005521897440167184,
+            "base_cosine": 0.8293974035175691
+          }
+        }
+      ]
+    },
+    {
+      "case": "k35_L14",
+      "k": 72.33918227999999,
+      "level": 14,
+      "time": 64.99999999999446,
+      "theta_deg": 30.411881623380758,
+      "directional_min": 30.41188162318111,
+      "directional_max": 30.411881623572363,
+      "theta_model_deg": 31.023189104516423,
+      "theta_nominal_deg": 35,
+      "delta_model_deg": -0.6113074811356647,
+      "delta_model_percent": -1.970485623113032,
+      "radius_shape_gate_passed": false,
+      "physical_grid_acceptance": false,
+      "status": "current snapshot measurement; earlier strict time gate not passed",
+      "source_sha256": "7ebff6509708e96af9afd0d9bf4eb9cfe636db827b7fc64cc9b2ff25fb8982e3",
+      "fits": [
+        {
+          "axis": "x",
+          "sign": -1,
+          "window": [
+            0.2,
+            0.6
+          ],
+          "parabola": {
+            "status": "ok",
+            "points": 413,
+            "intercept": 0.9152857771495888,
+            "quadratic_coefficient": -0.09529644720820073,
+            "contact_radius": 3.082155130256095,
+            "slope": 0.58743686731587,
+            "geometric_angle_deg": 30.43154659663403,
+            "small_slope_parameter_deg": 33.65765322758588,
+            "rms_height_residual": 2.879703977709721e-05
+          },
+          "circle": {
+            "status": "ok",
+            "points": 413,
+            "circle_center_height": -4.871184644122338,
+            "circle_radius": 5.762200892549923,
+            "contact_radius": 3.0621880406153075,
+            "slope": 0.6273452581439694,
+            "geometric_angle_deg": 32.10190943159548,
+            "small_slope_parameter_deg": 35.944235589194584,
+            "rms_height_residual": 0.0009039375725168723,
+            "base_cosine": 0.8471042115927144
+          }
+        },
+        {
+          "axis": "x",
+          "sign": -1,
+          "window": [
+            0.4,
+            0.8
+          ],
+          "parabola": {
+            "status": "ok",
+            "points": 517,
+            "intercept": 0.914814616344563,
+            "quadratic_coefficient": -0.09519629778986985,
+            "contact_radius": 3.0829733765772898,
+            "slope": 0.5869753032697844,
+            "geometric_angle_deg": 30.411881623572363,
+            "small_slope_parameter_deg": 33.631207555770196,
+            "rms_height_residual": 2.617172205489849e-05
+          },
+          "circle": {
+            "status": "ok",
+            "points": 517,
+            "circle_center_height": -4.693104207308649,
+            "circle_radius": 5.597621728929719,
+            "contact_radius": 3.03548675427547,
+            "slope": 0.6454219639782396,
+            "geometric_angle_deg": 32.839086472837195,
+            "small_slope_parameter_deg": 36.979954540997774,
+            "rms_height_residual": 0.0009073854196337389,
+            "base_cosine": 0.8401968612852114
+          }
+        },
+        {
+          "axis": "x",
+          "sign": -1,
+          "window": [
+            0.6,
+            0.9
+          ],
+          "parabola": {
+            "status": "ok",
+            "points": 500,
+            "intercept": 0.9146342192627135,
+            "quadratic_coefficient": -0.09513272970567431,
+            "contact_radius": 3.083695781028989,
+            "slope": 0.5867207944623181,
+            "geometric_angle_deg": 30.40103486507367,
+            "small_slope_parameter_deg": 33.61662527525347,
+            "rms_height_residual": 1.233682843586179e-05
+          },
+          "circle": {
+            "status": "ok",
+            "points": 500,
+            "circle_center_height": -4.561367250117275,
+            "circle_radius": 5.472147126098044,
+            "contact_radius": 3.0078224073602327,
+            "slope": 0.6579699776435747,
+            "geometric_angle_deg": 33.343715969288944,
+            "small_slope_parameter_deg": 37.69890276529396,
+            "rms_height_residual": 0.000513250908748971,
+            "base_cosine": 0.8353882205241296
+          }
+        },
+        {
+          "axis": "x",
+          "sign": 1,
+          "window": [
+            0.2,
+            0.6
+          ],
+          "parabola": {
+            "status": "ok",
+            "points": 413,
+            "intercept": 0.9152857771593739,
+            "quadratic_coefficient": -0.09529644720457267,
+            "contact_radius": 3.0821551303314227,
+            "slope": 0.5874368673078625,
+            "geometric_angle_deg": 30.43154659629294,
+            "small_slope_parameter_deg": 33.657653227127085,
+            "rms_height_residual": 2.879703991893074e-05
+          },
+          "circle": {
+            "status": "ok",
+            "points": 413,
+            "circle_center_height": -4.871184644291947,
+            "circle_radius": 5.762200892731907,
+            "contact_radius": 3.0621880406873916,
+            "slope": 0.6273452581369384,
+            "geometric_angle_deg": 32.1019094313064,
+            "small_slope_parameter_deg": 35.944235588791734,
+            "rms_height_residual": 0.0009039375722674496,
+            "base_cosine": 0.8471042115953956
+          }
+        },
+        {
+          "axis": "x",
+          "sign": 1,
+          "window": [
+            0.4,
+            0.8
+          ],
+          "parabola": {
+            "status": "ok",
+            "points": 517,
+            "intercept": 0.914814616353165,
+            "quadratic_coefficient": -0.09519629778598675,
+            "contact_radius": 3.0829733766548224,
+            "slope": 0.5869753032606031,
+            "geometric_angle_deg": 30.41188162318111,
+            "small_slope_parameter_deg": 33.631207555244146,
+            "rms_height_residual": 2.6171722052240092e-05
+          },
+          "circle": {
+            "status": "ok",
+            "points": 517,
+            "circle_center_height": -4.693104207499785,
+            "circle_radius": 5.597621729130665,
+            "contact_radius": 3.0354867543498845,
+            "slope": 0.6454219639678318,
+            "geometric_angle_deg": 32.839086472416234,
+            "small_slope_parameter_deg": 36.97995454040146,
+            "rms_height_residual": 0.0009073854195213626,
+            "base_cosine": 0.8401968612891957
+          }
+        },
+        {
+          "axis": "x",
+          "sign": 1,
+          "window": [
+            0.6,
+            0.9
+          ],
+          "parabola": {
+            "status": "ok",
+            "points": 500,
+            "intercept": 0.9146342192701981,
+            "quadratic_coefficient": -0.09513272970140692,
+            "contact_radius": 3.0836957811109085,
+            "slope": 0.5867207944515859,
+            "geometric_angle_deg": 30.40103486461623,
+            "small_slope_parameter_deg": 33.61662527463856,
+            "rms_height_residual": 1.2336828630648166e-05
+          },
+          "circle": {
+            "status": "ok",
+            "points": 500,
+            "circle_center_height": -4.561367250335938,
+            "circle_radius": 5.472147126324686,
+            "contact_radius": 3.007822407440235,
+            "slope": 0.6579699776296025,
+            "geometric_angle_deg": 33.343715968730265,
+            "small_slope_parameter_deg": 37.69890276449341,
+            "rms_height_residual": 0.0005132509084801145,
+            "base_cosine": 0.8353882205294892
+          }
+        },
+        {
+          "axis": "y",
+          "sign": -1,
+          "window": [
+            0.2,
+            0.6
+          ],
+          "parabola": {
+            "status": "ok",
+            "points": 413,
+            "intercept": 0.9152857771504497,
+            "quadratic_coefficient": -0.09529644720753659,
+            "contact_radius": 3.0821551302683003,
+            "slope": 0.5874368673141023,
+            "geometric_angle_deg": 30.431546596558732,
+            "small_slope_parameter_deg": 33.6576532274846,
+            "rms_height_residual": 2.8797039734301877e-05
+          },
+          "circle": {
+            "status": "ok",
+            "points": 413,
+            "circle_center_height": -4.871184644154225,
+            "circle_radius": 5.762200892583152,
+            "contact_radius": 3.062188040627008,
+            "slope": 0.6273452581422683,
+            "geometric_angle_deg": 32.10190943152554,
+            "small_slope_parameter_deg": 35.94423558909712,
+            "rms_height_residual": 0.0009039375725403405,
+            "base_cosine": 0.8471042115933631
+          }
+        },
+        {
+          "axis": "y",
+          "sign": -1,
+          "window": [
+            0.4,
+            0.8
+          ],
+          "parabola": {
+            "status": "ok",
+            "points": 517,
+            "intercept": 0.9148146163455662,
+            "quadratic_coefficient": -0.09519629778923251,
+            "contact_radius": 3.082973376589319,
+            "slope": 0.586975303268145,
+            "geometric_angle_deg": 30.4118816235025,
+            "small_slope_parameter_deg": 33.63120755567626,
+            "rms_height_residual": 2.6171722049663418e-05
+          },
+          "circle": {
+            "status": "ok",
+            "points": 517,
+            "circle_center_height": -4.693104207340424,
+            "circle_radius": 5.597621728962696,
+            "contact_radius": 3.03548675428705,
+            "slope": 0.6454219639763412,
+            "geometric_angle_deg": 32.83908647276041,
+            "small_slope_parameter_deg": 36.97995454088901,
+            "rms_height_residual": 0.0009073854196187865,
+            "base_cosine": 0.8401968612859382
+          }
+        },
+        {
+          "axis": "y",
+          "sign": -1,
+          "window": [
+            0.6,
+            0.9
+          ],
+          "parabola": {
+            "status": "ok",
+            "points": 500,
+            "intercept": 0.9146342192635809,
+            "quadratic_coefficient": -0.09513272970498826,
+            "contact_radius": 3.0836957810415866,
+            "slope": 0.5867207944604839,
+            "geometric_angle_deg": 30.40103486499549,
+            "small_slope_parameter_deg": 33.61662527514837,
+            "rms_height_residual": 1.2336828435294968e-05
+          },
+          "circle": {
+            "status": "ok",
+            "points": 500,
+            "circle_center_height": -4.561367250152729,
+            "circle_radius": 5.4721471261344465,
+            "contact_radius": 3.007822407372576,
+            "slope": 0.6579699776411718,
+            "geometric_angle_deg": 33.34371596919287,
+            "small_slope_parameter_deg": 37.698902765156284,
+            "rms_height_residual": 0.0005132509087340232,
+            "base_cosine": 0.8353882205250514
+          }
+        },
+        {
+          "axis": "y",
+          "sign": 1,
+          "window": [
+            0.2,
+            0.6
+          ],
+          "parabola": {
+            "status": "ok",
+            "points": 413,
+            "intercept": 0.9152857771587337,
+            "quadratic_coefficient": -0.0952964472053753,
+            "contact_radius": 3.0821551303173536,
+            "slope": 0.5874368673101287,
+            "geometric_angle_deg": 30.43154659638947,
+            "small_slope_parameter_deg": 33.65765322725693,
+            "rms_height_residual": 2.8797039928578116e-05
+          },
+          "circle": {
+            "status": "ok",
+            "points": 413,
+            "circle_center_height": -4.8711846442529545,
+            "circle_radius": 5.7622008926916966,
+            "contact_radius": 3.0621880406738824,
+            "slope": 0.6273452581391823,
+            "geometric_angle_deg": 32.10190943139865,
+            "small_slope_parameter_deg": 35.9442355889203,
+            "rms_height_residual": 0.0009039375722795966,
+            "base_cosine": 0.84710421159454
+          }
+        },
+        {
+          "axis": "y",
+          "sign": 1,
+          "window": [
+            0.4,
+            0.8
+          ],
+          "parabola": {
+            "status": "ok",
+            "points": 517,
+            "intercept": 0.9148146163522457,
+            "quadratic_coefficient": -0.09519629778673769,
+            "contact_radius": 3.0829733766410965,
+            "slope": 0.58697530326262,
+            "geometric_angle_deg": 30.41188162326706,
+            "small_slope_parameter_deg": 33.63120755535971,
+            "rms_height_residual": 2.617172210199525e-05
+          },
+          "circle": {
+            "status": "ok",
+            "points": 517,
+            "circle_center_height": -4.693104207462139,
+            "circle_radius": 5.597621729091863,
+            "contact_radius": 3.0354867543366586,
+            "slope": 0.645421963970186,
+            "geometric_angle_deg": 32.83908647251145,
+            "small_slope_parameter_deg": 36.97995454053634,
+            "rms_height_residual": 0.0009073854194954984,
+            "base_cosine": 0.8401968612882945
+          }
+        },
+        {
+          "axis": "y",
+          "sign": 1,
+          "window": [
+            0.6,
+            0.9
+          ],
+          "parabola": {
+            "status": "ok",
+            "points": 500,
+            "intercept": 0.9146342192693142,
+            "quadratic_coefficient": -0.09513272970217028,
+            "contact_radius": 3.0836957810970302,
+            "slope": 0.5867207944536532,
+            "geometric_angle_deg": 30.401034864704343,
+            "small_slope_parameter_deg": 33.616625274757006,
+            "rms_height_residual": 1.2336828613929809e-05
+          },
+          "circle": {
+            "status": "ok",
+            "points": 500,
+            "circle_center_height": -4.56136725029639,
+            "circle_radius": 5.472147126284164,
+            "contact_radius": 3.00782240742662,
+            "slope": 0.6579699776323166,
+            "geometric_angle_deg": 33.34371596883879,
+            "small_slope_parameter_deg": 37.69890276464892,
+            "rms_height_residual": 0.0005132509085124201,
+            "base_cosine": 0.8353882205284482
+          }
+        }
+      ]
+    }
+  ]
+}
