@@ -1,0 +1,52 @@
+{
+  "status": "prepared_not_submitted",
+  "purpose": "independent width-score/selection-parameter exploration, not an isolated framework efficiency effect",
+  "physics": {
+    "ratio": 1.01,
+    "slip_ref": 0.2,
+    "repulsion": false,
+    "dt": 0.003,
+    "grid": 64,
+    "event": 0.01,
+    "floor": 0.005
+  },
+  "N": 12,
+  "horizon": 12000,
+  "score": "q17",
+  "modes": {
+    "ams": {
+      "D": 3,
+      "max_rounds": 16,
+      "ranks": 4,
+      "workers": 3
+    },
+    "dmc": {
+      "block": 150,
+      "strength": 14,
+      "ranks": 4,
+      "workers": 3
+    },
+    "qdmc": {
+      "block": 150,
+      "strength": 0.5,
+      "ranks": 4,
+      "workers": 3
+    }
+  },
+  "namespace_prefix": "rupture-q17-T12000-20261021-v1",
+  "calibration": {
+    "independent_direct_terminal_fields": 12,
+    "q17_sample_SD": 0.028138793986339578,
+    "target_potential_SD": 0.4,
+    "unrounded_strength": 14.215250312226827,
+    "selected_strength": 14
+  },
+  "nominal_budget_weights": {
+    "old_D1_16": 0.24853240691333806,
+    "candidate_D3_16": 0.010022595757618546
+  },
+  "startup_requirement": "Actual new D3 controller smoke, q17 numerical/score gate, new namespace uniqueness before any production",
+  "note": "Current q3 AMS remains unchanged. No q17 production job has been submitted.",
+  "planned_initial_seeds_unique": 36,
+  "baseline_seed_overlap": 0
+}
