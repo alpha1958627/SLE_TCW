@@ -1,0 +1,8 @@
+.ipynb_checkpoints/
+.mplconfig/
+__pycache__/
+preview.html
+data/*
+!data/README.md
+figures/*.csv
+figures/run_summary.json

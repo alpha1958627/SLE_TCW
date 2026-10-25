@@ -1,0 +1,50 @@
+{
+  "01_radius_vs_time.pdf": {
+    "sha256": "76ec5a1e10d684ce3771cc6b7abbe89f0751ba9b4c8ee7f42b61b8e99d00f20e",
+    "bytes": 151623
+  },
+  "01_radius_vs_time.png": {
+    "sha256": "480e2ea6b18c22e24b4baa35d78a010852561003670fcec372362ce1f91257ac",
+    "bytes": 463864
+  },
+  "02_ou_raw_mean_det_section.pdf": {
+    "sha256": "1eb0518d08baa6fa80b90bc5190436077c835f8f9e25fa57188be22bbe04d9fb",
+    "bytes": 105675
+  },
+  "02_ou_raw_mean_det_section.png": {
+    "sha256": "ff66216d661da608d18f6bcc666aa947e27e10c26e9afb22b60c413b178d1e33",
+    "bytes": 371600
+  },
+  "03_ou_raw_mean_det_zoom.pdf": {
+    "sha256": "a319aad184f6bd1606e536359239487cfee7785bf9e4cb03630d1bfa51db508e",
+    "bytes": 105313
+  },
+  "03_ou_raw_mean_det_zoom.png": {
+    "sha256": "df0d6a763ed98a7cbe5321a6b6500cff5a3c853bd3f79b3ea7f80d506416bd40",
+    "bytes": 388314
+  },
+  "04_contact_section_three_modes.pdf": {
+    "sha256": "a169fea761e65993d541c879f009b1f5e89fd161a710f55fc487486396e85787",
+    "bytes": 100455
+  },
+  "04_contact_section_three_modes.png": {
+    "sha256": "73783ee54610d17e88a9e34b61f60cf83bdb349f7b88240396e05b6febae6462",
+    "bytes": 375340
+  },
+  "05_contact_section_zoom.pdf": {
+    "sha256": "ce83e5e000503375313bf1c8238598d776e41aff5b18f09d09a05102111e1f80",
+    "bytes": 131104
+  },
+  "05_contact_section_zoom.png": {
+    "sha256": "6d54ce5ed018761209b4fb47adbc7d445065bac7939b93a7f8303b2020f718aa",
+    "bytes": 298722
+  },
+  "06_contact_region_three_modes.pdf": {
+    "sha256": "17e37c99d4243dd2d48cae168c2fefb0b7890ef72360d775330c639de5257ae1",
+    "bytes": 135577
+  },
+  "06_contact_region_three_modes.png": {
+    "sha256": "cb99dfd6644ac10a201a5359f699b0b516a316941eb7cac60d0bc94e9f2be02c",
+    "bytes": 184030
+  }
+}

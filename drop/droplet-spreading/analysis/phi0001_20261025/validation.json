@@ -1,0 +1,31 @@
+{
+  "bjt": "2026-10-25T20:07:16.360974+08:00",
+  "notebook_format_valid": true,
+  "all_code_cells_executed": 11,
+  "inline_figures": 6,
+  "execution_errors": 0,
+  "native_SHA_verified": 9,
+  "native_radius_spot_rechecks": 9,
+  "noise_radii_rows": 1616,
+  "deterministic_radii_rows": 1001,
+  "actual_visual_review_saved_notebook_images": true,
+  "actual_visual_review_PDF_pages": 6,
+  "all_PDF_text_inside_canvas": true,
+  "figure_inches": [
+    8,
+    6
+  ],
+  "PNG_pixels": [
+    4800,
+    3600
+  ],
+  "font_pt": 20,
+  "latex": true,
+  "grid": false,
+  "legend_frame": false,
+  "relative_paths": true,
+  "input_line_endings": "LF enforced by .gitattributes",
+  "kernel_runtime": "Python3.11 + isolated official PyPI pyzmq27.1 wheel; global environment unchanged",
+  "HTML_preview": "generated; local file browser protocol blocked; saved notebook inline images inspected directly",
+  "simulation_rerun": false
+}

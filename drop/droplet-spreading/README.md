@@ -65,3 +65,7 @@ These are short smoke examples only. For a longer physical time, increase `steps
 ## Provenance and limitations
 
 `droplet_spreading.c` is adapted from the OU-SE solver snapshot used for the local `t=1` pilot (source SHA-256 before this packaging: `E27533665A993F017FCEAA4602CADD4ADBA8722257B277CB55011977E024E514`). The OU-SE pilot reached `t=1` with finite positive height and small measured mass drift on a uniform level-8 grid; that does not demonstrate long-time stability or convergence. The white-noise precursor mask is a new amplitude taper and requires its own short-step, mass, timestep, and resolution checks before production use.
+
+## Reusable plotting notebook
+
+[`analysis/phi0001_20261025/drop.ipynb`](analysis/phi0001_20261025/drop.ipynb) packages the existing L64 low-noise droplet data, radius plots, raw/annular/ensemble profile comparisons, and native-cell zooms. All plotting code and required data are included; see its [README](analysis/phi0001_20261025/README.md) for definitions and the older deterministic baseline's different timestep. This post-processing package does not change or validate the solver defaults above.
