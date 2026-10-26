@@ -1,0 +1,3 @@
+# Independent runs. Replaying a frozen checkpoint requires its exact recorded versions.
+numpy>=1.19.5
+scipy>=1.5.4

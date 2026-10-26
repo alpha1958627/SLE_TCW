@@ -1,0 +1,81 @@
+{
+  "date": "2026-10-26",
+  "platform": "Windows AMD64",
+  "compiler": "GCC 15.2.0 (MinGW)",
+  "frozen_midpoint_source_files": 12,
+  "frozen_L6_source_files": 8,
+  "all_frozen_copies_byte_identical": true,
+  "Basilisk_source_matches_formal_source_manifest": true,
+  "reference_self_test": {
+    "analytic_Jacobian": "PASS",
+    "energy_gradient": "PASS",
+    "covariance_max_abs_error": 1.0587911840678754e-22,
+    "Ito_Stratonovich_drift_max_abs": 0.0,
+    "nonlinear_step": {
+      "newton": 1,
+      "residual": 1.2390804528250587e-15,
+      "evaluations": 3
+    },
+    "volume_mean_difference": 0.0,
+    "linear_CN_ratio": 0.9430714951174379,
+    "linear_CN_expected": 0.9430714951433554,
+    "unit_box_energy_and_time_scaling": "PASS",
+    "nonlinear_rupture_validated": false
+  },
+  "reference_native_replay": {
+    "PASS": true,
+    "runtime": {
+      "python": "3.11.14",
+      "numpy": "1.26.4",
+      "scipy": "1.17.1"
+    },
+    "steps": 20,
+    "n": 8,
+    "Brownian_additivity_error": 2.220446049250313e-16,
+    "invalid_seed_rejected": true,
+    "reference_native_max_abs": 0.0,
+    "restart_bitwise": true,
+    "max_residual": 1.3889032424299142e-12,
+    "volume_mean_error": 0.0
+  },
+  "finite_example_runs": {
+    "reference": {
+      "outcome": "RIGHT_CENSORED_AT_FIXED_HORIZON",
+      "n": 64,
+      "time": 0.6,
+      "height": 1.1,
+      "cap": 0.3,
+      "steps": 2,
+      "max_residual": 2.6504770600510597e-12,
+      "mean_error": 0.0
+    },
+    "native": {
+      "outcome": "RIGHT_CENSORED_AT_FIXED_HORIZON",
+      "n": 64,
+      "time": 0.6,
+      "height": 1.1,
+      "cap": 0.3,
+      "steps": 2,
+      "max_residual": 2.6504909378388675e-12,
+      "mean_error": 0.0
+    }
+  },
+  "N64_example_max_abs_difference": 2.220446049250313e-16,
+  "native_original_window_driver": {
+    "caps": [
+      0.03,
+      0.3
+    ],
+    "time": 0.6,
+    "outcome": "RIGHT_CENSORED_AT_FIXED_HORIZON",
+    "PASS": true
+  },
+  "L6_noise_probe": "PASS: exact nodes, staggered weights and periodic seams, two domains",
+  "existing_y_neighbor_tests": {
+    "passed": 2
+  },
+  "Basilisk_build_script_syntax": "PASS (bash -n)",
+  "fresh_Basilisk_MPI_run": false,
+  "fresh_Basilisk_MPI_note": "No qcc on publication host; historical deployment gates are separate, not rerun here.",
+  "physical_FPT_MFPT_convergence_proven": false
+}

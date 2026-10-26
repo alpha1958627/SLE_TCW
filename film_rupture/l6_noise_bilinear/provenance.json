@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "prepared_at": "2026-10-26",
+  "origin_snapshot": "2026-10-20_L6noise_bilinear_scan",
+  "frozen_files_sha256": {
+    "noise_l6_bilinear.h": "313c137ea021c7fec12e2021b5355ed89edf8186b321f238b51bfbe39633d099",
+    "noise_probe.c": "331e5f660599fb317a13d57bf835e2554f3db3d65d868ed9684a10ae9e7b7976",
+    "source_h0.5_L6.c": "74680a7d1bf03e0f371c0fc2b3a431c744cb57da558a19d9a423f5d58b928aef",
+    "source_h0.5_L7.c": "d891765ee253e858486822761ad32dd5ea6c2f35106b6a1fc4ac5c530d830841",
+    "source_h0.5_L8.c": "70ddc510be66838f1743857a18f63c23b232f85e5fd37f588e81005e81418a10",
+    "source_h0.6_L6.c": "c7a0b6b14476d391b67f435636526857ff2493f5e1bef31979a1cb9e26a49b8a",
+    "source_h0.6_L7.c": "f3ca6b6a97bef04eafca53d66f186aabfd805e5e821c8bb65b2806c7a91e3ce2",
+    "source_h0.6_L8.c": "7ec1476d0cabdcc5fb07d928f16c7e2a67c03c635e736d7754176d85380275f5"
+  },
+  "byte_identical": true
+}

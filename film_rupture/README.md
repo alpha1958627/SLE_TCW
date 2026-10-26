@@ -1,5 +1,7 @@
 # 液膜破碎：无排斥版 v3 / ls等效0.2 / 21条轨迹
 
+> **2026-10-26 版本交接**：本页下文是原21条的历史记录，不代表新版正式批次。[总版本表](../CODE_VERSIONS.md)区分空间索引/守恒修复与随机中点修正。新版 Python/native/Basilisk 源码及构建见 [midpoint/](midpoint/README.md)；固定 L6 噪声网格测试见 [l6_noise_bilinear/](l6_noise_bilinear/README.md)。新版全为直接MC，TCW验收不等于首次破碎时间收敛。
+
 2026-10-19 按用户要求关闭 h^-5 排斥项，从相同初态和五个种子重新运行。保留 h^-3 吸引项；Pi(h)=-A/h^3，排斥系数 hstar=0。除这一物理项外，其余参数与守恒v2一致。此批是直接SLE模拟，不包含AMS/DMC等罕见事件加速采样。
 
 > **2026-10-20 扩展**：[v3_tiered/](v3_tiered/README.md) 在同一物理（hstar=0）上加入
