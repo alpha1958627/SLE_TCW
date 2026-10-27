@@ -34,7 +34,7 @@
 #ifndef TCW_MG_MINLEVEL
 #define TCW_MG_MINLEVEL 3 /* fourth-order +/-2 stencil needs a nondegenerate periodic coarse grid */
 #endif
-#define TCW_FROZEN_MOBILITY 1 /* first-order lagged h^3; same pure-capillary PDE, linear implicit step */
+#define TCW_FROZEN_MOBILITY 0 /* metadata only: midpoint mobility is iterated, not lagged */
 #define TCW_POSITIVE_STOCHASTIC 1 /* conservative flux limit; white floor hp, OU floor 1e-6 */
 #ifndef TCW_COUPLED_STOCHASTIC
 #define TCW_COUPLED_STOCHASTIC 1 /* one raw-noise + implicit-capillary conservative step */
