@@ -1,0 +1,14 @@
+{
+  "PASS": true,
+  "checked_at": "2026-10-28",
+  "scope": "Publication packaging only; source copied from prior validated actual deployment",
+  "C_SHA256": "007757de8a89066c2225a9f9940ab2ee6b8f0c0a3ce4e04033f4e9498c5b138a",
+  "all_runtime_AST_PASS": true,
+  "existing_CPU_unittests_PASS": 2,
+  "source_and_binding_fingerprint_path_PASS": true,
+  "bash_syntax_PASS": true,
+  "CLI_help_lists_basilisk_fvsp": true,
+  "qcc_recompiled_for_packaging": false,
+  "new_cluster_run": false,
+  "original_FV_kernel_unchanged": true
+}

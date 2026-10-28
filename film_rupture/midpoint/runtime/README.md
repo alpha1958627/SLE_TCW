@@ -8,6 +8,7 @@
 | `native_midpoint_candidate.py` | C99 ctypes绑定、构建、库SHA |
 | `adaptive_runner.py` / `accelerated_runner.py` | 同路径BrownianTape、拒绝/事件细分、检查点/指纹 |
 | `run_cpu_mpi.py` | 一个rank处理不同轨迹；完整CLI/输出/显式恢复 |
+| `basilisk_fvsp_candidate.py` | FVSP谱曲率实验绑定和schema4，使用独立C库；不替换原FV |
 | `basilisk_midpoint_candidate.py` | qcc库绑定及MPI路径；不是独立时间格式 |
 | `run_single.py` | 最小reference/native/Basilisk有限窗入口 |
 | `batched_film.py` | CuPy设备数组、FFT及CUDA Newton/GMRES控制 |

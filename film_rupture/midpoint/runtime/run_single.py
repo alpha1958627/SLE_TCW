@@ -8,7 +8,7 @@ from pathlib import Path
 
 def main():
     p = argparse.ArgumentParser(description=__doc__)
-    p.add_argument('--kernel', choices=['reference', 'native', 'basilisk'], default='reference')
+    p.add_argument('--kernel', choices=['reference', 'native', 'basilisk', 'basilisk_fvsp'], default='reference')
     p.add_argument('--height', type=float, default=1.1)
     p.add_argument('--seed', type=int, default=2026102201)
     p.add_argument('--cap', type=float, default=.3)
@@ -27,8 +27,11 @@ def main():
         p.error('--library does not apply to reference')
     # Same protocol as the frozen production core, with an explicit finite end.
     options = dict(dt_cap=a.cap, base_dt=.064, depth=18)
-    if a.kernel == 'basilisk':
-        from basilisk_midpoint_candidate import Trajectory
+    if a.kernel in ('basilisk', 'basilisk_fvsp'):
+        if a.kernel == 'basilisk_fvsp':
+            from basilisk_fvsp_candidate import Trajectory
+        else:
+            from basilisk_midpoint_candidate import Trajectory
         trajectory = Trajectory(a.height, 64, a.seed, library=a.library, **options)
         rank = trajectory.film.rank
     else:
@@ -42,7 +45,7 @@ def main():
     # Every MPI rank checks the path before rank 0 creates it.
     if a.out.exists():
         p.error('--out must not already exist')
-    if a.kernel == 'basilisk':
+    if a.kernel in ('basilisk', 'basilisk_fvsp'):
         trajectory.film.library.bm_sync()
     if rank == 0:
         a.out.mkdir(parents=True, exist_ok=False)

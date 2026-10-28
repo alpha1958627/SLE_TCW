@@ -1,0 +1,23 @@
+{
+  "schema": 1,
+  "variant": "SLE-SMID-FVSP-BASILISK",
+  "source_SHA256": "007757de8a89066c2225a9f9940ab2ee6b8f0c0a3ce4e04033f4e9498c5b138a",
+  "original_filename": "basilisk_midpoint.c",
+  "original_binding_SHA256": "b3f5bdffa949b2f8cd8d6aee5cdaff27fc80acbe19e398326f9396eafe62f051",
+  "selected_platform": "WUZH",
+  "selected_ranks": 1,
+  "frozen_audit_at": "2026-10-28T07:47:39.994738",
+  "actual_library_SHA256": "24ae624666d70ff6f8d456d8cfa2921970337821130051d7fa2ea01db268f77f",
+  "packaging_change": "C bytes unchanged; explicit FVSP filename, necessary binding source/default-library paths relocated; shared finite-window CLI gains explicit variant",
+  "data_policy": "No raw fields/checkpoints/binaries/server credentials published",
+  "existing_jobs_modified": false,
+  "base_commit": "27560ce95efd9b8fbde67a5fec8cd6ce574d6190",
+  "published_files_SHA256": {
+    "experiments/fvsp/sle_smid_fvsp_basilisk.c": "007757de8a89066c2225a9f9940ab2ee6b8f0c0a3ce4e04033f4e9498c5b138a",
+    "experiments/fvsp/README.md": "1b970ac45fe4e1205109958e8f3e1c7452ac770683fe9e6d59d8938280dce8b1",
+    "experiments/fvsp/tcw_t300.csv": "5d2d394e92805b7414910341e1e21d85155ea922da709a00cf9f52b1a2ccd834",
+    "experiments/fvsp/gates.json": "9d4b6bb9e4bb1f04eb53e8f8fc7e4a60961b6e9d20866c92676375f26f0541a2",
+    "experiments/fvsp/packaging_checks.json": "05f49bdf96fe7f67b673b6a9b92129f9bde0e6a0a914e1d48ae278d70ef7c0b5",
+    "runtime/basilisk_fvsp_candidate.py": "18bf06c8eb2f0f20ddf07003766a939cb85e5cb1c792f8c61dffdf43c0f6e0c1"
+  }
+}

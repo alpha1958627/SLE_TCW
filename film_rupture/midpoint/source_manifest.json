@@ -150,5 +150,12 @@
     "film_rupture/v3_tiered/make_v3_template_20261020.py",
     "film_rupture/v3_tiered/run_v3_sipf.slurm"
   ],
-  "snapshot": "https://github.com/alpha1958627/SLE_TCW/tree/archive/20261028/droplet-notebook/film_rupture/midpoint"
+  "snapshot": "https://github.com/alpha1958627/SLE_TCW/tree/archive/20261028/droplet-notebook/film_rupture/midpoint",
+  "spatial_variant_added_20261028": {
+    "name": "SLE-SMID-FVSP-BASILISK",
+    "source": "experiments/fvsp/sle_smid_fvsp_basilisk.c",
+    "source_SHA256": "007757de8a89066c2225a9f9940ab2ee6b8f0c0a3ce4e04033f4e9498c5b138a",
+    "provenance": "experiments/fvsp/provenance.json",
+    "note": "Existing file hashes retain their snapshot scope; added variant has separate provenance and a new runtime fingerprint. Original FV kernel unchanged."
+  }
 }

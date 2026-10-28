@@ -1,0 +1,63 @@
+{
+  "OPERATOR_PASS.json": {
+    "PASS": true,
+    "errors": {
+      "control": {
+        "force": 1.8925833122906965e-15,
+        "noise": 3.469446951953614e-18,
+        "dforce": 1.4210854715202004e-14,
+        "dnoise": 6.938893903907228e-18,
+        "step": 8.881784197001252e-16,
+        "mode1_gain_error": 2.6290081223123707e-13,
+        "mode12_gain_error": 6.256883899879995e-12,
+        "mode31_gain_error": 1.2776966984429095e-12
+      },
+      "spectral": {
+        "force": 3.3306690738754696e-16,
+        "noise": 3.469446951953614e-18,
+        "dforce": 1.2789769243681803e-13,
+        "dnoise": 5.204170427930421e-18,
+        "step": 6.217248937900877e-15,
+        "mode1_gain_error": 1.900701818158268e-13,
+        "mode12_gain_error": 4.27158308724529e-12,
+        "mode31_gain_error": 1.906919067096169e-12
+      }
+    },
+    "FDT_covariance_error": 2.541098841762901e-21,
+    "mpi_ranks": 1,
+    "serial_MPI_difference": 0,
+    "correction": "spectral curvature, original mobility/noise unchanged"
+  },
+  "MPI_PASS.json": {
+    "PASS": true,
+    "errors": {
+      "control": {
+        "force": 1.8925833122906965e-15,
+        "noise": 3.469446951953614e-18,
+        "dforce": 1.4210854715202004e-14,
+        "dnoise": 6.938893903907228e-18,
+        "step": 8.881784197001252e-16,
+        "mode1_gain_error": 2.6290081223123707e-13,
+        "mode12_gain_error": 6.256883899879995e-12,
+        "mode31_gain_error": 1.2776966984429095e-12
+      },
+      "spectral": {
+        "force": 3.3306690738754696e-16,
+        "noise": 3.469446951953614e-18,
+        "dforce": 1.2789769243681803e-13,
+        "dnoise": 5.204170427930421e-18,
+        "step": 6.217248937900877e-15,
+        "mode1_gain_error": 1.900701818158268e-13,
+        "mode12_gain_error": 4.27158308724529e-12,
+        "mode31_gain_error": 1.906919067096169e-12
+      }
+    },
+    "FDT_covariance_error": 2.541098841762901e-21,
+    "mpi_ranks": 1,
+    "serial_MPI_difference": 0.0,
+    "correction": "spectral curvature, original mobility/noise unchanged"
+  },
+  "scope": "Frozen gates for the selected actual serial platform; file name MPI_PASS does not establish MPI16",
+  "actual_selected_ranks": 1,
+  "qcc_recompiled_for_GitHub_packaging": false
+}

@@ -1,6 +1,6 @@
 # 随机中点源码：先看C / CUDA
 
-**四条中点实现，同一时间格式；MPI核数和dt是运行配置。** 全部直接Monte Carlo。总版本表见[CODE_VERSIONS.md](../../CODE_VERSIONS.md)，同16条速度见[耗时表](BENCHMARK.md)。旧分步格式保留在[历史源码](../v3_tiered/)。
+**五个中点实现/空间离散组合（含FVSP实验），同一时间格式；MPI核数和dt是运行配置。** 全部直接Monte Carlo。总版本表见[CODE_VERSIONS.md](../../CODE_VERSIONS.md)，同16条速度见[耗时表](BENCHMARK.md)。旧分步格式保留在[历史源码](../v3_tiered/)。
 
 | 稳定名称 | 优先阅读源码 | 谁完成求解 | 并行方式 |
 |---|---|---|---|
@@ -8,6 +8,9 @@
 | **SLE-SMID-FV-C99** | [sle_smid_fv_c99.c](sle_smid_fv_c99.c) | C算通量/Jacobian；Python/SciPy解Newton/GMRES/FFT | CPU轨迹MPI，1/4/16核共用这一个C内核 |
 | **SLE-SMID-FV-BASILISK** | [sle_smid_fv_basilisk.c](sle_smid_fv_basilisk.c) | Basilisk面算子，C Newton/GMRES及FFT | 单场空间MPI；小网格向量/FFT各rank复制 |
 | **SLE-SMID-FV-CUDA** | [sle_smid_fv_cuda.cu](sle_smid_fv_cuda.cu) | 显存常驻批量FP64算子、Krylov正交化/旋转/回代 | 单GPU多轨迹批量；CPU提供兼容布朗增量 |
+| **SLE-SMID-FVSP-BASILISK**（实验） | [谱曲率C源码](experiments/fvsp/sle_smid_fvsp_basilisk.c) | FV面通量＋谱能量曲率，推进方程/Jacobian/预条件器实际改变 | h1.2配对TCW试验；实际选中串行1CPU，独立于原40条 |
+
+[黑线FV与红线FVSP详细对照](experiments/fvsp/README.md)。
 
 `.cu`是CUDA源码，保留真实扩展名。三个C/CUDA内核均与其已验收来源**逐字节相同**，仅换描述性文件名。这里没有把Python驱动伪装成C，也没有重写或修改正在运行的服务器源码。
 

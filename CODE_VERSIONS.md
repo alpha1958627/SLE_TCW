@@ -1,6 +1,6 @@
 # 液膜求解器版本总表
 
-**按周期平膜破碎这条研究线，共2种时间格式、5条主要实现路线。** 1核、4核MPI、16核MPI是同一CPU实现的运行配置；h、dt、网格、噪声插值、phi和seed不是独立算法版本。仓库的液滴/TCW历史/AMS/DMC属于其他问题或框架，不加入这5条计数。
+**按周期平膜破碎这条研究线，共2种时间格式、6个具体实现/空间离散组合（含1条FVSP实验路线）。** 1核、4核MPI、16核MPI是同一CPU实现的运行配置；h、dt、网格、噪声插值、phi和seed不是独立算法版本。仓库的液滴/TCW历史/AMS/DMC属于其他问题或框架，不加入这6条计数。
 
 ## 固定命名法
 
@@ -9,13 +9,13 @@
 | 字段 | 取值与含义 |
 |---|---|
 | 时间格式 | `SPLIT`：历史分步；`SMID`：保守随机隐式中点 |
-| 空间离散 | `FV`：周期均匀有限体积 |
+| 空间离散 | `FV`：周期均匀有限体积；`FVSP`：FV面通量＋谱能量曲率 |
 | 后端 | `BASILISK`、`NUMPY`、`C99`、`CUDA` |
 | 运行配置 | 单独记`N64 / cap0.3 / phi0.01 / MPI16 / B16`；不写进算法版本号 |
 
 例如 `SLE-SMID-FV-C99 @ <commit> ; N64 ; cap0.3 ; phi0.01 ; MPI16 ; seeds2026102201-216` 唯一说明“算法/源版本/参数/资源”。`C99`指C算子与Python求解控制的混合实现，并非全C；CUDA保留`.cu`扩展名。
 
-## 五条主线，从这里认代码
+## 六个组合，从这里认代码
 
 | 固定名称 | 核心源码 | 数值与并行职责 | 本项目中的用途 |
 |---|---|---|---|
@@ -24,6 +24,9 @@
 | **SLE-SMID-FV-C99** | [C99面算子](film_rupture/midpoint/sle_smid_fv_c99.c) | C通量/噪声/Jacobian，Python/SciPy隐式解；CPU轨迹MPI | 原native批次及1/4/16核同工作量测速；同一内核 |
 | **SLE-SMID-FV-BASILISK** | [Basilisk中点C源码](film_rupture/midpoint/sle_smid_fv_basilisk.c) | qcc周期FV，C Newton/GMRES/FFT，单场空间MPI | 正式40条所用中点核心；不能与旧分步程序混称 |
 | **SLE-SMID-FV-CUDA** | [CUDA批量内核](film_rupture/midpoint/sle_smid_fv_cuda.cu) | FP64显存常驻多轨迹、融合Krylov；CPU兼容布朗路径 | A100批量16条34.00秒；仍是直接MC |
+| **SLE-SMID-FVSP-BASILISK**（实验） | [FV面通量＋谱曲率C源码](film_rupture/midpoint/experiments/fvsp/sle_smid_fvsp_basilisk.c) | 中点不变，曲率/Jacobian/预条件器换谱q²；面迁移率/噪声仍FV | h1.2 TCW图红线；独立五seed试验，不是后处理或原正式40条 |
+
+详见[FV与FVSP差别及TCW证据](film_rupture/midpoint/experiments/fvsp/README.md)。此前五条表漏列该空间离散实验，现补齐；默认模型不替换。
 
 ## 同16条轨迹总耗时
 
@@ -55,7 +58,7 @@ CPU/GPU配对16seed最大场差9.20e-14；GPU独立末步物理残差最大7.08e
 
 ## GitHub展示与复用
 
-中点目录优先展示三个[源码文件](film_rupture/midpoint/README.md)，运行必需的Python集中于runtime；绘图、部署、看板、SSH和一次性门槛脚本从这次液膜展示范围移出，Git历史仍可追溯。没有删除本地证据、改服务器运行源或改其他项目的Python脚本。[整理前完整目录](https://github.com/alpha1958627/SLE_TCW/tree/7e1d0959a22cc1a69ed65da2504914275ace0d2b/film_rupture)保留原路径与原启动历史。
+中点主目录优先展示三个原模型C/CUDA核，另在experiments/fvsp单列谱曲率C源；见[源码入口](film_rupture/midpoint/README.md)。运行必需的Python集中于runtime；绘图、部署、看板、SSH和一次性门槛脚本从这次液膜展示范围移出，Git历史仍可追溯。没有删除本地证据、改服务器运行源或改其他项目的Python脚本。[整理前完整目录](https://github.com/alpha1958627/SLE_TCW/tree/7e1d0959a22cc1a69ed65da2504914275ace0d2b/film_rupture)保留原路径与原启动历史。
 
 文件重命名与Python路径绑定使新包指纹不同；**不要用新包恢复旧检查点**。C/CUDA内核逐字节保留原核，SHA见[清单](film_rupture/midpoint/source_manifest.json)。状态监测仍由各批独立审计负责，本页是代码目录，不宣称实时生产状态。
 
