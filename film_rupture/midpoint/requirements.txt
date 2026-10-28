@@ -1,3 +1,4 @@
-# Independent runs. Replaying a frozen checkpoint requires its exact recorded versions.
+# CPU: numpy/scipy; CPU ensemble MPI additionally needs mpi4py and an MPI runtime.
+# GPU additionally needs a CuPy package matching the installed CUDA runtime.
 numpy>=1.19.5
 scipy>=1.5.4

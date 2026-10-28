@@ -11,6 +11,6 @@ case "${MPI:-0}" in
   *) echo 'MPI must be 0 or 1' >&2; exit 2 ;;
 esac
 "$BASILISK/qcc" -I"$BASILISK" -D_GNU_SOURCE "$@" -O3 -fno-fast-math \
-  -ffp-contract=off -shared -fPIC basilisk_midpoint.c \
+  -ffp-contract=off -shared -fPIC sle_smid_fv_basilisk.c \
   -o compiled/basilisk_midpoint.so -lm
-sha256sum basilisk_midpoint.c compiled/basilisk_midpoint.so > compiled/basilisk.sha256
+sha256sum sle_smid_fv_basilisk.c compiled/basilisk_midpoint.so > compiled/basilisk.sha256

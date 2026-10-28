@@ -1,0 +1,47 @@
+{
+  "PASS": true,
+  "rows": [
+    {
+      "batch": 1,
+      "wall_seconds": 16.257557953707874,
+      "CPU_noise_seconds": 1.0924068298190832,
+      "GPU_solve_wall": 14.918293506838381,
+      "pair_max_difference": 2.55351295663786e-14,
+      "independent_last_residual": 6.007694342002878e-14
+    },
+    {
+      "batch": 4,
+      "wall_seconds": 20.090535493567586,
+      "CPU_noise_seconds": 4.2189547615125775,
+      "GPU_solve_wall": 15.56768012419343,
+      "pair_max_difference": 3.985700658404312e-14,
+      "independent_last_residual": 1.653954750935327e-13
+    },
+    {
+      "batch": 16,
+      "wall_seconds": 34.00061361677945,
+      "CPU_noise_seconds": 16.82844142243266,
+      "GPU_solve_wall": 16.650810163468122,
+      "pair_max_difference": 9.203748874142548e-14,
+      "independent_last_residual": 2.9828084446847924e-12
+    },
+    {
+      "batch": 64,
+      "wall_seconds": 87.1751658488065,
+      "CPU_noise_seconds": 68.61302214302123,
+      "GPU_solve_wall": 16.989566320553422,
+      "pair_max_difference": 9.203748874142548e-14,
+      "independent_last_residual": 7.0816685848740235e-12
+    }
+  ],
+  "max_pair_difference": 9.203748874142548e-14,
+  "max_independent_residual": 7.0816685848740235e-12,
+  "max_FFT_difference": 6.776263578034403e-20,
+  "actual_GPU": true,
+  "field_downloads_inside_timed": 0,
+  "noise_generator": "Original compatible CPU BrownianTape",
+  "CPU_serial_16": 192.36098684370518,
+  "CPU_MPI4_16": 47.98593420800012,
+  "CPU_MPI16_16": 12.233036803999994,
+  "event_gate": true
+}

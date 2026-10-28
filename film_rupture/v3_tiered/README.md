@@ -1,6 +1,6 @@
-# v3 tiered-dt 扫描（ls=0.2 × r=0.5–1.2 × 5 seed）
+# SLE-SPLIT-FV-BASILISK：历史分档扫描
 
-2026-10-20 由 lead 会话生成并部署（SIPF 作业 29333）。基于本仓库"无排斥版 v3"物理
+2026-10-20 由 lead 会话生成并部署（SIPF 作业 29333）。基于历史“无排斥v3”物理
 （hstar=0，SLE_TCW 77ce5cb）+ 全部守恒修复（ee3646d）+ **分档 dt cap** + 剖面/液面输出。
 
 ## 本目录新增内容（相对 film_rupture 当前版）
@@ -19,7 +19,7 @@
    - `sect_hmin_%06.2f_r%d.dat`：hmin 每跌破一档 0.01（0.99→0.01，~99 帧，while 防快潜跳档）；
    - `sect_t_%09.0f_r%d.dat`：定时（每 1000 t，~100 帧）；
    - `hfield_t%09.1f.bin`：全场每 100 t；
-   - 破碎瞬间 per-rank `rupture.hfield/rupture_field_r*/rupture_section_r*`（22712 修复版）。
+   - 破碎瞬间 per-rank `rupture.hfield/rupture_field_r*/rupture_section_r*`（历史剖面输出实现）。
    均不消耗随机数、不改变轨迹；MPI 按进程分文件，本地合并即可。
 
 3. **扫描范围**：r=0.5,0.6,…,1.2（8 组）× 5 seed = 40 条轨迹，换算口径
@@ -32,8 +32,8 @@
 |---|---|
 | `slip_prod_L6_v3.c` | 模板（分档 dt + 全部修复；物理参数为 r=1.0 默认） |
 | `source_v3_h{r}.c` | 8 份预补丁源（常数按 r 烘入，sha256 见 `sources.sha256`） |
-| `make_v3_template_20261020.py` / `gen_v3_sources_20261020.py` | 生成链（Decimal 40 位精度，与 build_plan.py 同口径） |
-| `run_v3_sipf.slurm` | SIPF C64 提交脚本（array 0–39%40） |
+| 生成链（归入Git历史） | [原Decimal常量生成脚本](https://github.com/alpha1958627/SLE_TCW/tree/7e1d0959a22cc1a69ed65da2504914275ace0d2b/film_rupture/v3_tiered)；当前保留已生成C源码 |
+| 原调度启动器（归入Git历史） | 当前不作为公共运行入口；已有服务器任务未修改 |
 
 ## 口径备注
 

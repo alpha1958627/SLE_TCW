@@ -2,7 +2,7 @@
 
 随机润滑方程的物理研究与罕见事件采样：
 
-**代码交接入口：[CODE_VERSIONS.md](CODE_VERSIONS.md)**。区分旧 dt=.1 分档版、L6 噪声插值、纯 Python 中点、native C 算子加速与新版 Basilisk 随机中点；包含参数、验证边界、构建与复用方法。
+**代码入口：[五条实现路线与标准命名](CODE_VERSIONS.md)**。先看[中点C/CUDA源码](film_rupture/midpoint/README.md)和[同16条耗时表](film_rupture/midpoint/BENCHMARK.md)：CPU1核192.36秒、CPU4核MPI47.99秒、A100批量34.00秒、CPU16核MPI12.23秒。核数是配置，不是算法版本。
 
 | 目录 | 内容 |
 |---|---|

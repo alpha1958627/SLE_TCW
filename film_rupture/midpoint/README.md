@@ -1,109 +1,58 @@
-# 保守随机中点：Python、native C 和 Basilisk
+# 随机中点源码：先看C / CUDA
 
-这是同一离散模型的三种实现；[总版本表](../../CODE_VERSIONS.md) 解释它们与旧 dt=.1、yfix 和 L6 噪声插值版的关系。核心源码原样复制，SHA256 见 [provenance.json](provenance.json)。本目录不包含生产原场、检查点、编译库或服务器连接配置。
+**四条中点实现，同一时间格式；MPI核数和dt是运行配置。** 全部直接Monte Carlo。总版本表见[CODE_VERSIONS.md](../../CODE_VERSIONS.md)，同16条速度见[耗时表](BENCHMARK.md)。旧分步格式保留在[历史源码](../v3_tiered/)。
 
-## 文件与职责
+| 稳定名称 | 优先阅读源码 | 谁完成求解 | 并行方式 |
+|---|---|---|---|
+| SLE-SMID-FV-NUMPY | [运行必需的参考核心](runtime/midpoint_candidate.py) | NumPy/SciPy算子、Newton/GMRES/FFT | 单轨迹；也可由MPI分发多轨迹 |
+| **SLE-SMID-FV-C99** | [sle_smid_fv_c99.c](sle_smid_fv_c99.c) | C算通量/Jacobian；Python/SciPy解Newton/GMRES/FFT | CPU轨迹MPI，1/4/16核共用这一个C内核 |
+| **SLE-SMID-FV-BASILISK** | [sle_smid_fv_basilisk.c](sle_smid_fv_basilisk.c) | Basilisk面算子，C Newton/GMRES及FFT | 单场空间MPI；小网格向量/FFT各rank复制 |
+| **SLE-SMID-FV-CUDA** | [sle_smid_fv_cuda.cu](sle_smid_fv_cuda.cu) | 显存常驻批量FP64算子、Krylov正交化/旋转/回代 | 单GPU多轨迹批量；CPU提供兼容布朗增量 |
 
-| 文件 | 职责 |
-|---|---|
-| `midpoint_candidate.py` | 纯 NumPy/SciPy FV 漂移、噪声、解析 Jacobian、Newton/GMRES、FFT 预条件；`--self-test` 验证离散结构 |
-| `adaptive_runner.py` | BrownianTape、同路径拒绝/事件细分、hmin 分档、SHA/运行版本检查点；历史 schema1 默认根块 .001/depth12 |
-| `accelerated_runner.py` | reference/native 统一轨迹 schema2；可显式选生产根块 .064/depth18 |
-| `native_midpoint_kernel.c` | FV 力、面噪声与 Jacobian 算子 C 加速；不负责 Newton/GMRES |
-| `native_midpoint_candidate.py` | ctypes 绑定、GCC 构建和编译清单；Newton/GMRES 仍用 Python 参考实现 |
-| `basilisk_midpoint.c` | Basilisk 多重网格、周期面算子、Newton/GMRES 与自带 radix-2 FFT；可编译 MPI |
-| `basilisk_midpoint_candidate.py` | qcc 库绑定与 schema3；Python 驱动相同布朗路径 |
-| `example_run.py` | 新增的有限时间、本地直接 MC 示例；保留阈值事件或右删失；不是正式批量启动器 |
-| `build_basilisk.sh` | 新增的本地 qcc 构建命令，默认串行，`MPI=1` 编译 MPI 库 |
-| `test_replay.py` | 新增的参考/native、布朗可加性、逐字节续算和错误 seed 拒收检查 |
-| `validate_and_benchmark.py` | 原集群实现门槛和同节点固定窗测速工具；使用 `compiled/`，测速需 Linux CPU affinity |
-| `build_and_smoke.py` | 原 qcc/MPI 编译与算子/单步门槛；依赖实际分配节点和兼容环境 |
-| `long_window_pilot.py` | 原 reference/native 固定窗驱动，定时原场、检查点、显式恢复与软停 |
-| `run_formal.py` | 原 Basilisk 事件终止驱动；依赖本机重新验收后的 case card，默认不提供生产选择配置 |
-| `tcw_probe.py` | 原 t300 配对 .03/.3 TCW 工具；读取 task index，详见下文 |
-| `validation/` | 脱离主机配置的组统计与验证范围；不是完整原场复现包 |
+`.cu`是CUDA源码，保留真实扩展名。三个C/CUDA内核均与其已验收来源**逐字节相同**，仅换描述性文件名。这里没有把Python驱动伪装成C，也没有重写或修改正在运行的服务器源码。
 
-## 离散模型与改变
+## 为什么仍有runtime目录
 
-```text
-mu(h) = -lap_FD(h) + A / h^3
-M_face = h_face^3 + ell_code * h_face^2
-h_face = (h_left + h_right) / 2
-F(h) = -K(h) mu(h)
-h_new - h_old = dt F((h_new+h_old)/2) + G((h_new+h_old)/2) dW
-```
+[runtime/](runtime/README.md)只放运行必需的控制器、绑定与布朗树：它们负责随机路径、拒绝步/事件细分、检查点、MPI分工和CUDA调度。去掉后C文件不能独立复现这些轨迹。绘图、看板、SSH、竞跑、部署和历史门槛脚本已从这一展示目录移除，旧文件仍在[整理前提交](https://github.com/alpha1958627/SLE_TCW/tree/7e1d0959a22cc1a69ed65da2504914275ace0d2b/film_rupture/midpoint)。
 
-两个方向使用同一面迁移率的平方根噪声，协方差满足有限维 FDT。面通量周期相消；没有厚度夹值/体积修补。Newton/GMRES 残差容差 1e-10，正性线搜索；不正/不收敛则拒绝并细分原布朗增量。事件阈值 hmin≤.01，事件步细分至约 1e-5 代码时间。源码中 `legacy_chain` 只是旧吸引项链式离散诊断，不是生产默认值。
+## 物理和格式
 
-Basilisk 此处解的是标量薄膜方程，**没有使用 VOF 两相 Navier–Stokes**；固定 N64，无 AMR。MPI 面算子在本地单元计算并交换边界，4096 维向量与 FFT 预条件器在各 rank 复制，不能推断无限加核会加速。
+周期二维均匀FV，`mu=-lap(h)+A/h^3`，面迁移率`M=h_face^3+ell*h_face^2`，噪声用同一`M`的平方根。漂移和噪声在`(h_new+h_old)/2`共同求解。Newton物理残差默认<=1e-10；不夹值、不修补体积、不重抽噪声。
 
-## 安装与最小运行
+固定phi接口：`A=.0013159/h0², phi=.01/h0², L=100/h0, ell=.2/h0, H=1, hstar=0`。布朗根块.064/depth18，hmin<.3/.1将dt上限降至.01/.003，事件hmin<=.01沿同一路径细分。`ell=.2`是迁移率h²系数，采用`h³+3b*h²`约定时对应Navier `b/H*=1/15`。
 
-下列命令均在本目录执行；Python 3.6.8/NumPy1.19.5/SciPy1.5.4 是原集群冻结组合。现代 Python 的独立复用可安装 `numpy`、`scipy`，但随机数/检查点不保证跨版本相同；不要把新版环境直接当成旧轨迹续算环境。
+`phi_ref=.013345`扩展仍用同一C99内核，驱动独立放在[runtime/phi_parameterized/](runtime/phi_parameterized/README.md)，不能把该物理参数下的轨迹当成上面phi=.01测速或旧135条的重复。
+
+## 最小运行
+
+从本目录执行；Linux CPU MPI需GCC、MPI、mpi4py、NumPy/SciPy。先限制每rank线程数：
 
 ```sh
-python -m pip install -r requirements.txt
-python midpoint_candidate.py --self-test
-python example_run.py --kernel reference --height 1.1 --time 3 --out runs/reference
+export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1
+# CPU单条有限窗（纯NumPy/SciPy参考）
+python runtime/run_single.py --kernel reference --height 1.2 --time 3 --out runs/reference
+# CPU轨迹MPI；首次由rank0编译上面的C99源码
+mpiexec -n 4 python runtime/run_cpu_mpi.py --heights 1.2 \
+  --seeds 2026102201 2026102202 2026102203 2026102204 --until 300 --out runs/cpu4
+# GPU批量；安装与本机CUDA匹配的CuPy，显式选择可用显卡
+CUDA_VISIBLE_DEVICES=0 python runtime/run_gpu_batch.py --heights 1.2 \
+  --seeds 2026102201 2026102202 2026102203 2026102204 --until 300 --out runs/gpu4
 ```
 
-**native C 算子版**需要 GCC；构建目录必须尚不存在。动态库与 build.json 一同保留：
-
-```sh
-python -c "from native_midpoint_candidate import build; print(build('compiled'))"
-# Linux: compiled/kernel.so；Windows: compiled/kernel.dll
-python example_run.py --kernel native --library compiled/kernel.so --height 1.1 --time 30 --out runs/native
-python test_replay.py --out validation/local_replay.json
-```
-
-**Basilisk**需要已有兼容的 Basilisk/qcc、C 编译器；MPI 版另需匹配的 MPI 编译器/运行库，不需要 mpi4py。构建脚本不会覆盖已有库。qcc 使用相对源文件名，并关闭 fast-math/浮点乘加收缩：
+Basilisk需兼容qcc；串行或MPI库分别在干净副本构建：
 
 ```sh
 export BASILISK=/path/to/basilisk/src
 bash build_basilisk.sh
-python example_run.py --kernel basilisk --height 1.1 --time 30 --out runs/basilisk
-
-# 在另一个干净的代码副本中构建 MPI 版：
-export CC99=mpicc
-MPI=1 bash build_basilisk.sh
-mpiexec -n 16 python example_run.py --kernel basilisk --height 1.1 --time 30 --out runs/basilisk_mpi
+python runtime/run_single.py --kernel basilisk --height 1.2 --time 3 --out runs/basilisk
+# 空编译目录内：export CC99=mpicc; MPI=1 bash build_basilisk.sh
+# mpiexec -n 16 python runtime/run_single.py --kernel basilisk ...
 ```
 
-同一副本一次只使用一个 Basilisk 库/活动网格配置。MPI 的每个 rank 都运行 Python 控制器和同一路径；仅 rank0 写文件。`example_run.py` 使用 N64、cap .3、根块 .064/depth18，默认到 t=30 即停止；输出 `RIGHT_CENSORED_AT_FIXED_HORIZON` 表示随访到该时间仍未破碎，不是破碎完成。输出目录必须为空且不存在，防止覆盖。
+这里的命令是功能示例，**不是上述16条预热测速程序**，也不自动向集群提交任务。GPU与CPU MPI完整入口使用`--until 0`等事件，墙时到限保存，`--resume`显式恢复；有限窗`CENSORED`不等于破碎。单条示例只提供有限窗。
 
-示例只写最后检查点、hmin 轨迹和 summary，不替代原生产的每300时间原场/每1000步检查点策略。恢复 API：`accelerated_runner.Trajectory.load(path, library=...)` 或 `basilisk_midpoint_candidate.Trajectory.load(path)`；后者记录原绝对库路径和 MPI 核数。同源、同实际库、同运行环境才能续算。schema1/2/3 不混读；没有跨平台移植检查点的默认保证。
+源码搬移后路径和Python指纹改变：**新目录不能接管旧生产检查点**。旧任务继续使用原冻结目录/库/运行环境。原核SHA、来源与路径整理记录见[source_manifest.json](source_manifest.json)；本次本地包装检查见[packaging_checks.json](packaging_checks.json)。
 
-## 原长窗与正式驱动
+## 使用结论
 
-`long_window_pilot.py` 保留原 native 批次的固定窗/软停协议，可在新目录运行：
-
-```sh
-python long_window_pilot.py --out runs/window --height 1.1 --seed 2026102201 --caps .03 .3 --horizon 300 --interval 300 --native-library compiled/kernel.so
-```
-
-有 `--native-library` 时显式采用根块 .064/depth18；**没有该选项的历史 reference CLI 仍默认 schema1/.001/depth12**。要做共享路径的 reference/native 对照，使用上文 example_run 或显式 `accelerated_runner.Trajectory(kernel="reference", base_dt=.064, depth=18)`，不要混用不同布朗协议。
-
-`run_formal.py` 是已部署的原 Basilisk 驱动，使用 `SLURM_ARRAY_TASK_ID`、`FORMAL_SELECTION.json` 的 PASS/cases，以及本机 TCW_PASS.json；它每300时间输出原场，每1000步保存状态，事件终止且无固定模拟终点。**已有 formal/task_XX/state.npz 时该驱动自动尝试同指纹恢复**，并非总是新起轨迹。仓库不提供实际生产选择文件、调度器提交器或继续任务脚本，不能把 validation/ 的历史 PASS 复制为新平台验收；先在独立目录重新构建、验收、绑定源/库/案例再接入自己的调度器。源码保存是为了复核原生产行为，最小复用从有限时间示例开始。
-
-## 复用原验收工具
-
-构建 `compiled/kernel.so` 和 `compiled/basilisk_midpoint.so` 后：
-
-```sh
-python validate_and_benchmark.py gate
-mpiexec -n 16 python validate_and_benchmark.py mpi
-python validate_and_benchmark.py benchmark --solver native --height 1.1 --repeat 0
-mpiexec -n 16 python validate_and_benchmark.py benchmark --solver basilisk --height 1.1 --repeat 0
-```
-
-同节点、同核数、同绑定才用于实现速度比较。`benchmark` 固定 seed、暖机至 t3、测速 t3→33、不含异步输出；比较 1CPU/native 与 16CPU/Basilisk 时必须同时报告核数，不能称同资源加速。
-
-`tcw_probe.py` 的位置参数为 0–39（8 高度依次 .6/.7/.8/.9/1/1.1/1.2/1.3，每高度5seed），使用串行 qcc 库；每身份沿共同布朗路径跑 cap .03 和 .3 到 t300。它会写原场，需要另行空间；结果不自动提交 Git。
-
-独立原型 `midpoint_candidate.py --out ...` 的 probe 使用 .001 根时间网格和 .15 宏块，输出标记 `restartable=False`。它与生产 .064/depth18 轨迹不同，不能混作额外独立重复。
-
-## 验证边界
-
-见 [validation/README.md](validation/README.md)。TCW 是同 N64 的有限时间线性 FD 参考；高段 24<sqrt(mx²+my²)≤46。固定 t300 与不同末时刻动态谱不能混称平衡测度误差。门槛通过不证明首次破碎、总体 MFPT、网格或 dt 收敛。
-
-本目录仅直接 MC。状态类里保留的 `fork()` 工具不是这个示例的采样步骤；示例/正式中点批次不调用它、不分裂/重采样/加权。
+这个N64、16条基准优先选C99轨迹MPI，16核12.23秒；GPU批量34.00秒是可用实现，仍受CPU兼容噪声约束。Basilisk适合核对空间MPI路径；不能把加核承诺成无限加速。短窗一致性、TCW以及5seed事件均值均不等于首次破碎/MFPT或dt/网格收敛。

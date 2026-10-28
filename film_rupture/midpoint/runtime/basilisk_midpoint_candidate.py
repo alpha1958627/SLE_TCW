@@ -48,14 +48,14 @@ class Film(ReferenceFilm):
 
 def fingerprint(library):
     names=['basilisk_midpoint.c','basilisk_midpoint_candidate.py','adaptive_runner.py','midpoint_candidate.py']
-    return dict(sources={name:hashlib.sha256((ROOT/name).read_bytes()).hexdigest() for name in names},
+    return dict(sources={name:hashlib.sha256((ROOT.parent/'sle_smid_fv_basilisk.c' if name=='basilisk_midpoint.c' else ROOT/name).read_bytes()).hexdigest() for name in names},
         library_SHA256=hashlib.sha256(Path(library).read_bytes()).hexdigest(),runtime=runtime())
 
 
 class Trajectory(ReferenceTrajectory):
     def __init__(self,height,n,seed,dt_cap=.3,h=None,tiered=True,event_resolution=1e-5,
                  base_dt=.064,depth=18,library=None):
-        self.library_path=str(Path(library or ROOT/'compiled/basilisk_midpoint.so').resolve())
+        self.library_path=str(Path(library or ROOT.parent/'compiled/basilisk_midpoint.so').resolve())
         super().__init__(height,n,seed,dt_cap=dt_cap,h=h,tiered=tiered,event_resolution=event_resolution,depth=depth)
         self.film=Film(height,n,self.library_path)
         self.noise=BrownianTape(seed,(2,n,n),base_dt=base_dt,depth=depth)

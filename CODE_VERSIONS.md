@@ -1,54 +1,60 @@
-# 液膜代码版本交接（2026-10-26）
+# 液膜求解器版本总表
 
-**图中的 `Basilisk .3` 是移植后的保守随机中点版**，代码在 [film_rupture/midpoint/](film_rupture/midpoint/README.md)。它确实使用 Basilisk/qcc 的网格、面通量、周期边界和 MPI；Python 负责布朗路径、步长控制和输出。它与最早 dt=.1 的分步 Basilisk 程序不同，也不等于“破碎时间已经收敛”。
+**按周期平膜破碎这条研究线，共2种时间格式、5条主要实现路线。** 1核、4核MPI、16核MPI是同一CPU实现的运行配置；h、dt、网格、噪声插值、phi和seed不是独立算法版本。仓库的液滴/TCW历史/AMS/DMC属于其他问题或框架，不加入这5条计数。
 
-## 一张版本表
+## 固定命名法
 
-| 版本及固定称呼 | 入口 | 实现与主要区别 | 适用范围/证据边界 |
+`SLE-时间格式-空间离散-计算后端`，精确源码版本由**Git提交SHA + 源SHA256**指定，不用“优化版、修复版、最新版”。
+
+| 字段 | 取值与含义 |
+|---|---|
+| 时间格式 | `SPLIT`：历史分步；`SMID`：保守随机隐式中点 |
+| 空间离散 | `FV`：周期均匀有限体积 |
+| 后端 | `BASILISK`、`NUMPY`、`C99`、`CUDA` |
+| 运行配置 | 单独记`N64 / cap0.3 / phi0.01 / MPI16 / B16`；不写进算法版本号 |
+
+例如 `SLE-SMID-FV-C99 @ <commit> ; N64 ; cap0.3 ; phi0.01 ; MPI16 ; seeds2026102201-216` 唯一说明“算法/源版本/参数/资源”。`C99`指C算子与Python求解控制的混合实现，并非全C；CUDA保留`.cu`扩展名。
+
+## 五条主线，从这里认代码
+
+| 固定名称 | 核心源码 | 数值与并行职责 | 本项目中的用途 |
 |---|---|---|---|
-| TCW Basilisk 基线 | [tcw/solvers/](tcw/solvers/) | 原 Basilisk 薄膜程序；修正 y 邻居索引 | 既有 TCW 对照；不是随机中点格式 |
-| 守恒/yfix 无排斥 v3 | [film_rupture/](film_rupture/README.md) 的 `source_yfix_h*.c` | 周期噪声坐标回绕、体积归约和 y 索引修复；hstar=0；仍为旧时间格式 | 与 `source_yold_h1.05.c` 的 y 索引实验对照分开；短测守恒不证明统计正确 |
-| **旧 v3 分档版（最早 dt=.1 那组）** | [film_rupture/v3_tiered/](film_rupture/v3_tiered/README.md) | hmin≥.3 用 cap .1，<.3 用 .01，<.1 用 .003；旧分步时间格式、旧非线性吸引项离散；有 .005 厚度截断 | 8 高度×5 seed；旧 h1.2 “t300”实际 t300.1 的高波数 TCW 偏移 +178.113%；不再称 dt=.1 安全/成核无偏 |
-| L6 噪声双线性插值版 | [film_rupture/l6_noise_bilinear/](film_rupture/l6_noise_bilinear/README.md) | 仍是旧时间格式；把两面分量 L6 交错噪声周期插值到 L7/L8，固定 Delta6 归一化 | 固定空间噪声截止测试；90 条均达阈值，但 4 条触及 .005 截断；不能称网格收敛 |
-| **Python 中点参考版** | [midpoint_candidate.py](film_rupture/midpoint/midpoint_candidate.py) + [adaptive_runner.py](film_rupture/midpoint/adaptive_runner.py) | NumPy/SciPy 有限体积、离散能量梯度、隐式随机中点；Newton/GMRES/FFT 均在 Python 栈 | 用于公式核验与实现参照；不是 Basilisk；拒绝步沿同一布朗路径细分 |
-| **Python + native C 算子版** | [accelerated_runner.py](film_rupture/midpoint/accelerated_runner.py) + [native_midpoint_candidate.py](film_rupture/midpoint/native_midpoint_candidate.py) + [native_midpoint_kernel.c](film_rupture/midpoint/native_midpoint_kernel.c) | 只把 FV 漂移/噪声/Jacobian 算子放进 C；Newton/GMRES/FFT 仍由 Python/SciPy/NumPy 完成 | 旧 135 身份批次使用的独立求解器；不是 Basilisk，也不是“全 C 求解器” |
-| **Basilisk 随机中点版（新版正式 40 条）** | [basilisk_midpoint.c](film_rupture/midpoint/basilisk_midpoint.c) + [basilisk_midpoint_candidate.py](film_rupture/midpoint/basilisk_midpoint_candidate.py) | qcc/Basilisk 均匀周期网格；Newton/GMRES 和 FFT 预条件器也在 C；Python 提供相同布朗增量 | N64、cap .3、8 高度×5 seed、16 MPI×1 线程；实现/TCW 门槛通过，FPT/MFPT 收敛尚未证明 |
-| 液滴、钉扎与铺展 | [drop/](drop/README.md) | 另一类几何、初态与边界问题 | 保持原有说明和 notebook，不与周期平膜破碎直接混算 |
-| 历史 AMS/DMC | [AMS/](AMS/README.md)、[DMC/](DMC/README.md)、[rare_events/](rare_events/README.md) | 仓库保留的其他采样框架 | **本次中点批次全部直接 MC，不调用分裂、重采样、权重方法** |
+| **SLE-SPLIT-FV-BASILISK** | [旧分步C源码，含h1.2](film_rupture/v3_tiered/source_v3_h1.2.c) | 旧Basilisk分步更新、旧吸引项离散，.005厚度截断 | 最早cap=.1分档组；只作历史对照 |
+| **SLE-SMID-FV-NUMPY** | [NumPy参考核心](film_rupture/midpoint/runtime/midpoint_candidate.py) | NumPy/SciPy算子、Newton/GMRES/FFT | 中点公式与实现参照；不是Basilisk |
+| **SLE-SMID-FV-C99** | [C99面算子](film_rupture/midpoint/sle_smid_fv_c99.c) | C通量/噪声/Jacobian，Python/SciPy隐式解；CPU轨迹MPI | 原native批次及1/4/16核同工作量测速；同一内核 |
+| **SLE-SMID-FV-BASILISK** | [Basilisk中点C源码](film_rupture/midpoint/sle_smid_fv_basilisk.c) | qcc周期FV，C Newton/GMRES/FFT，单场空间MPI | 正式40条所用中点核心；不能与旧分步程序混称 |
+| **SLE-SMID-FV-CUDA** | [CUDA批量内核](film_rupture/midpoint/sle_smid_fv_cuda.cu) | FP64显存常驻多轨迹、融合Krylov；CPU兼容布朗路径 | A100批量16条34.00秒；仍是直接MC |
 
-## 两层修正，不能混称
+## 同16条轨迹总耗时
 
-1. **空间索引/守恒修正**：y 邻居、周期面噪声一致性、避免体积重复全局归约。旧 v3 已包含其中相应修正；这不会自动消除时间离散造成的 TCW 畸变。
-2. **随机中点修正**：漂移与噪声均在新旧场中点求解；吸引力改为离散能量的化学势差，面迁移率与噪声协方差匹配。拒绝步和阈值事件沿原布朗路径细分，不夹值、不补体积、不重抽噪声。它同时改变了时间格式和非线性空间离散，旧/新差异不能全部归因于 dt。
+| 配置 | 总墙时 | 相对CPU1核 |
+|---|---:|---:|
+| C99，CPU1核 | 192.36秒 | 1.00× |
+| C99，CPU4核MPI | 47.99秒 | 4.01× |
+| CUDA，A100批量16条+1主机线程 | **34.00秒** | 5.66× |
+| C99，CPU16核MPI | **12.23秒** | 15.72× |
 
-中点核心的七份源码保持部署时的字节；[provenance.json](film_rupture/midpoint/provenance.json) 记录 SHA256。新增的本地示例、构建脚本和测试不是服务器生产启动器。没有把库二进制、服务器配置、原场、检查点或未运行候选打进本包。
+同一g1节点、N64、h0=1.2、cap=.3、phi_ref=.01、同16seed；预热0→3，计时3→300，包括兼容噪声、上传和控制，末场写盘在计时外。一次测量/配置。**本基准CPU16核快于GPU约2.78倍**；不是GPU全面领先，也不是CPU单条轨迹需要192秒。完整条件、精确表与验收见[中点耗时说明](film_rupture/midpoint/BENCHMARK.md)。
 
-## 共同物理与比较口径
+## 这些区别不另造版本名
 
-平膜初值 H=1，N=64，周期正方形；外部高度参数记为 h0：
+- `noise=L6-bilinear`：[L6噪声插值源码](film_rupture/l6_noise_bilinear/README.md)，仍属SPLIT-BASILISK，固定空间噪声截止；不是新的中点或白噪声网格极限。
+- `y-index`历史实验：[y索引对照](film_rupture/source_yold_h1.05.c)与[周期守恒源](film_rupture/source_yfix_h1.05.c)，属旧格式的索引控制；不作为当前推荐的独立主线。
+- `phi_ref=.013345`：[显式参数运行接口](film_rupture/midpoint/runtime/phi_parameterized/README.md)，C99内核SHA完全相同；是物理参数扩展。固定phi=.01接口仍保留用于精确对应四项耗时。
+- GPU早期逐步CuPy、未融合Krylov及4噪声线程探索属于性能试验历史；当前展示已验收的显存常驻融合Krylov源码，历史数据留本地档案，不重复命名为新算法。
 
-```text
-A = 0.0013159 / h0^2       phi = 0.01 / h0^2
-L = 100 / h0              ell_code = 0.2 / h0
-M(H) = H^3 + ell_code H^2
-hstar = 0                破碎阈值 hmin <= 0.01
-```
+## 算法差别与证据边界
 
-ell_code 是 h² 的系数；采用 M=H³+3bH² 时 ell_code=3b。理论基准 ell_m=.2 对应 Navier b/H*=1/15。不能把 .2 直接称为该约定下的 Navier b。
+SMID将漂移与噪声在`(h_new+h_old)/2`联合求解，以离散能量差构造化学势，面迁移率与噪声匹配。Newton物理残差<=1e-10，拒绝和事件沿同一布朗路径细分，没有厚度夹值、体积修补或噪声重抽。它和旧SPLIT同时改变时间及非线性空间离散，不能只称“dt调大”。
 
-新中点生产布朗根块 .064、depth18；hmin<.3/.1 时将上限降到 .01/.003，失败与事件另作同路径细分。同 seed、同根块和同版本 RNG 的不同 dt/实现可共享路径；它们不是独立重复。跨高度复用 seed 标签，也不应把五个高度当成 25 个独立 seed。
+旧h1.2 cap=.1在实际t300.1的高段TCW相对同N64离散参考偏移约+178.113%。中点对同N64离散参考接近，但N64高波数对连续正则模仍有明显空间误差；参考不同必须明确。native h.9五seed均值cap.03=109315.767、.3=64126.063，差−41.34%，所以TCW接近也不能证明首次破碎/MFPT或dt收敛。
 
-时间图统一用 **tau = h0 × t_code / 1e8**；原始 t_code 保留。EK 参考是全迁移率谱 N49 的鞍点首达预测；这里的 hmin 阈值破碎不是同一事件，N49 谱与 N64 FV 也不同。不外推 h0≤1，不用理论填补未破碎轨迹。
+CPU/GPU配对16seed最大场差9.20e-14；GPU独立末步物理残差最大7.08e-12。基准到T300未破碎，不能把短窗性能验收当破碎统计。旧native135条与Basilisk40条复用路径，不能相加成175个独立seed。只有全组真实事件才给全组样本算术均值；其余保留删失/暂停/停止/失败。
 
-## 已知结果与没有证明的事
+图中时间保持`tau=h0*t_code/1e8`。EK全迁移率N49谱的鞍点首达和hmin阈值破碎不同；ell_m=.2对应Navier b/H*=1/15，不以理论填未破碎数据，不外推h<=1。
 
-- 新 Basilisk t300：8 高度、每组 5 seed，cap .3 高波数 TCW 组均偏移约 −0.021%～+1.695%；相对同路径 .03 的个体功率变化最大 4.330%。没有人为调小噪声来达到门槛。详见 [TCW 与速度表](film_rupture/midpoint/validation/README.md)。
-- 实现门槛：原部署的算子/步进对照、续算、MPI 1/4/16/64 对照通过；这是实现验收。复制到本仓库后另做的本地测试有独立日期、运行环境和结果，不冒称重新完成集群验收。
-- **TCW 接近不保证首次破碎时间接近**：native 中点 h.9 的 5-seed 样本算术均值，cap .03 为 109315.767，.3 为 64126.063（低 41.34%），.5 为 61214.054（低 44.00%）。不能因为 .3/.5 相近便宣称 dt 极限收敛。
-- 本地冻结快照 2026-10-26 14:04:54：Basilisk 40 身份为 33 阈值事件+7 运行；h.6/.7/.8/.9/1/1.1 各5/5，h1.2 为3/5，h1.3 为0/5。**这不是在线状态服务**，后续以新的真实审计为准。
-- 旧 native 135 身份已终止：81 事件、29 固定窗右删失、25 用户停止；另 4 条旧参考为 1 事件+3 墙时软暂停，单列。Basilisk/native 复用路径，不能把两实现身份相加当独立 MC 样本。
-- 只有组内五条都真破碎才报五条样本算术均值；运行、固定窗删失、用户停止、软暂停及数值失败分别保留。调度 COMPLETED 不等于破碎；五条均值也不等于收敛的总体 MFPT。
+## GitHub展示与复用
 
-## 从哪里开始复用
+中点目录优先展示三个[源码文件](film_rupture/midpoint/README.md)，运行必需的Python集中于runtime；绘图、部署、看板、SSH和一次性门槛脚本从这次液膜展示范围移出，Git历史仍可追溯。没有删除本地证据、改服务器运行源或改其他项目的Python脚本。[整理前完整目录](https://github.com/alpha1958627/SLE_TCW/tree/7e1d0959a22cc1a69ed65da2504914275ace0d2b/film_rupture)保留原路径与原启动历史。
 
-先看 [midpoint/README.md](film_rupture/midpoint/README.md) 的文件表、构建和有限时间示例；纯 Python 参考不需要编译器。旧 dt=.1 源码保留在 v3_tiered，L6 插值源单列。现有 droplet notebook 未改动；本次不发布生产原场和完整轨迹数据。
+文件重命名与Python路径绑定使新包指纹不同；**不要用新包恢复旧检查点**。C/CUDA内核逐字节保留原核，SHA见[清单](film_rupture/midpoint/source_manifest.json)。状态监测仍由各批独立审计负责，本页是代码目录，不宣称实时生产状态。

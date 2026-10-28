@@ -1,0 +1,153 @@
+{
+  "schema": 1,
+  "prepared_at": "2026-10-28",
+  "base_commit": "7e1d0959a22cc1a69ed65da2504914275ace0d2b",
+  "scope": "Source presentation only; no server source or runtime mutation",
+  "files": {
+    "film_rupture/midpoint/sle_smid_fv_c99.c": {
+      "original_name": "native_midpoint_kernel.c",
+      "source_SHA256": "947e1c39ffc66ab4f3eae082f143584f5f3f5692980218b24f21242e58e56cbc",
+      "change": "byte-identical kernel; new descriptive filename"
+    },
+    "film_rupture/midpoint/sle_smid_fv_cuda.cu": {
+      "original_name": "operators.cu",
+      "source_SHA256": "9419602d90db8bc68a5defe52fae49e3d86ca5cb92f1a8abbcbe8bc10503d09b",
+      "change": "byte-identical kernel; new descriptive filename"
+    },
+    "film_rupture/midpoint/sle_smid_fv_basilisk.c": {
+      "original_name": "basilisk_midpoint.c",
+      "source_SHA256": "0488063ed4a2a31a3cb739945dc56e4da2a8acaca307f78642d14b6c3bbf632c",
+      "change": "byte-identical kernel; new descriptive filename"
+    },
+    "film_rupture/midpoint/runtime/midpoint_candidate.py": {
+      "original_name": "midpoint_candidate.py",
+      "source_SHA256": "05c60bbd5a2839e45775e5a5d2239fe4ea817335e769bc1d9f0093388a208939",
+      "change": "C source path relocation only; CLI filename renamed where applicable"
+    },
+    "film_rupture/midpoint/runtime/adaptive_runner.py": {
+      "original_name": "adaptive_runner.py",
+      "source_SHA256": "34f5fd6c03342f4c7969d02e3436bbe05f94f70aab43c0363dc3a2c2dd418767",
+      "change": "C source path relocation only; CLI filename renamed where applicable"
+    },
+    "film_rupture/midpoint/runtime/accelerated_runner.py": {
+      "original_name": "accelerated_runner.py",
+      "source_SHA256": "77904de481bd5c2253a5925ed3381799e164db1eca97b2a9d2f16c107bdb2fd1",
+      "change": "C source path relocation only; CLI filename renamed where applicable"
+    },
+    "film_rupture/midpoint/runtime/native_midpoint_candidate.py": {
+      "original_name": "native_midpoint_candidate.py",
+      "source_SHA256": "547cf1894432e9ffecae192ff64c9cf0c06e455947322413c05a271a6e242dcc",
+      "change": "C source path relocation only; CLI filename renamed where applicable"
+    },
+    "film_rupture/midpoint/runtime/run_cpu_mpi.py": {
+      "original_name": "solve_mpi.py",
+      "source_SHA256": "85a4e9110947e10ed82efbed685fd8aa333d01d0b66c4fc40fcd705cfa7213f9",
+      "change": "C source path relocation only; CLI filename renamed where applicable"
+    },
+    "film_rupture/midpoint/runtime/batched_film.py": {
+      "original_name": "batched_film.py",
+      "source_SHA256": "484045e1436205069eeac2abf243fb27b0f0c28f3c0a66b9ee59da42f1987bce",
+      "change": "C/CUDA source paths relocated; CLI filename renamed where applicable"
+    },
+    "film_rupture/midpoint/runtime/batch_runner.py": {
+      "original_name": "batch_runner.py",
+      "source_SHA256": "f05c7b5c46cf4f605230ea4a0824cc7db34164a261b8c69debcaa33248fac897",
+      "change": "C/CUDA source paths relocated; CLI filename renamed where applicable"
+    },
+    "film_rupture/midpoint/runtime/run_gpu_batch.py": {
+      "original_name": "solve_gpu.py",
+      "source_SHA256": "84ccd5889a9a2885ec774c0bafc06e5ed38880ee925e217207c9d78cfc3b79fe",
+      "change": "C/CUDA source paths relocated; CLI filename renamed where applicable"
+    },
+    "film_rupture/midpoint/runtime/basilisk_midpoint_candidate.py": {
+      "original_name": "basilisk_midpoint_candidate.py",
+      "change": "C source and default build path relocation only"
+    },
+    "film_rupture/midpoint/runtime/run_single.py": {
+      "original_name": "example_run.py",
+      "change": "entry filename only"
+    },
+    "film_rupture/midpoint/runtime/phi_parameterized/midpoint_candidate.py": {
+      "original_name": "midpoint_mpi_green/midpoint_candidate.py",
+      "source_SHA256": "8646a563a7709fefabf98f203d8861b30436eff6af89165253970ff7653ce4a3",
+      "change": "shared C/binding paths relocated; phi remains explicit"
+    },
+    "film_rupture/midpoint/runtime/phi_parameterized/adaptive_runner.py": {
+      "original_name": "midpoint_mpi_green/adaptive_runner.py",
+      "source_SHA256": "f278b4a362a6efc1f5a67a7bec7dd9ee7eea4b3c80e383d4cce62354ed6820a8",
+      "change": "shared C/binding paths relocated; phi remains explicit"
+    },
+    "film_rupture/midpoint/runtime/phi_parameterized/accelerated_runner.py": {
+      "original_name": "midpoint_mpi_green/accelerated_runner.py",
+      "source_SHA256": "9538a6abb26d82695f2a5fa1b12bf8b982dba45093450b141460d43455f24687",
+      "change": "shared C/binding paths relocated; phi remains explicit"
+    },
+    "film_rupture/midpoint/runtime/phi_parameterized/run_cpu_mpi.py": {
+      "original_name": "midpoint_mpi_green/solve_mpi.py",
+      "source_SHA256": "6a02412d7a0c8b9ccbbe0f5b3aa092b9df3bc9a2e18a058ab9ed6c47e63f33d1",
+      "change": "shared C/binding paths relocated; phi remains explicit"
+    }
+  },
+  "files_SHA256": {
+    "film_rupture/midpoint/.gitignore": "df01db853d06abf0bb3f237bb58f8a22ef834b0250b0dcb256aff29b3c2f9b04",
+    "film_rupture/midpoint/BENCHMARK.md": "4a78753d19cafbaade865bdfb499648b288e76f8ecd478166f8da26f53aa8426",
+    "film_rupture/midpoint/build_basilisk.sh": "a5de94068355f09c6f85f1e416a3294c5e2b8c63abf2620cffc034860d321014",
+    "film_rupture/midpoint/packaging_checks.json": "9d7e382637fb1bbb617bc576498b3bd221b9b1cf440179cbbbea50168e75d58c",
+    "film_rupture/midpoint/README.md": "27ba57a0c11b6b14fe25046de95011b86a70d28d96af91e167cac50ff736c6b7",
+    "film_rupture/midpoint/requirements.txt": "4ac3c37ef085ef13a4c1b4cea9f2bb90b9cd08580d02358668b0117990a1b390",
+    "film_rupture/midpoint/sle_smid_fv_basilisk.c": "0488063ed4a2a31a3cb739945dc56e4da2a8acaca307f78642d14b6c3bbf632c",
+    "film_rupture/midpoint/sle_smid_fv_c99.c": "947e1c39ffc66ab4f3eae082f143584f5f3f5692980218b24f21242e58e56cbc",
+    "film_rupture/midpoint/sle_smid_fv_cuda.cu": "9419602d90db8bc68a5defe52fae49e3d86ca5cb92f1a8abbcbe8bc10503d09b",
+    "film_rupture/midpoint/benchmarks/same16.csv": "5f0420e125c082ef1f25f1901a9e1ccdaa66476ca38b9763f1f0b2eff290bb42",
+    "film_rupture/midpoint/benchmarks/verification.json": "97fc7f44d2376f371b2250704c533c54dc0f90bbbacd598dcf3d0f1816d81e5f",
+    "film_rupture/midpoint/runtime/accelerated_runner.py": "061acb447f98462ce057e435a53b7a81cc33b9f18440ca42381b336e4599d391",
+    "film_rupture/midpoint/runtime/adaptive_runner.py": "34f5fd6c03342f4c7969d02e3436bbe05f94f70aab43c0363dc3a2c2dd418767",
+    "film_rupture/midpoint/runtime/basilisk_midpoint_candidate.py": "dfa03a140662b063bb117cb62b8d08e50d7a077846b703e7e4256ccf7c4d9ad1",
+    "film_rupture/midpoint/runtime/batched_film.py": "55c4ae4ff39750433e4c71652ee5913973acedbff66d69524bce8d054a7ec8da",
+    "film_rupture/midpoint/runtime/batch_runner.py": "375558b7b3dfbb4d3fc9a3f502029e32e14b181c2c196186968622a53b131acf",
+    "film_rupture/midpoint/runtime/midpoint_candidate.py": "05c60bbd5a2839e45775e5a5d2239fe4ea817335e769bc1d9f0093388a208939",
+    "film_rupture/midpoint/runtime/native_midpoint_candidate.py": "7aaf868ae143d170a7991ab8549e3283f2d98e774afbd3715b684d20cd91c2c4",
+    "film_rupture/midpoint/runtime/README.md": "f503e830be737dd63bdb7298c06a3ef5a025646894ef69963e430ea758b12614",
+    "film_rupture/midpoint/runtime/run_cpu_mpi.py": "85a4e9110947e10ed82efbed685fd8aa333d01d0b66c4fc40fcd705cfa7213f9",
+    "film_rupture/midpoint/runtime/run_gpu_batch.py": "84ccd5889a9a2885ec774c0bafc06e5ed38880ee925e217207c9d78cfc3b79fe",
+    "film_rupture/midpoint/runtime/run_single.py": "7a4ae89a0725f5c2a18eb8b3543517676b51ac56cb5cea724040b4c1cd4ae944",
+    "film_rupture/midpoint/runtime/phi_parameterized/accelerated_runner.py": "ef75b0a1ef192ce97b73d699a67d748e8acafb142c90e3b86752b58e46583dc0",
+    "film_rupture/midpoint/runtime/phi_parameterized/adaptive_runner.py": "e306ed888aec38942edbf8dbaec4c3c1b7acf0fe6cc34ad815651b17c5674196",
+    "film_rupture/midpoint/runtime/phi_parameterized/midpoint_candidate.py": "84b8bef488e6003d8319de692a0b1003cf63b06e655d539c115d24a7af2e22e9",
+    "film_rupture/midpoint/runtime/phi_parameterized/README.md": "aa02eb456e93c40819b5c5c472fde81ed754a6dccae31031e17ab6c2dd25bbeb",
+    "film_rupture/midpoint/runtime/phi_parameterized/run_cpu_mpi.py": "cfa65843c1231898608c4dde03181628ca6970367221bace7b00e929007e8e4a"
+  },
+  "historical_files_removed_from_tip": [
+    "film_rupture/build_dashboard_data.py",
+    "film_rupture/build_plan.py",
+    "film_rupture/build_sipf.sh",
+    "film_rupture/check_smoke.py",
+    "film_rupture/midpoint/accelerated_runner.py",
+    "film_rupture/midpoint/adaptive_runner.py",
+    "film_rupture/midpoint/basilisk_midpoint.c",
+    "film_rupture/midpoint/basilisk_midpoint_candidate.py",
+    "film_rupture/midpoint/build_and_smoke.py",
+    "film_rupture/midpoint/example_run.py",
+    "film_rupture/midpoint/long_window_pilot.py",
+    "film_rupture/midpoint/midpoint_candidate.py",
+    "film_rupture/midpoint/native_midpoint_candidate.py",
+    "film_rupture/midpoint/native_midpoint_kernel.c",
+    "film_rupture/midpoint/provenance.json",
+    "film_rupture/midpoint/run_formal.py",
+    "film_rupture/midpoint/tcw_probe.py",
+    "film_rupture/midpoint/test_replay.py",
+    "film_rupture/midpoint/validate_and_benchmark.py",
+    "film_rupture/midpoint/validation/README.md",
+    "film_rupture/midpoint/validation/TCW_PASS.json",
+    "film_rupture/midpoint/validation/benchmark_groups.csv",
+    "film_rupture/midpoint/validation/publication_checks.json",
+    "film_rupture/midpoint/validation/tcw_groups.csv",
+    "film_rupture/monitor_volume.py",
+    "film_rupture/refresh_dashboard.py",
+    "film_rupture/run_sipf.slurm",
+    "film_rupture/smoke.slurm",
+    "film_rupture/v3_tiered/gen_v3_sources_20261020.py",
+    "film_rupture/v3_tiered/make_v3_template_20261020.py",
+    "film_rupture/v3_tiered/run_v3_sipf.slurm"
+  ]
+}

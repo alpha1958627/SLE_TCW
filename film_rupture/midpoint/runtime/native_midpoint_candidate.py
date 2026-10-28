@@ -19,7 +19,7 @@ ROOT=Path(__file__).resolve().parent
 
 def build(folder):
     folder=Path(folder);folder.mkdir(exist_ok=False)
-    source=ROOT/'native_midpoint_kernel.c'
+    source=ROOT.parent/'sle_smid_fv_c99.c'
     frozen=folder/source.name;frozen.write_bytes(source.read_bytes())
     library=folder/('kernel.dll' if sys.platform=='win32' else 'kernel.so')
     command=['gcc','-std=c99','-O3','-fno-fast-math','-ffp-contract=off','-shared','-static-libgcc']

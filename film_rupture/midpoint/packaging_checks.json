@@ -1,0 +1,20 @@
+{
+  "PASS": true,
+  "prepared_at": "2026-10-28",
+  "scope": "Local path/packaging regression; not a new g1 performance or GPU runtime test",
+  "kernels_byte_identical": 3,
+  "all_Python_AST_PASS": true,
+  "reference_N64_t3_bitwise_equal": true,
+  "native_N64_t3_max_field_difference": 4.440892098500626e-16,
+  "native_compilation_and_checkpoint_PASS": true,
+  "parameterized_phi_checkpoint_PASS": [
+    0.01,
+    0.013345
+  ],
+  "GPU_path_only_edits_verified": true,
+  "local_links_PASS": true,
+  "existing_server_sources_modified": false,
+  "performance_values": "Frozen 2026-10-27 g1 evidence reused; no rerun claimed",
+  "GPU_runtime_retested": false,
+  "Basilisk_runtime_retested": false
+}

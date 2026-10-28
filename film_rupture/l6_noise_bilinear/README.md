@@ -1,4 +1,4 @@
-# L6 噪声周期双线性插值：旧时间格式的网格对照
+# SLE-SPLIT-FV-BASILISK：noise=L6-bilinear
 
 本目录与[随机中点版](../midpoint/README.md)分开。它在旧 Basilisk 分步程序上改变噪声空间表示，**没有移植随机中点**。
 
