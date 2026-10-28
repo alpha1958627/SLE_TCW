@@ -1,0 +1,125 @@
+{
+  "status": "PASS",
+  "gate_job": 30902,
+  "engine_signature": "35b0fca324a3feb96b54db77b0de1e04914981f7a2ed4da36513a252743b60db",
+  "physics_kernel_byte_identity": true,
+  "baseline_field_errors": {
+    "2026101901": 0.0,
+    "2026101902": 0.0
+  },
+  "maximum_score_error": 2.220446049250313e-16,
+  "numeric_errors": {
+    "seed2026101901_native_full_program": 0.0,
+    "seed2026101901_observer_noninterference": 0.0,
+    "seed2026101901_repeat4": 0.0,
+    "seed2026101901_restart": 0.0,
+    "seed2026101901_serial_mpi1": 0.0,
+    "seed2026101901_serial_mpi16": 7.105427357601002e-15,
+    "seed2026101901_serial_mpi4": 7.549516567451064e-15,
+    "seed2026101902_native_full_program": 0.0,
+    "seed2026101902_observer_noninterference": 0.0,
+    "seed2026101902_repeat4": 0.0,
+    "seed2026101902_restart": 0.0,
+    "seed2026101902_serial_mpi1": 0.0,
+    "seed2026101902_serial_mpi16": 7.549516567451064e-15,
+    "seed2026101902_serial_mpi4": 8.659739592076221e-15
+  },
+  "static_score_cases": [
+    {
+      "case": "pit_0.005",
+      "error": 0.0,
+      "expected": 0.005,
+      "q17": 0.005,
+      "rupture": true
+    },
+    {
+      "case": "pit_0.009",
+      "error": 0.0,
+      "expected": 0.009,
+      "q17": 0.009,
+      "rupture": true
+    },
+    {
+      "case": "pit_0.01",
+      "error": 0.0,
+      "expected": 0.01,
+      "q17": 0.01,
+      "rupture": true
+    },
+    {
+      "case": "pit_0.010001",
+      "error": 0.0,
+      "expected": 0.010006048255691126,
+      "q17": 0.010006048255691126,
+      "rupture": false
+    },
+    {
+      "case": "pit_0.19",
+      "error": 0.0,
+      "expected": 0.9334711345838644,
+      "q17": 0.9334711345838644,
+      "rupture": false
+    },
+    {
+      "case": "pit_0.2",
+      "error": 2.220446049250313e-16,
+      "expected": 0.9750865051903115,
+      "q17": 0.9750865051903113,
+      "rupture": false
+    },
+    {
+      "case": "pit_0.200001",
+      "error": 1.1102230246251565e-16,
+      "expected": 0.9750865363321799,
+      "q17": 0.97508653633218,
+      "rupture": false
+    },
+    {
+      "case": "pit_0.7",
+      "error": 1.1102230246251565e-16,
+      "expected": 0.9906574394463669,
+      "q17": 0.9906574394463667,
+      "rupture": false
+    },
+    {
+      "case": "uniform",
+      "error": 0.0,
+      "expected": 1.0,
+      "q17": 1,
+      "rupture": false
+    },
+    {
+      "case": "wave",
+      "error": 0.0,
+      "expected": 0.9378210754051368,
+      "q17": 0.9378210754051368,
+      "rupture": false
+    }
+  ],
+  "q3_checkpoint_rejected": true,
+  "d3_ideal_oracle": {
+    "status": "PASS",
+    "results": {
+      "1": {
+        "N": 12,
+        "D": 1,
+        "independent_toy_repetitions": 5000,
+        "true_P": 0.05,
+        "mean": 0.049523538687679856,
+        "SEM": 0.0003686588072196032,
+        "nominal_weight_after16": 0.24853240691333806
+      },
+      "3": {
+        "N": 12,
+        "D": 3,
+        "independent_toy_repetitions": 5000,
+        "true_P": 0.05,
+        "mean": 0.04997627727335784,
+        "SEM": 0.0004067701869917613,
+        "nominal_weight_after16": 0.010022595757618546
+      }
+    },
+    "scope": "ideal continuous AMS conditional-sampling oracle; not q17 physical performance or MFPT"
+  },
+  "scope": "Two-seed 2000-step numerical/score/controller validation plus ideal AMS toy; not physical lifetime, near-event convergence, or independent efficiency benchmark"
+}
