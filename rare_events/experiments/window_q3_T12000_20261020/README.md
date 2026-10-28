@@ -6,22 +6,8 @@
 
 四个独立作业各12核6GB，完成一个就释放一个。AMS D1分裂阶段仍可能有8个分配核空闲。96h是资源上限，不是预计运行时间。此为每方法1个独立全程的探索，不足以估计跨重复误差或排名效率。
 
-文件：
-
-- `plan.json`：固定实验参数、独立种子命名空间及前置验收链。
-- `submit_window_20261020.py`：一次性提交账本；test-only结果与真实job分开，未知提交结果不自动重试。
-- `window_20261020.slurm`：SIPF环境模板，先source环境再启用set-u。
-- `run_window_20261020.py`：验证冻结源/二进制与前一试点终态，原子声明本次科学重复，数学门槛和本方法真实MPI启动检查后才开始生产。
-- `monitor_window_20261020.py`：只读核验四个实际job及其源码/配置，生成已有绘图器可读的快照。
-
-在已验证的原仓库根目录暂存后运行：
-
-```sh
-mkdir -p admin/window_q3_T12000_20261020
-cp rare_events/experiments/window_q3_T12000_20261020/* admin/window_q3_T12000_20261020/
-python3 admin/window_q3_T12000_20261020/submit_window_20261020.py --repo "$PWD"
-python3 admin/window_q3_T12000_20261020/monitor_window_20261020.py --repo "$PWD" > snapshot.json
-```
+保留 `plan.json`、`window_20261020.slurm` 与 `run_window_20261020.py` 作为冻结实验协议。
+一次性提交/监控脚本已从当前目录移出，完整原路径见[原始快照](https://github.com/alpha1958627/SLE_TCW/tree/archive/20261028/main/rare_events/experiments/window_q3_T12000_20261020)。复现历史任务须检出整个原始版本；当前日常入口见[罕见事件说明](../../README.md)。
 
 本目录是日期实验快照，`prior_job=29264`有意验证实际来源。重新开展独立重复必须另建日期版本、改用新的namespace，并指向自身已确认的前置验收任务；不得复制此配置反复运行后把同种子当新样本。脚本拒绝覆盖原账本/声明文件，需先人工核实同一真实任务，保留所有失败或未知状态。
 

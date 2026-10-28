@@ -13,6 +13,14 @@
 | `batched_film.py` | CuPy设备数组、FFT及CUDA Newton/GMRES控制 |
 | `batch_runner.py` | GPU各lane独立时间/拒绝/事件与检查点 |
 | `run_gpu_batch.py` | GPU批量CLI、输出和显式恢复 |
-| `phi_parameterized/` | 同C99内核的显式phi物理参数接口，默认.013345 |
+| `run_cpu_mpi.py --phi-ref` | CPU噪声强度参数，默认.01；替代原phi_parameterized四份重复代码 |
+
+CPU扩展示例（从中点主目录执行）：
+
+```sh
+mpiexec -n 5 python runtime/run_cpu_mpi.py --heights 1.2 \
+  --seeds 2026102701 2026102702 2026102703 2026102704 2026102705 \
+  --phi-ref .013345 --dt-max .03 --until 300 --out runs/phi013345
+```
 
 CPU仅用NumPy/SciPy；CPU MPI另需mpi4py/MPI，GPU另需CuPy/CUDA。GPU没有调用CPU C99库做场求解；共享CPU模块为布朗协议和参考控制器提供定义。所有输出目录必须独立；不要用此包装目录恢复旧部署检查点。

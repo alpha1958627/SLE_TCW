@@ -40,7 +40,7 @@
 
 - `noise=L6-bilinear`：[L6噪声插值源码](film_rupture/l6_noise_bilinear/README.md)，仍属SPLIT-BASILISK，固定空间噪声截止；不是新的中点或白噪声网格极限。
 - `y-index`历史实验：[y索引对照](film_rupture/source_yold_h1.05.c)与[周期守恒源](film_rupture/source_yfix_h1.05.c)，属旧格式的索引控制；不作为当前推荐的独立主线。
-- `phi_ref=.013345`：[显式参数运行接口](film_rupture/midpoint/runtime/phi_parameterized/README.md)，C99内核SHA完全相同；是物理参数扩展。固定phi=.01接口仍保留用于精确对应四项耗时。
+- `phi_ref=.013345`：[CPU统一参数入口](film_rupture/midpoint/runtime/README.md)，C99内核SHA完全相同；是物理参数扩展。统一入口默认phi=.01；旧冻结接口可按下方快照恢复，四项耗时仍只属于原版本。
 - GPU早期逐步CuPy、未融合Krylov及4噪声线程探索属于性能试验历史；当前展示已验收的显存常驻融合Krylov源码，历史数据留本地档案，不重复命名为新算法。
 
 ## 算法差别与证据边界
@@ -58,3 +58,28 @@ CPU/GPU配对16seed最大场差9.20e-14；GPU独立末步物理残差最大7.08e
 中点目录优先展示三个[源码文件](film_rupture/midpoint/README.md)，运行必需的Python集中于runtime；绘图、部署、看板、SSH和一次性门槛脚本从这次液膜展示范围移出，Git历史仍可追溯。没有删除本地证据、改服务器运行源或改其他项目的Python脚本。[整理前完整目录](https://github.com/alpha1958627/SLE_TCW/tree/7e1d0959a22cc1a69ed65da2504914275ace0d2b/film_rupture)保留原路径与原启动历史。
 
 文件重命名与Python路径绑定使新包指纹不同；**不要用新包恢复旧检查点**。C/CUDA内核逐字节保留原核，SHA见[清单](film_rupture/midpoint/source_manifest.json)。状态监测仍由各批独立审计负责，本页是代码目录，不宣称实时生产状态。
+
+## 仓库整理记录
+
+2026-10-28：日常分支统一为 `main`；独立实验只作为各项目的 `experiments/` 内容保留，不替换默认模型。四个研究入口为 `film_rupture/`、`drop/`、`tcw/`、`rare_events/`。
+
+| 原文件/目录 | 当前入口 |
+|---|---|
+| `AMS/run.py`、`DMC/run.py` | `rare_events/ams.py`、`rare_events/dmc.py`；共用引擎与CLI，文档合入同目录README |
+| `tools/` | `rare_events/check_fields.py`、`rare_events/plot_progress.py` |
+| `runtime/phi_parameterized/` 四份重复Python | 共用 `runtime/`，CPU MPI入口增加 `--phi-ref`，默认.01；.013345需显式指定 |
+| 两份TCW绘图脚本 | `tcw/plot_tcw_H0_reference.py`，纯驱动选择 `--pure-driven`；公式、时钟与输出名分别保持 |
+| 日期实验中的4个submit/monitor脚本 | 原分支快照；当前保留参数、运行协议、独立数值验证 |
+| 液膜旧部署/看板/源码生成脚本 | 已沿Notebook分支整理移出；见原main快照 |
+
+整理前的完整分支固定为以下标签，保留精确源码、路径和历史：
+
+| 原分支 | 快照标签 | 原HEAD |
+|---|---|---|
+| `main` | [archive/20261028/main](https://github.com/alpha1958627/SLE_TCW/tree/archive/20261028/main) | `cff0e3b` |
+| `droplet-notebook-20261025` | [archive/20261028/droplet-notebook](https://github.com/alpha1958627/SLE_TCW/tree/archive/20261028/droplet-notebook) | `fa00372` |
+| `codex/capillary-midpoint-20261027` | [archive/20261028/capillary-midpoint](https://github.com/alpha1958627/SLE_TCW/tree/archive/20261028/capillary-midpoint) | `cddbfcc` |
+| `codex/q17-observer-20261021` | [archive/20261028/q17-observer](https://github.com/alpha1958627/SLE_TCW/tree/archive/20261028/q17-observer) | `78496ed` |
+| `droplet-spreading-noise-modes-20261021` | [archive/20261028/droplet-spreading](https://github.com/alpha1958627/SLE_TCW/tree/archive/20261028/droplet-spreading) | `92f3eb6` |
+
+例如 `git switch --detach archive/20261028/droplet-notebook` 可读回完整原版本。生产恢复仍使用原冻结目录、库及环境；新源码指纹拒绝接管旧检查点。C/CUDA物理核、原始结果和验收数值保持原字节；历史JSON只说明其对应源码版本。

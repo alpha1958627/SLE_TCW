@@ -4,8 +4,8 @@ import argparse,hashlib,json,os,sys
 def main(root,mode):
     root=Path(root).resolve();source=root/'source';sys.path.insert(0,str(source))
     from rare_events import core
-    from AMS.run import run as ams
-    from DMC.run import run as dmc
+    from rare_events.ams import run as ams
+    from rare_events.dmc import run as dmc
     plan=core.load(root/'plan.json');build=core.build_identity();gate=core.load(source/'validation/gate_30902/score_gate.json')
     assert gate['status']=='PASS' and gate['build']==build and max(gate['baseline_field_errors'].values())==0
     assert hashlib.sha256((source/'rare_events/physics.h').read_bytes()).hexdigest()=='1f108bce15a106991904c0d4744ef142b4fd6fc6bbf50e01796635aaa1d46290'

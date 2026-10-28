@@ -5,7 +5,7 @@ import math
 import random
 import statistics
 from . import core
-from AMS.run import cutoff,first_crossing
+from rare_events.ams import cutoff,first_crossing
 
 
 def offsets(weights):

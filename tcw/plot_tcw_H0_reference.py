@@ -21,6 +21,7 @@ timestep effect of the solver (dt = 2e-5, k^4 dt = 0.08 at k = 8 and 0.20 at
 k = 10), not a defect of the analytic formula.
 """
 from pathlib import Path
+import argparse
 
 import matplotlib as mpl
 import matplotlib.pyplot as plt
@@ -73,7 +74,7 @@ def style(axis, xlim, tick_size: float) -> None:
                      labelsize=tick_size, length=9, width=1.6)
 
 
-def main() -> None:
+def main(pure_driven=False) -> None:
     OUT.mkdir(parents=True, exist_ok=True)
     rng = np.random.default_rng(JITTER_SEED)
     continuous = base.ring_spectra(base.L10, "repeat_run_*", base.L10_FILES)
@@ -92,7 +93,8 @@ def main() -> None:
         tau = time - base.T_REF
         k_cont, y_cont = continuous[time]
         k_det, y_det = deterministic[time]
-        cont_theory = base.theory_from_h0(h0_cont, k_cont0, tau, driven=True)
+        cont_theory = (base.pure_driven_spectrum(k_cont0, time) if pure_driven else
+                       base.theory_from_h0(h0_cont, k_cont0, tau, driven=True))
         det_theory = base.theory_from_h0(h0_det, k_det0, tau, driven=False)
         color = base.COLORS[time]
 
@@ -114,7 +116,9 @@ def main() -> None:
 
         rows.extend((time, tau, k, y, "L10_continuous_numeric") for k, y in zip(k_cont, y_cont))
         rows.extend((time, tau, k, y, "initial_noise_numeric") for k, y in zip(k_det, y_det))
-        rows.extend((time, tau, k, y, "continuous_theory_from_H0") for k, y in zip(k_cont0, cont_theory))
+        rows.extend((time, time if pure_driven else tau, k, y,
+                     "pure_driven_h0_eq_0" if pure_driven else "continuous_theory_from_H0")
+                    for k, y in zip(k_cont0, cont_theory))
         rows.extend((time, tau, k, y, "initial_noise_theory_from_H0") for k, y in zip(k_det0, det_theory))
 
     style(ax_main, MAIN_K_RANGE, MAIN_TICK_SIZE)
@@ -133,8 +137,8 @@ def main() -> None:
     ax_zoom.yaxis.get_offset_text().set_size(ZOOM_TICK_SIZE)
 
     handles = [
-        Line2D([], [], color="black", linewidth=LINE_WIDTH, label=r"theory, $\varphi=0.001$"),
-        Line2D([], [], color="black", linewidth=LINE_WIDTH, linestyle="--", label=r"theory, $\varphi=0$"),
+        Line2D([], [], color="black", linewidth=LINE_WIDTH, label=(r"theory, $\varphi=0.001$, $H_0=0$" if pure_driven else r"theory, $\varphi=0.001$")),
+        Line2D([], [], color="black", linewidth=LINE_WIDTH, linestyle="--", label=(r"theory, $\varphi=0$, from $H_0$" if pure_driven else r"theory, $\varphi=0$")),
         Line2D([], [], color="black", marker="o", markersize=MARKER_SIZE_O, markerfacecolor="none",
                markeredgewidth=MARKER_EDGE, linestyle="-.", linewidth=DATA_LINE_WIDTH,
                label=r"SLE, $\varphi=0.001$"),
@@ -142,14 +146,17 @@ def main() -> None:
     ax_main.legend(handles=handles, loc="upper right", frameon=False, fontsize=MAIN_LEGEND_SIZE,
                    handlelength=3.0, labelspacing=0.35, borderaxespad=0.5)
 
+    prefix = "pure_" if pure_driven else ""
     # no bbox_inches="tight": the 16:9 and 5:3 ratios must stay exact for compositing
     for fig, tag in ((fig_main, "main16x9"), (fig_zoom, "zoom5x3")):
-        fig.savefig(OUT / f"tcw_H0_reference_{tag}.png", dpi=220)
-        fig.savefig(OUT / f"tcw_H0_reference_{tag}.pdf")
+        fig.savefig(OUT / f"tcw_H0_reference_{prefix}{tag}.png", dpi=220)
+        fig.savefig(OUT / f"tcw_H0_reference_{prefix}{tag}.pdf")
 
-    np.savetxt(OUT / "tcw_H0_reference_data.csv", rows, delimiter=",", fmt="%s",
+    np.savetxt(OUT / f"tcw_H0_reference_{prefix}data.csv", rows, delimiter=",", fmt="%s",
                header="physical_time,tau_from_H0,k,rms,series", comments="")
 
 
 if __name__ == "__main__":
-    main()
+    parser = argparse.ArgumentParser(description="TCW spectra with measured H0 or zero-initial-spectrum theory")
+    parser.add_argument("--pure-driven", action="store_true", help="Use H0=0 theory at absolute time t")
+    main(parser.parse_args().pure_driven)

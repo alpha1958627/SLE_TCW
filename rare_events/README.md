@@ -62,3 +62,27 @@ python3 -m rare_events.monitor --workdir runs/job_<actual_job> --job <actual_job
 日志/检查点/执行清单、每轮父索引和权重保存于显式workdir。完成求解核时=wall_seconds×实际MPI秩数；活动调用经过时间估计另列，Slurm分配核时还包括环境门槛、控制器和空闲。运行/下载观察出错时不自动重投；未确认的物理调用保留待审查。
 
 GitHub不保存运行场、二进制、实际服务器凭据或可执行文件。验收结果应另保存带日期的JSON与源码/二进制SHA，并分别报告调度、数值、统计和物理状态。
+
+## 日常入口：AMS / DMC / QDMC
+
+从仓库根目录执行，先完成上面的构建与数值门槛：
+
+```sh
+python3 -m rare_events.ams --workdir runs/my_ams --namespace my_new_campaign:ams:R0 \
+  --N 12 --D 1 --max-rounds 16 --horizon 3000 --ranks 4 --workers 3
+python3 -m rare_events.dmc --mode dmc --workdir runs/my_dmc --namespace my_new_campaign:dmc:R0 \
+  --N 12 --horizon 3000 --block 150 --strength 4 --ranks 4 --workers 3
+python3 -m rare_events.dmc --mode qdmc --workdir runs/my_qdmc --namespace my_new_campaign:qdmc:R0 \
+  --N 12 --horizon 3000 --block 150 --strength .5 --ranks 4 --workers 3
+```
+
+`ams.py` 与 `dmc.py` 分别由原 `AMS/run.py`、`DMC/run.py` 搬入；共用原有 `core.py`、`cli.py`，算法保持原样。
+
+- AMS：评分 `1-q3`；并列最差路径一起淘汰，按实际数量 k 更新 `logW += log(1-k/N)`；从幸存路径第一次严格越级的完整状态分支。目标达到后 `P(T)=W*事件比例`；预算耗尽时 `P/RMST=null`，W不是概率下界。
+- DMC：势 `V_k=c*(t_k/T)*(1-q3)`，增量 `G=exp(V_new-V_old)`，累计 `logZ += log(mean(G))` 后系统重采样。孩子继承父势与首次事件时刻，重复父粒子的未来种子独立。
+- QDMC：用 `exp(-V_old)` 加权中点CDF后逆正态映射；不是无权排名或Z-score。DMC与QDMC强度是探索参数，数值不代表等效选择强度。
+- 补偿：`w=exp(logZ-V)/N`；`P(T)=sum(w*I(tau<=T))`，`RMST(T)=T-sum(w*(T-tau)+)`；17点CDF用同样权重。不除随机 `sum(w)`，不裁剪概率或剔除不利重复。粒子/家系不等于独立全程重复。
+
+检查点、家系、权重和源码身份检查仍保留。路径变更后只在新目录开始独立运行；旧冻结目录使用其原入口恢复。
+
+已有结果的独立核验与绘图：`python -m rare_events.check_fields --help`、`python -m rare_events.plot_progress --help`。日期实验保留参数和数值验证，一次性提交/监控脚本见[整理记录](../CODE_VERSIONS.md#仓库整理记录)。

@@ -32,6 +32,7 @@ def raw_field(p,s,protocol_sha):
 def identity(s,case,args):
     assert s.film.height==case['height'] and s.noise.seed==case['seed'],'Checkpoint case identity mismatch'
     assert s.film.n==args.n and s.cap_ticks==s.noise.ticks(args.dt_max),'Checkpoint grid/dt mismatch'
+    assert s.film.phi_ref==args.phi_ref,'Checkpoint physical noise mismatch'
     assert s.noise.base_dt==.064 and s.noise.depth==18 and s.tiered,'Checkpoint protocol mismatch'
 
 def solve(case,args,library,protocol_sha):
@@ -43,7 +44,7 @@ def solve(case,args,library,protocol_sha):
             s=Trajectory.load(checkpoint,library=library)
         else:
             s=Trajectory(case['height'],args.n,case['seed'],dt_cap=args.dt_max,base_dt=.064,depth=18,
-                         kernel=args.kernel,library=library)
+                         kernel=args.kernel,library=library,phi_ref=args.phi_ref)
         identity(s,case,args)
         first_steps=s.step_count
         # A killed process may have appended trace rows after its last checkpoint.
@@ -112,6 +113,7 @@ def main():
     p.add_argument('--heights',type=float,nargs='+',default=[1.2])
     p.add_argument('--seeds',type=int,nargs='+',default=[2026102201])
     p.add_argument('--n',type=int,default=64);p.add_argument('--dt-max',type=float,default=.3)
+    p.add_argument('--phi-ref',type=float,default=.01)
     p.add_argument('--until',type=float,default=300.,help='Fixed code-time target; 0 means event-only')
     p.add_argument('--wall-seconds',type=float,default=3600.)
     p.add_argument('--frame-interval',type=float,default=300.)
@@ -123,6 +125,7 @@ def main():
     p.add_argument('--cpu-base',type=int,help='Optional Linux CPU id of rank0, rank r uses base+r')
     a=p.parse_args();a.out=a.out.resolve()
     assert a.n>=4 and a.n%2==0 and math.isfinite(a.dt_max) and a.dt_max>0
+    assert math.isfinite(a.phi_ref) and a.phi_ref>0
     assert math.isfinite(a.until) and a.until>=0 and math.isfinite(a.wall_seconds) and a.wall_seconds>0
     assert math.isfinite(a.frame_interval) and a.frame_interval>0
     assert a.checkpoint_every>0 and a.trace_every>0 and a.steps_this_run>=0
@@ -143,7 +146,7 @@ def main():
                 if not compiled.exists():build(compiled)
                 library=str(compiled/'kernel.so')
             core=fingerprint(a.kernel,library)
-            protocol=dict(cases=cases,n=a.n,dt_max=a.dt_max,until=a.until,frame_interval=a.frame_interval,
+            protocol=dict(cases=cases,n=a.n,dt_max=a.dt_max,phi_ref=a.phi_ref,until=a.until,frame_interval=a.frame_interval,
                 checkpoint_every=a.checkpoint_every,trace_every=a.trace_every,kernel=a.kernel,
                 fingerprint=core,driver_SHA256=sha(__file__),base_dt=.064,depth=18,
                 scheme='Conservative stochastic midpoint; direct MC; ensemble MPI')

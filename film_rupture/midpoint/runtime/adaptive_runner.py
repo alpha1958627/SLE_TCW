@@ -89,8 +89,8 @@ def runtime():
 
 
 class Trajectory:
-    def __init__(self,height,n,seed,dt_cap=.03,h=None,tiered=True,event_resolution=1e-5,depth=12):
-        self.film=Film(height,n)
+    def __init__(self,height,n,seed,dt_cap=.03,h=None,tiered=True,event_resolution=1e-5,depth=12,phi_ref=.01):
+        self.film=Film(height,n,phi_ref=phi_ref)
         self.h=np.ones((n,n)) if h is None else np.array(h,dtype=float,copy=True)
         assert self.h.shape==(n,n) and np.all(np.isfinite(self.h)) and self.h.min()>.01
         self.noise=BrownianTape(seed,(2,n,n),depth=depth)
@@ -179,7 +179,7 @@ class Trajectory:
         return child
 
     def metadata(self):
-        return dict(schema=1,height=self.film.height,n=self.film.n,A=self.film.a,phi=self.film.phi,slip=self.film.slip,
+        return dict(schema=1,height=self.film.height,n=self.film.n,A=self.film.a,phi=self.film.phi,phi_ref=self.film.phi_ref,slip=self.film.slip,
             pressure=self.film.pressure,seed=self.noise.seed,base_dt=self.noise.base_dt,depth=self.noise.depth,
             ticks=self.ticks,noise_cursor=self.noise.cursor,cap_ticks=self.cap_ticks,proposal=self.proposal,
             streak=self.streak,step_count=self.step_count,tiered=self.tiered,event_resolution=self.event_resolution,
@@ -208,7 +208,7 @@ class Trajectory:
         assert data['schema']==1 and data['sources']==source_hashes(),'Checkpoint source mismatch'
         assert data['runtime']==runtime(),'Checkpoint runtime mismatch; cross-version replay not implicitly accepted'
         obj=cls(data['height'],data['n'],data['seed'],dt_cap=data['cap_ticks']*(data['base_dt']/(1<<data['depth'])),
-                h=h if h.min()>.01 else np.ones_like(h),tiered=data['tiered'],depth=data['depth'])
+                h=h if h.min()>.01 else np.ones_like(h),tiered=data['tiered'],depth=data['depth'],phi_ref=data['phi_ref'])
         assert obj.film.a==data['A'] and obj.film.phi==data['phi'] and obj.film.slip==data['slip'] and obj.film.pressure==data['pressure']
         obj.h=h
         for name in ('ticks','proposal','streak','step_count','event_resolution','status','event','initial_mean','ledger','last_interval'):

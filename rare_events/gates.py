@@ -7,8 +7,8 @@ import subprocess
 import time
 from . import core
 from .test_estimators import self_check
-from AMS.run import run as ams
-from DMC.run import run as dmc
+from rare_events.ams import run as ams
+from rare_events.dmc import run as dmc
 from .direct import run as direct
 
 

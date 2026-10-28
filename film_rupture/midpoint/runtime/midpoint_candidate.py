@@ -20,7 +20,7 @@ GMRES_RELATIVE_KEY = 'rtol' if 'rtol' in inspect.signature(gmres).parameters els
 
 
 class Film:
-    def __init__(self, height, n, unit_box=False, pressure='energy'):
+    def __init__(self, height, n, unit_box=False, pressure='energy', phi_ref=.01):
         self.height, self.n = height, n
         self.unit_box=unit_box
         self.pressure=pressure
@@ -28,7 +28,9 @@ class Film:
         self.length = 1. if unit_box else 100/height
         self.dx = self.length/n
         self.a = 13.159 if unit_box else .0013159/height**2
-        self.phi = .01 if unit_box else .01/height**2
+        assert math.isfinite(phi_ref) and phi_ref>0
+        self.phi_ref=float(phi_ref)
+        self.phi = self.phi_ref if unit_box else self.phi_ref/height**2
         self.slip = .2 if unit_box else .2/height
         k = np.fft.fftfreq(n)*n
         self.lam = 4/self.dx**2*(np.sin(np.pi*k[:,None]/n)**2 + np.sin(np.pi*k[None,:]/n)**2)

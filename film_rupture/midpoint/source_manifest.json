@@ -2,7 +2,7 @@
   "schema": 1,
   "prepared_at": "2026-10-28",
   "base_commit": "7e1d0959a22cc1a69ed65da2504914275ace0d2b",
-  "scope": "Source presentation only; no server source or runtime mutation",
+  "scope": "Historical packaging identity at fa00372; current Python layout differs. Kernel hashes remain applicable.",
   "files": {
     "film_rupture/midpoint/sle_smid_fv_c99.c": {
       "original_name": "native_midpoint_kernel.c",
@@ -149,5 +149,6 @@
     "film_rupture/v3_tiered/gen_v3_sources_20261020.py",
     "film_rupture/v3_tiered/make_v3_template_20261020.py",
     "film_rupture/v3_tiered/run_v3_sipf.slurm"
-  ]
+  ],
+  "snapshot": "https://github.com/alpha1958627/SLE_TCW/tree/archive/20261028/droplet-notebook/film_rupture/midpoint"
 }

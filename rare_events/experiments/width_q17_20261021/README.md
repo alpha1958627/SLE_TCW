@@ -45,12 +45,11 @@ Numerical gate30902 passed (paired baseline field difference0, score error
 AMS30927/DMC30929/QDMC30931. Each runs the actual new-controller startup checks
 before its long-window production. This establishes no physical lifetime.
 
-The immutable parameter contract retains its preparation-time status field.
-Actual deployment status comes only from `submission_production.json` and Slurm;
-do not infer it from the plan's historical `status` value. `submit_candidate.py`
-uses a single-use claim and never replays unknown attempts. Its scripts belong
-in `admin/` beside `source/` and `plan.json`; `run_candidate.py` accepts that
-experiment root. `monitor_candidate.py` reads one source-checked snapshot.
+The plan is a historical parameter contract, not live scheduler state. The dated
+submission/monitor scripts are retained in the [original branch snapshot](https://github.com/alpha1958627/SLE_TCW/tree/archive/20261028/q17-observer/rare_events/experiments/width_q17_20261021).
+Use the complete frozen snapshot to reproduce its original source identities.
+The reusable preparation, oracle and numerical validation remain here;
+`run_candidate.py` retains the experiment-root interface.
 
 All finite-window P estimates must retain inverse-potential compensation and
 inherited first passage. Unresolved AMS W is not P. No MFPT, acceleration factor,

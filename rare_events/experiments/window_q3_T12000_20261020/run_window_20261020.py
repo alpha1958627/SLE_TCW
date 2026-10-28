@@ -11,8 +11,8 @@ def main(repo,plan_path,mode):
     sys.path.insert(0,str(repo))
     from rare_events import core
     from rare_events.test_estimators import self_check
-    from AMS.run import run as ams
-    from DMC.run import run as dmc
+    from rare_events.ams import run as ams
+    from rare_events.dmc import run as dmc
     from rare_events.direct import run as direct
     plan=core.load(plan_path);cfg=plan['configs'][mode]
     build=core.build_identity();gate=core.load(repo/plan['prior_gate']/'numerical_gate.json')

@@ -21,7 +21,7 @@
 
 固定phi接口：`A=.0013159/h0², phi=.01/h0², L=100/h0, ell=.2/h0, H=1, hstar=0`。布朗根块.064/depth18，hmin<.3/.1将dt上限降至.01/.003，事件hmin<=.01沿同一路径细分。`ell=.2`是迁移率h²系数，采用`h³+3b*h²`约定时对应Navier `b/H*=1/15`。
 
-`phi_ref=.013345`扩展仍用同一C99内核，驱动独立放在[runtime/phi_parameterized/](runtime/phi_parameterized/README.md)，不能把该物理参数下的轨迹当成上面phi=.01测速或旧135条的重复。
+`phi_ref` 已统一为 CPU MPI 入口的 `--phi-ref` 参数，默认 `.01`。例如 `python runtime/run_cpu_mpi.py --phi-ref .013345 --dt-max .03 ...`；物理强度进入协议及检查点核验。该参数下的轨迹不能当成上面phi=.01测速或旧135条的重复。GPU/Basilisk入口仍使用各自固定phi=.01协议。
 
 ## 最小运行
 
@@ -51,7 +51,7 @@ python runtime/run_single.py --kernel basilisk --height 1.2 --time 3 --out runs/
 
 这里的命令是功能示例，**不是上述16条预热测速程序**，也不自动向集群提交任务。GPU与CPU MPI完整入口使用`--until 0`等事件，墙时到限保存，`--resume`显式恢复；有限窗`CENSORED`不等于破碎。单条示例只提供有限窗。
 
-源码搬移后路径和Python指纹改变：**新目录不能接管旧生产检查点**。旧任务继续使用原冻结目录/库/运行环境。原核SHA、来源与路径整理记录见[source_manifest.json](source_manifest.json)；本次本地包装检查见[packaging_checks.json](packaging_checks.json)。
+源码搬移后路径和Python指纹改变：**新目录不能接管旧生产检查点**。旧任务继续使用原冻结目录/库/运行环境。原核SHA、来源与路径整理记录见[source_manifest.json](source_manifest.json)；原包装检查见[packaging_checks.json](packaging_checks.json)（对应整理前版本）；本次合并回归见[tests/test_runtime.py](tests/test_runtime.py)。
 
 ## 使用结论
 

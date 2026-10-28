@@ -41,7 +41,7 @@ def begin(workdir,config,resume):
     workdir.mkdir(parents=True,exist_ok=True)
     lock=(workdir/'controller.lock').open('a')
     fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
-    files=list(core.ROOT.glob('*.py'))+list((core.ROOT.parent/'AMS').glob('*.py'))+list((core.ROOT.parent/'DMC').glob('*.py'))
+    files=list(core.ROOT.glob('*.py'))
     manifest=dict(config=config,build=core.build_identity(),
         source_sha256={p.relative_to(core.ROOT.parent).as_posix():hashlib.sha256(p.read_bytes()).hexdigest() for p in files},
         slurm_job=os.environ.get('SLURM_JOB_ID'),model='no_repulsion',checkpoint_abi='RESTFE26',

@@ -42,7 +42,7 @@ def prepare(base,output):
     assert digest(base/'rare_events/engine.c')==EXPECTED_ENGINE
     assert digest(base/'rare_events/physics.h')==EXPECTED_PHYSICS
     out.mkdir(parents=True,exist_ok=False)
-    files=list((base/'rare_events').glob('*.py'))+list((base/'AMS').glob('*.py'))+list((base/'DMC').glob('*.py'))
+    files=list((base/'rare_events').glob('*.py'))
     files += [base/'rare_events'/n for n in ('engine.c','physics.h','build.sh')]
     files += [base/'film_rupture/source_yfix_h1.05.c']
     original={}

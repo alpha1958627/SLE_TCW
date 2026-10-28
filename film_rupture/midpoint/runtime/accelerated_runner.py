@@ -34,18 +34,18 @@ def fingerprint(kernel,library=None):
 
 class Trajectory(ReferenceTrajectory):
     def __init__(self,height,n,seed,dt_cap=.03,h=None,tiered=True,event_resolution=1e-5,
-                 base_dt=.001,depth=12,kernel='native',library=None):
+                 base_dt=.001,depth=12,kernel='native',library=None,phi_ref=.01):
         assert kernel in ('native','reference') and math.isfinite(base_dt) and base_dt>0
         assert kernel=='native' or library is None
         self.kernel=kernel;self.library_path=str(Path(library).resolve()) if library is not None else None
         self._fingerprint=fingerprint(kernel,self.library_path)
-        super().__init__(height,n,seed,dt_cap=dt_cap,h=h,tiered=tiered,event_resolution=event_resolution,depth=depth)
+        super().__init__(height,n,seed,dt_cap=dt_cap,h=h,tiered=tiered,event_resolution=event_resolution,depth=depth,phi_ref=phi_ref)
         self.noise=BrownianTape(seed,(2,n,n),base_dt=base_dt,depth=depth)
         self.cap_ticks=self.noise.ticks(dt_cap)
         assert self.cap_ticks>0 and abs(self.cap_ticks*self.noise.quantum-dt_cap)<1e-12
         self.proposal=self.cap_ticks
         self.event_resolution=max(1,self.noise.ticks(event_resolution))
-        if kernel=='native':self.film=NativeFilm(height,n,library=self.library_path)
+        if kernel=='native':self.film=NativeFilm(height,n,library=self.library_path,phi_ref=phi_ref)
 
     def metadata(self):
         assert self._fingerprint==fingerprint(self.kernel,self.library_path),'Trajectory source/runtime/native build changed'
@@ -59,7 +59,7 @@ class Trajectory(ReferenceTrajectory):
         child=type(self)(self.film.height,self.film.n,seed,dt_cap=self.cap_ticks*self.noise.quantum,
             h=self.h if self.h.min()>.01 else np.ones_like(self.h),tiered=self.tiered,
             event_resolution=self.event_resolution*self.noise.quantum,base_dt=self.noise.base_dt,depth=self.noise.depth,
-            kernel=self.kernel,library=self.library_path)
+            kernel=self.kernel,library=self.library_path,phi_ref=self.film.phi_ref)
         child.h=self.h.copy();child.noise=copy.deepcopy(self.noise);child.noise.seed=int(seed)
         for name in ('cap_ticks','proposal','streak','step_count','ticks','event_resolution','status','event',
                      'initial_mean','ledger','last_interval'):
@@ -80,7 +80,7 @@ class Trajectory(ReferenceTrajectory):
         obj=cls(data['height'],data['n'],data['seed'],dt_cap=data['cap_ticks']*data['base_dt']/(1<<data['depth']),
             h=h if h.min()>.01 else np.ones_like(h),tiered=data['tiered'],
             event_resolution=data['event_resolution']*data['base_dt']/(1<<data['depth']),
-            base_dt=data['base_dt'],depth=data['depth'],kernel=data['kernel'],library=actual_library)
+            base_dt=data['base_dt'],depth=data['depth'],kernel=data['kernel'],library=actual_library,phi_ref=data['phi_ref'])
         assert obj.cap_ticks==data['cap_ticks'] and obj.noise.base_dt==data['base_dt'] and obj.noise.depth==data['depth']
         assert obj.film.a==data['A'] and obj.film.phi==data['phi'] and obj.film.slip==data['slip'] and obj.film.pressure==data['pressure']
         obj.h=h

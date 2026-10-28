@@ -10,8 +10,8 @@ import os
 import traceback
 from . import core
 from .direct import run as direct
-from AMS.run import run as ams
-from DMC.run import run as dmc
+from rare_events.ams import run as ams
+from rare_events.dmc import run as dmc
 
 
 def main(root,gate):
