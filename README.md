@@ -5,7 +5,7 @@
 | 研究内容 | 入口 |
 |---|---|
 | 液膜破碎 | [film_rupture/](film_rupture/README.md) · [中点求解器](film_rupture/midpoint/README.md) |
-| 液滴 | [drop/](drop/README.md) · [铺展 Notebook](drop/droplet-spreading/analysis/phi0001_20261025/drop.ipynb) · [接触角](drop/pinned/README.md) |
+| 液滴 | [drop/](drop/README.md) · [铺展 Notebook](drop/droplet-spreading/analysis/phi0001_20261025/drop.ipynb) · [液滴聚合](drop/droplet-coalescence/README.md) · [接触角](drop/pinned/README.md) |
 | 热毛细波 | [tcw/](tcw/README.md) · [谱分析 Notebook](tcw/tcw.ipynb) |
 | AMS / DMC / QDMC | [rare_events/](rare_events/README.md) |
 

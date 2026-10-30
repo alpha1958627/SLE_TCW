@@ -1,0 +1,7 @@
+data/
+figures/
+*.native
+*.bin
+droplet
+test_activation
+.ipynb_checkpoints/
