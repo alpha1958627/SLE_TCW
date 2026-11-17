@@ -1,0 +1,16 @@
+{
+  "phi": 0.001,
+  "dt": 0.001,
+  "physical_cores": 4,
+  "grid": 128,
+  "noise_grid": 64,
+  "target_t": 400,
+  "chunk_steps": 1000,
+  "wall_budget_hours": 72,
+  "internal_budget_seconds": 257400,
+  "max_global_mass_drift": 1e-08,
+  "max_equation_residual": 1e-08,
+  "source_sha256": "c4b90c91d7e4b94b77e9f198aea186f34ad04242f4f190971b43d0c2eed1010f",
+  "published_kernel_sha256": "2f1e2a8ccc100e65a3c5976f229124e96df28f5d5a514e8473887530d82ee23b",
+  "policy": "Fixed dt; atomic checkpoint after every chunk, full field+counter+global initial mass+source identity. Stop on failed gates. No clipping, renormalization, automatic parameter changes, resubmission or extension."
+}
