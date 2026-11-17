@@ -1,0 +1,11 @@
+{
+  "version": "v4",
+  "parent_sha256": "86ba688aac71e2fbb8944fe07d6098f66129a4b69d6c77401cad854dc894788e",
+  "source_sha256": "2f1e2a8ccc100e65a3c5976f229124e96df28f5d5a514e8473887530d82ee23b",
+  "fix": "residual thermal flux now multiplies Noise1 by the unknown face height, matching relax_layer",
+  "grid": 128,
+  "noise_grid": 64,
+  "default_dt": 0.001,
+  "dt_argument": "integer multiples of .001, <= .3; fixed step, no adaptive acceptance",
+  "noise_coupling": "sum base-step Brownian increments so dt scans use the same coarse-grid Brownian path"
+}

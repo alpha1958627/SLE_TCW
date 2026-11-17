@@ -1,0 +1,12 @@
+layer_v4
+legacy_control
+results/
+trial_4core_t3/
+build_tmp/
+*.bin
+*.out
+*.err
+progress.json
+allocation.json
+inputs.sha256
+DONE.json

@@ -4,6 +4,7 @@
 
 | 想找什么 | 源码入口 |
 |---|---|
+| v4：y索引修复附壁MG，热噪声厚度因子修正、L7/L6噪声、4核dt验证 | [v4_wall_noise/](v4_wall_noise/README.md) |
 | 同16条：CPU1/4/16核与A100耗时 | [192.36 / 47.99 / 12.23 / 34.00秒](midpoint/BENCHMARK.md) |
 | 当前中点C / Basilisk C / CUDA | [midpoint/](midpoint/README.md)：三个源码优先展示 |
 | 最早h1.2、cap=.1那组 | [SLE-SPLIT-FV-BASILISK](v3_tiered/source_v3_h1.2.c) |

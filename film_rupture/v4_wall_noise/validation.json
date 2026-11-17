@@ -1,0 +1,18 @@
+{
+  "version": "v4",
+  "runs": 36,
+  "grid": 128,
+  "noise_grid": 64,
+  "physical_cores": 4,
+  "source_sha256": "2f1e2a8ccc100e65a3c5976f229124e96df28f5d5a514e8473887530d82ee23b",
+  "fixed_dt_default": 0.001,
+  "time_window": 0.32,
+  "repetitions": 3,
+  "max_v4_equation_residual": 4.816758242062063e-11,
+  "max_legacy_thermal_residual": 0.00013702241012831574,
+  "max_v4_mass_drift": 1.910045509381919e-14,
+  "archive_hash_verified": true,
+  "all_raw_result_hashes_verified": true,
+  "all_final_fields_verified": true,
+  "scope": "near-flat finite-window validation; no TCW equilibrium or rupture-time convergence claim"
+}
